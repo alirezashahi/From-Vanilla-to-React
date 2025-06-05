@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master React Event Handling - learn the React event system, SyntheticEvents, and how to handle user interactions">
+    <meta name="keywords" content="React Events, Event Handling, SyntheticEvent, onClick, onChange, React Tutorial">
+    
+    <title>Event Handling - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#core-concepts" class="breadcrumb-link">Core Concepts</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Event Handling</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Event Handling</h1>
+                    <p class="page-subtitle">
+                        Learn how React handles user interactions through its powerful event system. 
+                        Master SyntheticEvents and discover the differences from vanilla JavaScript event handling.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <span class="reading-time">10 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- React vs Vanilla Events -->
+                        <div class="content-block">
+                            <h2>React Events vs Vanilla JavaScript</h2>
+                            <p>
+                                In vanilla JavaScript, you attach event listeners directly to DOM elements. 
+                                React takes a different approach with SyntheticEvents that provide consistency 
+                                across browsers and integrate seamlessly with React's component system.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Vanilla JavaScript</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">JavaScript</span>
+                                            </div>
+                                            <pre><code>// HTML
+&lt;button id="myButton"&gt;Click me&lt;/button&gt;
+&lt;input id="myInput" type="text"&gt;
+
+// JavaScript
+const button = document.getElementById('myButton');
+const input = document.getElementById('myInput');
+
+// Adding event listeners
+button.addEventListener('click', function(event) {
+  console.log('Button clicked!');
+  console.log(event.target);
+});
+
+input.addEventListener('change', function(event) {
+  console.log('Input changed:', event.target.value);
+});
+
+// Form submission
+const form = document.getElementById('myForm');
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  console.log('Form submitted');
+});</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React Events</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React JSX</span>
+                                            </div>
+                                            <pre><code>function MyComponent() {
+  // Event handlers as functions
+  const handleClick = (event) =&gt; {
+    console.log('Button clicked!');
+    console.log(event.target);
+  };
+
+  const handleChange = (event) =&gt; {
+    console.log('Input changed:', event.target.value);
+  };
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    console.log('Form submitted');
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;button onClick={handleClick}&gt;Click me&lt;/button&gt;
+      &lt;input type="text" onChange={handleChange} /&gt;
+      
+      &lt;form onSubmit={handleSubmit}&gt;
+        &lt;button type="submit"&gt;Submit&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- SyntheticEvent -->
+                        <div class="content-block">
+                            <h2>Understanding SyntheticEvent</h2>
+                            <p>
+                                React wraps native events in SyntheticEvent objects. These provide the same interface 
+                                as native events but work consistently across all browsers and integrate with React's 
+                                event system.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 SyntheticEvent Benefits</h3>
+                                <ul>
+                                    <li><strong>Cross-browser compatibility</strong> - Same API across all browsers</li>
+                                    <li><strong>Event pooling</strong> - Better performance through object reuse</li>
+                                    <li><strong>preventDefault() and stopPropagation()</strong> - Standard methods work everywhere</li>
+                                    <li><strong>Consistent behavior</strong> - No browser-specific quirks</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">SyntheticEvent Properties</span>
+                                </div>
+                                <pre><code>function EventExample() {
+  const handleEvent = (event) =&gt; {
+    console.log('Event type:', event.type);           // 'click', 'change', etc.
+    console.log('Target element:', event.target);     // Element that triggered event
+    console.log('Current target:', event.currentTarget); // Element with event handler
+    console.log('Native event:', event.nativeEvent);  // Access to original DOM event
+    
+    // Prevent default behavior
+    event.preventDefault();
+    
+    // Stop event propagation
+    event.stopPropagation();
+  };
+
+  return (
+    &lt;div onClick={handleEvent}&gt;
+      &lt;button onClick={handleEvent}&gt;
+        Click me to see event details
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Common Event Types -->
+                        <div class="content-block">
+                            <h2>Common Event Types</h2>
+                            <p>React supports all standard DOM events. Here are the most commonly used ones:</p>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🖱️ Mouse Events</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Mouse Events</span>
+                                        </div>
+                                        <pre><code>&lt;button 
+  onClick={handleClick}
+  onDoubleClick={handleDoubleClick}
+  onMouseDown={handleMouseDown}
+  onMouseUp={handleMouseUp}
+  onMouseEnter={handleMouseEnter}
+  onMouseLeave={handleMouseLeave}
+  onMouseOver={handleMouseOver}
+  onMouseMove={handleMouseMove}
+&gt;
+  Interactive Button
+&lt;/button&gt;</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>⌨️ Keyboard Events</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Keyboard Events</span>
+                                        </div>
+                                        <pre><code>&lt;input
+  onKeyDown={handleKeyDown}
+  onKeyUp={handleKeyUp}
+  onKeyPress={handleKeyPress}
+  onFocus={handleFocus}
+  onBlur={handleBlur}
+  placeholder="Type something..."
+/&gt;
+
+// Example key handler
+const handleKeyDown = (event) =&gt; {
+  if (event.key === 'Enter') {
+    console.log('Enter pressed!');
+  }
+};</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📝 Form Events</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Form Events</span>
+                                        </div>
+                                        <pre><code>&lt;form onSubmit={handleSubmit}&gt;
+  &lt;input 
+    onChange={handleChange}
+    onInput={handleInput}
+    onFocus={handleFocus}
+    onBlur={handleBlur}
+  /&gt;
+  
+  &lt;select onChange={handleSelectChange}&gt;
+    &lt;option value="1"&gt;Option 1&lt;/option&gt;
+    &lt;option value="2"&gt;Option 2&lt;/option&gt;
+  &lt;/select&gt;
+  
+  &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎯 Focus Events</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Focus Events</span>
+                                        </div>
+                                        <pre><code>&lt;div&gt;
+  &lt;input
+    onFocus={() =&gt; console.log('Input focused')}
+    onBlur={() =&gt; console.log('Input blurred')}
+    placeholder="Focus me"
+  /&gt;
+  
+  &lt;div
+    tabIndex={0}
+    onFocus={() =&gt; console.log('Div focused')}
+    onBlur={() =&gt; console.log('Div blurred')}
+  &gt;
+    Focusable div
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event Handler Patterns -->
+                        <div class="content-block">
+                            <h2>Event Handler Patterns</h2>
+                            <p>There are several ways to write event handlers in React. Let's explore the most common patterns:</p>
+                            
+                            <div class="explanation-box">
+                                <h3>1. Inline Arrow Functions</h3>
+                                <p>Quick for simple handlers, but creates new function on each render.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Inline Functions</span>
+                                    </div>
+                                    <pre><code>function Component() {
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      {/* Simple inline handler */}
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Count: {count}
+      &lt;/button&gt;
+      
+      {/* Inline with parameters */}
+      &lt;button onClick={() =&gt; setCount(count + 5)}&gt;
+        Add 5
+      &lt;/button&gt;
+      
+      {/* Inline with event object */}
+      &lt;input onChange={(e) =&gt; console.log(e.target.value)} /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>2. Defined Function Handlers</h3>
+                                <p>Better performance for complex logic, function reference stays the same.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Function Handlers</span>
+                                    </div>
+                                    <pre><code>function Component() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  // Defined handlers
+  const handleNameChange = (event) =&gt; {
+    setName(event.target.value);
+  };
+
+  const handleEmailChange = (event) =&gt; {
+    setEmail(event.target.value);
+  };
+
+  const handleSubmit = (event) =&gt; {
+    event.preventDefault();
+    console.log('Submitting:', { name, email });
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input 
+        value={name}
+        onChange={handleNameChange}
+        placeholder="Name"
+      /&gt;
+      &lt;input 
+        value={email}
+        onChange={handleEmailChange}
+        placeholder="Email"
+      /&gt;
+      &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>3. Generic Handlers with Parameters</h3>
+                                <p>Reusable handlers that work with multiple elements.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Generic Handlers</span>
+                                    </div>
+                                    <pre><code>function FormComponent() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    age: ''
+  });
+
+  // Generic handler for all form fields
+  const handleInputChange = (fieldName) =&gt; (event) =&gt; {
+    setFormData(prev =&gt; ({
+      ...prev,
+      [fieldName]: event.target.value
+    }));
+  };
+
+  // Alternative: single handler using name attribute
+  const handleChange = (event) =&gt; {
+    const { name, value } = event.target;
+    setFormData(prev =&gt; ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  return (
+    &lt;div&gt;
+      {/* Using generic handler with parameter */}
+      &lt;input 
+        value={formData.name}
+        onChange={handleInputChange('name')}
+        placeholder="Name"
+      /&gt;
+      
+      {/* Using single handler with name attribute */}
+      &lt;input 
+        name="email"
+        value={formData.email}
+        onChange={handleChange}
+        placeholder="Email"
+      /&gt;
+      
+      &lt;input 
+        name="age"
+        value={formData.age}
+        onChange={handleChange}
+        placeholder="Age"
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Practical Examples -->
+                        <div class="content-block">
+                            <h2>Practical Event Handling Examples</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🎮 Interactive Counter with Multiple Events</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Interactive Counter</span>
+                                    </div>
+                                    <pre><code>function InteractiveCounter() {
+  const [count, setCount] = useState(0);
+  const [step, setStep] = useState(1);
+
+  const increment = () =&gt; setCount(prev =&gt; prev + step);
+  const decrement = () =&gt; setCount(prev =&gt; prev - step);
+  const reset = () =&gt; setCount(0);
+  
+  const handleKeyPress = (event) =&gt; {
+    switch(event.key) {
+      case 'ArrowUp':
+        increment();
+        break;
+      case 'ArrowDown':
+        decrement();
+        break;
+      case 'r':
+        reset();
+        break;
+      default:
+        break;
+    }
+  };
+
+  return (
+    &lt;div 
+      tabIndex={0} 
+      onKeyDown={handleKeyPress}
+      style={{ padding: '20px', outline: 'none' }}
+    &gt;
+      &lt;h2&gt;Count: {count}&lt;/h2&gt;
+      
+      &lt;div&gt;
+        &lt;button onClick={decrement}&gt;-{step}&lt;/button&gt;
+        &lt;button onClick={increment}&gt;+{step}&lt;/button&gt;
+        &lt;button onClick={reset}&gt;Reset&lt;/button&gt;
+      &lt;/div&gt;
+      
+      &lt;div&gt;
+        &lt;label&gt;
+          Step size: 
+          &lt;input 
+            type="number" 
+            value={step}
+            onChange={(e) =&gt; setStep(Number(e.target.value))}
+            min="1"
+          /&gt;
+        &lt;/label&gt;
+      &lt;/div&gt;
+      
+      &lt;p&gt;Try using arrow keys and 'r' to reset!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📝 Dynamic Form with Validation</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Form with Validation</span>
+                                    </div>
+                                    <pre><code>function ContactForm() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const validateField = (name, value) =&gt; {
+    switch(name) {
+      case 'name':
+        return value.length &lt; 2 ? 'Name must be at least 2 characters' : '';
+      case 'email':
+        return !/\S+@\S+\.\S+/.test(value) ? 'Email is invalid' : '';
+      case 'message':
+        return value.length &lt; 10 ? 'Message must be at least 10 characters' : '';
+      default:
+        return '';
+    }
+  };
+
+  const handleChange = (event) =&gt; {
+    const { name, value } = event.target;
+    
+    // Update form data
+    setFormData(prev =&gt; ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Validate field and update errors
+    const error = validateField(name, value);
+    setErrors(prev =&gt; ({
+      ...prev,
+      [name]: error
+    }));
+  };
+
+  const handleSubmit = async (event) =&gt; {
+    event.preventDefault();
+    setIsSubmitting(true);
+    
+    // Validate all fields
+    const newErrors = {};
+    Object.keys(formData).forEach(key =&gt; {
+      const error = validateField(key, formData[key]);
+      if (error) newErrors[key] = error;
+    });
+    
+    setErrors(newErrors);
+    
+    // Submit if no errors
+    if (Object.keys(newErrors).length === 0) {
+      try {
+        // Simulate API call
+        await new Promise(resolve =&gt; setTimeout(resolve, 1000));
+        console.log('Form submitted:', formData);
+        
+        // Reset form
+        setFormData({ name: '', email: '', message: '' });
+        alert('Message sent successfully!');
+      } catch (error) {
+        console.error('Submission failed:', error);
+      }
+    }
+    
+    setIsSubmitting(false);
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;div&gt;
+        &lt;label htmlFor="name"&gt;Name:&lt;/label&gt;
+        &lt;input
+          id="name"
+          name="name"
+          type="text"
+          value={formData.name}
+          onChange={handleChange}
+          onBlur={handleChange} // Validate on blur too
+        /&gt;
+        {errors.name && &lt;span className="error"&gt;{errors.name}&lt;/span&gt;}
+      &lt;/div&gt;
+      
+      &lt;div&gt;
+        &lt;label htmlFor="email"&gt;Email:&lt;/label&gt;
+        &lt;input
+          id="email"
+          name="email"
+          type="email"
+          value={formData.email}
+          onChange={handleChange}
+          onBlur={handleChange}
+        /&gt;
+        {errors.email && &lt;span className="error"&gt;{errors.email}&lt;/span&gt;}
+      &lt;/div&gt;
+      
+      &lt;div&gt;
+        &lt;label htmlFor="message"&gt;Message:&lt;/label&gt;
+        &lt;textarea
+          id="message"
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          onBlur={handleChange}
+          rows={4}
+        /&gt;
+        {errors.message && &lt;span className="error"&gt;{errors.message}&lt;/span&gt;}
+      &lt;/div&gt;
+      
+      &lt;button type="submit" disabled={isSubmitting}&gt;
+        {isSubmitting ? 'Sending...' : 'Send Message'}
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Event Best Practices -->
+                        <div class="content-block">
+                            <h2>Event Handling Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>✅ Performance Tips</h3>
+                                    <ul>
+                                        <li>Use defined functions for complex handlers</li>
+                                        <li>Avoid creating new functions in render</li>
+                                        <li>Use useCallback for expensive operations</li>
+                                        <li>Debounce frequently fired events</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ Accessibility</h3>
+                                    <ul>
+                                        <li>Support keyboard navigation</li>
+                                        <li>Use semantic HTML elements</li>
+                                        <li>Provide ARIA labels when needed</li>
+                                        <li>Handle focus management properly</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ Error Handling</h3>
+                                    <ul>
+                                        <li>Always validate user input</li>
+                                        <li>Prevent form submission on errors</li>
+                                        <li>Show clear error messages</li>
+                                        <li>Handle async operation failures</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>❌ Common Mistakes</h3>
+                                    <ul>
+                                        <li>Forgetting to call preventDefault()</li>
+                                        <li>Not handling async operations properly</li>
+                                        <li>Creating new functions on every render</li>
+                                        <li>Forgetting to validate form inputs</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now know how to handle user interactions in React using the powerful event system. 
+                                Next, you'll learn how to conditionally render content based on state and props.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="conditional-rendering.html">Conditional Rendering & Lists</a> - Show different content dynamically</li>
+                                    <li><a href="hooks.html">React Hooks</a> - Advanced state management with useEffect</li>
+                                    <li><a href="state-management.html">State Management</a> - Managing complex application state</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

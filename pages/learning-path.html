@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete React learning path from beginner to advanced - timeline, practice projects, and skill progression roadmap">
+    <meta name="keywords" content="React Learning Path, React Roadmap, React Timeline, Learn React Step by Step">
+    
+    <title>React Learning Path - From Beginner to Advanced</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#transition" class="breadcrumb-link">Transition Guide</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Learning Path</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>React Learning Path</h1>
+                    <p class="page-subtitle">
+                        A structured roadmap from React beginner to advanced developer. 
+                        Follow this path with recommended timelines, practice projects, and skill assessments.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge beginner">All Levels</span>
+                        <span class="reading-time">15 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Learning Overview -->
+                        <div class="content-block" id="overview">
+                            <h2>Learning Overview</h2>
+                            <p>
+                                Learning React is a journey that builds upon your existing JavaScript knowledge. 
+                                This roadmap provides a structured approach to help you become a proficient React developer.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 Prerequisites</h3>
+                                <div class="checklist">
+                                    <div class="checklist-item">
+                                        <span class="checklist-icon">✅</span>
+                                        <span>Solid understanding of HTML and CSS</span>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <span class="checklist-icon">✅</span>
+                                        <span>JavaScript fundamentals (ES6+ features)</span>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <span class="checklist-icon">✅</span>
+                                        <span>DOM manipulation and event handling</span>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <span class="checklist-icon">✅</span>
+                                        <span>Asynchronous JavaScript (Promises, async/await)</span>
+                                    </div>
+                                    <div class="checklist-item">
+                                        <span class="checklist-icon">✅</span>
+                                        <span>Basic understanding of npm and package management</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Beginner Path -->
+                        <div class="content-block" id="beginner">
+                            <h2>🌱 Beginner Path (0-2 months)</h2>
+                            <p>
+                                Start your React journey with core concepts and basic applications.
+                            </p>
+                            
+                            <div class="learning-path-section">
+                                <div class="path-phase">
+                                    <h3>Week 1-2: Foundation</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li><a href="what-is-react.html">What is React?</a></li>
+                                                <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                                                <li>Virtual DOM concepts</li>
+                                                <li>React vs vanilla JavaScript</li>
+                                                <li>Setting up development environment</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🛠️ Tools to Learn</h4>
+                                            <ul>
+                                                <li><a href="dev-tools.html">Create React App</a></li>
+                                                <li>VS Code with React extensions</li>
+                                                <li>React Developer Tools</li>
+                                                <li>npm/yarn basics</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Understand React's purpose</li>
+                                                <li>Set up development environment</li>
+                                                <li>Create your first React app</li>
+                                                <li>Understand component concepts</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="path-phase">
+                                    <h3>Week 3-4: Core Concepts</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li><a href="components-jsx.html">Components & JSX</a></li>
+                                                <li><a href="props-state.html">Props & State</a></li>
+                                                <li><a href="event-handling.html">Event Handling</a></li>
+                                                <li>Functional vs Class components</li>
+                                                <li>Component composition</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>💻 Practice Project</h4>
+                                            <div class="project-suggestion">
+                                                <h5>Personal Profile Card</h5>
+                                                <p>Create a personal profile component with photo, bio, and social links using props.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">Components</span>
+                                                    <span class="skill-tag">Props</span>
+                                                    <span class="skill-tag">JSX</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Write JSX confidently</li>
+                                                <li>Create reusable components</li>
+                                                <li>Pass data with props</li>
+                                                <li>Handle basic events</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="path-phase">
+                                    <h3>Week 5-8: Dynamic UIs</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li><a href="conditional-rendering.html">Conditional Rendering & Lists</a></li>
+                                                <li>useState Hook basics</li>
+                                                <li>Forms and controlled components</li>
+                                                <li>Event handling patterns</li>
+                                                <li>Component lifecycle basics</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>💻 Practice Projects</h4>
+                                            <div class="project-suggestion">
+                                                <h5>Todo List App</h5>
+                                                <p>Build a todo list with add, toggle, and delete functionality.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">State</span>
+                                                    <span class="skill-tag">Lists</span>
+                                                    <span class="skill-tag">Events</span>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="project-suggestion">
+                                                <h5>Counter App</h5>
+                                                <p>Create a counter with increment, decrement, and reset features.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">useState</span>
+                                                    <span class="skill-tag">Events</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Manage component state</li>
+                                                <li>Render lists dynamically</li>
+                                                <li>Build interactive UIs</li>
+                                                <li>Handle form inputs</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Intermediate Path -->
+                        <div class="content-block" id="intermediate">
+                            <h2>🚀 Intermediate Path (2-4 months)</h2>
+                            <p>
+                                Deepen your React knowledge with hooks, state management, and modern patterns.
+                            </p>
+                            
+                            <div class="learning-path-section">
+                                <div class="path-phase">
+                                    <h3>Month 3: React Hooks Mastery</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li><a href="hooks.html">React Hooks</a> (useState, useEffect)</li>
+                                                <li>useContext for global state</li>
+                                                <li>Custom hooks creation</li>
+                                                <li>Hook rules and best practices</li>
+                                                <li>Performance optimization basics</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>💻 Practice Project</h4>
+                                            <div class="project-suggestion">
+                                                <h5>Weather App</h5>
+                                                <p>Build a weather app with API integration, location search, and favorites.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">useEffect</span>
+                                                    <span class="skill-tag">API calls</span>
+                                                    <span class="skill-tag">Custom hooks</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Master useEffect for side effects</li>
+                                                <li>Create custom hooks</li>
+                                                <li>Handle API calls efficiently</li>
+                                                <li>Understand component lifecycle</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="path-phase">
+                                    <h3>Month 4: State Management & Routing</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li><a href="state-management.html">State Management</a> patterns</li>
+                                                <li>Context API for global state</li>
+                                                <li><a href="routing.html">React Router</a> basics</li>
+                                                <li>Nested routes and parameters</li>
+                                                <li>Protected routes</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>💻 Practice Project</h4>
+                                            <div class="project-suggestion">
+                                                <h5>Blog Platform</h5>
+                                                <p>Create a multi-page blog with routing, authentication, and post management.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">Routing</span>
+                                                    <span class="skill-tag">Context</span>
+                                                    <span class="skill-tag">Auth</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Build multi-page applications</li>
+                                                <li>Manage global state effectively</li>
+                                                <li>Implement navigation patterns</li>
+                                                <li>Handle authentication flows</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Path -->
+                        <div class="content-block" id="advanced">
+                            <h2>⚡ Advanced Path (4-6 months)</h2>
+                            <p>
+                                Master advanced React concepts, performance optimization, and ecosystem tools.
+                            </p>
+                            
+                            <div class="learning-path-section">
+                                <div class="path-phase">
+                                    <h3>Month 5: Performance & Advanced Patterns</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li>React.memo and useMemo</li>
+                                                <li>useCallback for optimization</li>
+                                                <li>Code splitting and lazy loading</li>
+                                                <li>Error boundaries</li>
+                                                <li>Advanced state patterns</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>💻 Practice Project</h4>
+                                            <div class="project-suggestion">
+                                                <h5>E-commerce Dashboard</h5>
+                                                <p>Build a complex dashboard with charts, tables, and real-time updates.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">Performance</span>
+                                                    <span class="skill-tag">Complex State</span>
+                                                    <span class="skill-tag">Charts</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Optimize component performance</li>
+                                                <li>Handle complex state scenarios</li>
+                                                <li>Implement advanced patterns</li>
+                                                <li>Build scalable applications</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="path-phase">
+                                    <h3>Month 6: Ecosystem & Production</h3>
+                                    <div class="learning-topics">
+                                        <div class="topic-card">
+                                            <h4>📚 Topics to Learn</h4>
+                                            <ul>
+                                                <li><a href="nextjs.html">Next.js</a> framework</li>
+                                                <li><a href="libraries.html">Popular Libraries</a></li>
+                                                <li>Testing with Jest and React Testing Library</li>
+                                                <li>TypeScript with React</li>
+                                                <li>Deployment strategies</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>💻 Final Project</h4>
+                                            <div class="project-suggestion">
+                                                <h5>Full-Stack Application</h5>
+                                                <p>Build a complete application with authentication, database, and deployment.</p>
+                                                <div class="project-skills">
+                                                    <span class="skill-tag">Next.js</span>
+                                                    <span class="skill-tag">TypeScript</span>
+                                                    <span class="skill-tag">Testing</span>
+                                                    <span class="skill-tag">Deployment</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="topic-card">
+                                            <h4>🎯 Goals</h4>
+                                            <ul>
+                                                <li>Master production-ready patterns</li>
+                                                <li>Understand testing strategies</li>
+                                                <li>Build full-stack applications</li>
+                                                <li>Deploy to production</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Practice Projects -->
+                        <div class="content-block" id="projects">
+                            <h2>💻 Complete Practice Projects</h2>
+                            <p>
+                                Build these projects to reinforce your learning and create a strong portfolio.
+                            </p>
+                            
+                            <div class="projects-grid">
+                                <div class="project-card beginner">
+                                    <div class="project-level">Beginner</div>
+                                    <h3>Recipe Collection App</h3>
+                                    <p>A simple app to display and filter recipes with ingredients and instructions.</p>
+                                    <div class="project-features">
+                                        <h4>Features to Build:</h4>
+                                        <ul>
+                                            <li>Recipe list with images</li>
+                                            <li>Search and filter functionality</li>
+                                            <li>Recipe detail view</li>
+                                            <li>Favorite recipes</li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-skills">
+                                        <span class="skill-tag">Components</span>
+                                        <span class="skill-tag">Props</span>
+                                        <span class="skill-tag">State</span>
+                                        <span class="skill-tag">Lists</span>
+                                    </div>
+                                    <div class="project-duration">Duration: 1-2 weeks</div>
+                                </div>
+
+                                <div class="project-card intermediate">
+                                    <div class="project-level">Intermediate</div>
+                                    <h3>Task Management App</h3>
+                                    <p>A comprehensive todo app with categories, due dates, and user authentication.</p>
+                                    <div class="project-features">
+                                        <h4>Features to Build:</h4>
+                                        <ul>
+                                            <li>User authentication</li>
+                                            <li>Create, edit, delete tasks</li>
+                                            <li>Categories and tags</li>
+                                            <li>Due dates and reminders</li>
+                                            <li>Progress tracking</li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-skills">
+                                        <span class="skill-tag">Hooks</span>
+                                        <span class="skill-tag">Context</span>
+                                        <span class="skill-tag">Routing</span>
+                                        <span class="skill-tag">Forms</span>
+                                    </div>
+                                    <div class="project-duration">Duration: 3-4 weeks</div>
+                                </div>
+
+                                <div class="project-card advanced">
+                                    <div class="project-level">Advanced</div>
+                                    <h3>Social Media Dashboard</h3>
+                                    <p>A complex dashboard for managing social media accounts with analytics and scheduling.</p>
+                                    <div class="project-features">
+                                        <h4>Features to Build:</h4>
+                                        <ul>
+                                            <li>Multi-account management</li>
+                                            <li>Analytics charts and graphs</li>
+                                            <li>Post scheduling</li>
+                                            <li>Real-time notifications</li>
+                                            <li>Responsive design</li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-skills">
+                                        <span class="skill-tag">Performance</span>
+                                        <span class="skill-tag">Charts</span>
+                                        <span class="skill-tag">Real-time</span>
+                                        <span class="skill-tag">Complex State</span>
+                                    </div>
+                                    <div class="project-duration">Duration: 6-8 weeks</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Timeline Guide -->
+                        <div class="content-block" id="timeline">
+                            <h2>⏱️ Recommended Timeline</h2>
+                            <p>
+                                Adjust this timeline based on your available study time and previous experience.
+                            </p>
+                            
+                            <div class="timeline-container">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">
+                                        <span class="timeline-number">1</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h3>Part-Time Learner (10 hours/week)</h3>
+                                        <p><strong>Total Duration:</strong> 6-8 months</p>
+                                        <ul>
+                                            <li>Month 1-2: Foundation & Core Concepts</li>
+                                            <li>Month 3-4: Hooks & State Management</li>
+                                            <li>Month 5-6: Advanced Topics & Routing</li>
+                                            <li>Month 7-8: Ecosystem & Production</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">
+                                        <span class="timeline-number">2</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h3>Full-Time Learner (40 hours/week)</h3>
+                                        <p><strong>Total Duration:</strong> 2-3 months</p>
+                                        <ul>
+                                            <li>Week 1-3: Foundation & Core Concepts</li>
+                                            <li>Week 4-6: Hooks & State Management</li>
+                                            <li>Week 7-9: Advanced Topics & Routing</li>
+                                            <li>Week 10-12: Ecosystem & Production</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-item">
+                                    <div class="timeline-marker">
+                                        <span class="timeline-number">3</span>
+                                    </div>
+                                    <div class="timeline-content">
+                                        <h3>Weekend Warrior (20 hours/week)</h3>
+                                        <p><strong>Total Duration:</strong> 4-5 months</p>
+                                        <ul>
+                                            <li>Month 1: Foundation & Core Concepts</li>
+                                            <li>Month 2: Hooks & State Management</li>
+                                            <li>Month 3: Advanced Topics & Routing</li>
+                                            <li>Month 4-5: Ecosystem & Production</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Skill Assessment -->
+                        <div class="content-block" id="assessment">
+                            <h2>📊 Skill Assessment Checklist</h2>
+                            <p>
+                                Use these checkpoints to assess your progress and identify areas for improvement.
+                            </p>
+                            
+                            <div class="assessment-sections">
+                                <div class="assessment-section">
+                                    <h3>🌱 Beginner Level</h3>
+                                    <div class="skill-checklist">
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-1">
+                                            <label for="skill-1">I can explain what React is and why it's useful</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-2">
+                                            <label for="skill-2">I can create functional components with JSX</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-3">
+                                            <label for="skill-3">I understand how to pass and use props</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-4">
+                                            <label for="skill-4">I can handle basic events (clicks, form inputs)</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-5">
+                                            <label for="skill-5">I can render lists and use conditional rendering</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-6">
+                                            <label for="skill-6">I can manage local component state with useState</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="assessment-section">
+                                    <h3>🚀 Intermediate Level</h3>
+                                    <div class="skill-checklist">
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-7">
+                                            <label for="skill-7">I can use useEffect for side effects and API calls</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-8">
+                                            <label for="skill-8">I can create and use custom hooks</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-9">
+                                            <label for="skill-9">I understand the Context API for global state</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-10">
+                                            <label for="skill-10">I can implement routing with React Router</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-11">
+                                            <label for="skill-11">I can handle forms and form validation</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-12">
+                                            <label for="skill-12">I can build multi-page applications</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="assessment-section">
+                                    <h3>⚡ Advanced Level</h3>
+                                    <div class="skill-checklist">
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-13">
+                                            <label for="skill-13">I can optimize performance with memo, useMemo, useCallback</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-14">
+                                            <label for="skill-14">I understand advanced state management patterns</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-15">
+                                            <label for="skill-15">I can implement error boundaries and error handling</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-16">
+                                            <label for="skill-16">I can use Next.js for production applications</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-17">
+                                            <label for="skill-17">I can write tests for React components</label>
+                                        </div>
+                                        <div class="skill-item">
+                                            <input type="checkbox" id="skill-18">
+                                            <label for="skill-18">I can deploy React applications to production</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Learning Tips -->
+                        <div class="content-block" id="tips">
+                            <h2>💡 Learning Tips & Best Practices</h2>
+                            <p>
+                                Maximize your learning efficiency with these proven strategies.
+                            </p>
+                            
+                            <div class="tips-grid">
+                                <div class="tip-card">
+                                    <h3>🎯 Stay Focused</h3>
+                                    <ul>
+                                        <li>Focus on one concept at a time</li>
+                                        <li>Don't jump to advanced topics too quickly</li>
+                                        <li>Master the basics before moving on</li>
+                                        <li>Practice each concept with small projects</li>
+                                    </ul>
+                                </div>
+
+                                <div class="tip-card">
+                                    <h3>🛠️ Practice Regularly</h3>
+                                    <ul>
+                                        <li>Code every day, even if just 30 minutes</li>
+                                        <li>Build projects, don't just follow tutorials</li>
+                                        <li>Try to solve problems before looking up solutions</li>
+                                        <li>Recreate existing apps to practice</li>
+                                    </ul>
+                                </div>
+
+                                <div class="tip-card">
+                                    <h3>📚 Use Multiple Resources</h3>
+                                    <ul>
+                                        <li>Official React documentation</li>
+                                        <li>Interactive coding platforms</li>
+                                        <li>Video tutorials and courses</li>
+                                        <li>Community forums and Discord servers</li>
+                                    </ul>
+                                </div>
+
+                                <div class="tip-card">
+                                    <h3>🤝 Join the Community</h3>
+                                    <ul>
+                                        <li>Follow React developers on Twitter</li>
+                                        <li>Join React Discord servers</li>
+                                        <li>Attend local meetups or online events</li>
+                                        <li>Contribute to open source projects</li>
+                                    </ul>
+                                </div>
+
+                                <div class="tip-card">
+                                    <h3>🐛 Debug Effectively</h3>
+                                    <ul>
+                                        <li>Use React Developer Tools</li>
+                                        <li>Learn to read error messages</li>
+                                        <li>Use console.log strategically</li>
+                                        <li>Break down complex problems</li>
+                                    </ul>
+                                </div>
+
+                                <div class="tip-card">
+                                    <h3>📝 Document Your Journey</h3>
+                                    <ul>
+                                        <li>Keep notes of what you learn</li>
+                                        <li>Write blog posts about your progress</li>
+                                        <li>Create a portfolio of your projects</li>
+                                        <li>Share your code on GitHub</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>🚀 Ready to Start?</h2>
+                            <p>
+                                Choose your learning pace and begin your React journey today!
+                            </p>
+                            
+                            <div class="action-buttons">
+                                <a href="../index.html" class="btn btn-primary">Start Learning</a>
+                                <a href="resources.html" class="btn btn-secondary">View Resources</a>
+                                <a href="vanilla-to-react.html" class="btn btn-outline">Migration Guide</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar Navigation -->
+                    <aside class="sidebar">
+                        <nav class="sidebar-nav">
+                            <h3>On This Page</h3>
+                            <ul>
+                                <li><a href="#overview">Learning Overview</a></li>
+                                <li><a href="#beginner">Beginner Path (0-2 months)</a></li>
+                                <li><a href="#intermediate">Intermediate Path (2-4 months)</a></li>
+                                <li><a href="#advanced">Advanced Path (4-6 months)</a></li>
+                                <li><a href="#projects">Practice Projects</a></li>
+                                <li><a href="#timeline">Timeline Guide</a></li>
+                                <li><a href="#assessment">Skill Assessment</a></li>
+                                <li><a href="#tips">Learning Tips</a></li>
+                            </ul>
+                        </nav>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>From Vanilla to React</h3>
+                    <p>Your complete guide to learning React from the ground up.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Advanced Topics</h4>
+                    <ul>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                        <li><a href="nextjs.html">Next.js</a></li>
+                        <li><a href="libraries.html">Popular Libraries</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                        <li><a href="vanilla-to-react.html">Migration Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Educational content for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

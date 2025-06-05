@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master React Hooks - useState, useEffect, useContext and custom hooks for modern React development">
+    <meta name="keywords" content="React Hooks, useState, useEffect, useContext, custom hooks, React Tutorial">
+    
+    <title>React Hooks - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#advanced" class="breadcrumb-link">Advanced</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">React Hooks</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>React Hooks</h1>
+                    <p class="page-subtitle">
+                        Master React Hooks to build modern, functional components with powerful state management 
+                        and side effect handling capabilities.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge advanced">Advanced</span>
+                        <span class="reading-time">15 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Introduction to Hooks -->
+                        <div class="content-block">
+                            <h2>What are React Hooks?</h2>
+                            <p>
+                                React Hooks are special functions that let you "hook into" React features from functional components. 
+                                They allow you to use state and other React features without writing class components, 
+                                making your code simpler, more reusable, and easier to test.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 Why Hooks Were Introduced</h3>
+                                <ul>
+                                    <li><strong>Simpler Code:</strong> No need for class components in most cases</li>
+                                    <li><strong>Reusable Logic:</strong> Extract stateful logic into custom hooks</li>
+                                    <li><strong>Better Performance:</strong> Easier optimization and no class binding issues</li>
+                                    <li><strong>Cleaner Side Effects:</strong> Better organization of component lifecycle logic</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Class Component (Old Way)</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Class Component</span>
+                                            </div>
+                                            <pre><code>class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0,
+      name: ''
+    };
+  }
+
+  componentDidMount() {
+    document.title = `Count: ${this.state.count}`;
+  }
+
+  componentDidUpdate() {
+    document.title = `Count: ${this.state.count}`;
+  }
+
+  incrementCount = () =&gt; {
+    this.setState(prevState =&gt; ({
+      count: prevState.count + 1
+    }));
+  };
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;p&gt;Count: {this.state.count}&lt;/p&gt;
+        &lt;button onClick={this.incrementCount}&gt;
+          Increment
+        &lt;/button&gt;
+        &lt;input
+          value={this.state.name}
+          onChange={(e) =&gt; this.setState({name: e.target.value})}
+        /&gt;
+      &lt;/div&gt;
+    );
+  }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Functional Component with Hooks</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Hooks Component</span>
+                                            </div>
+                                            <pre><code>import { useState, useEffect } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+
+  // Combines componentDidMount and componentDidUpdate
+  useEffect(() =&gt; {
+    document.title = `Count: ${count}`;
+  }, [count]);
+
+  const incrementCount = () =&gt; {
+    setCount(prevCount =&gt; prevCount + 1);
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={incrementCount}&gt;
+        Increment
+      &lt;/button&gt;
+      &lt;input
+        value={name}
+        onChange={(e) =&gt; setName(e.target.value)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- useState Hook -->
+                        <div class="content-block">
+                            <h2>useState Hook</h2>
+                            <p>
+                                The useState hook is the most commonly used hook. It allows you to add state to functional components.
+                                It returns an array with two elements: the current state value and a function to update it.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔧 useState Syntax</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">useState Examples</span>
+                                    </div>
+                                    <pre><code>import { useState } from 'react';
+
+function StateExamples() {
+  // Basic state
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+  
+  // Array state
+  const [items, setItems] = useState([]);
+  
+  // Object state
+  const [user, setUser] = useState({
+    name: '',
+    email: '',
+    age: 0
+  });
+
+  // Function to update count
+  const increment = () => {
+    setCount(count + 1);
+    // Or use functional update for safety
+    setCount(prevCount => prevCount + 1);
+  };
+
+  // Adding item to array
+  const addItem = (newItem) => {
+    setItems(prevItems => [...prevItems, newItem]);
+  };
+
+  // Updating object state
+  const updateUser = (field, value) => {
+    setUser(prevUser => ({
+      ...prevUser,
+      [field]: value
+    }));
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Count: {count}&lt;/h3&gt;
+      &lt;button onClick={increment}&gt;Increment&lt;/button&gt;
+      
+      &lt;input 
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter name"
+      /&gt;
+      
+      &lt;div&gt;
+        &lt;label&gt;
+          &lt;input 
+            type="checkbox"
+            checked={isVisible}
+            onChange={(e) => setIsVisible(e.target.checked)}
+          /&gt;
+          Show content
+        &lt;/label&gt;
+        {isVisible && &lt;p&gt;This content is visible!&lt;/p&gt;}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- useEffect Hook -->
+                        <div class="content-block">
+                            <h2>useEffect Hook</h2>
+                            <p>
+                                The useEffect hook lets you perform side effects in functional components. 
+                                It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount combined.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔄 useEffect Patterns</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">useEffect Examples</span>
+                                    </div>
+                                    <pre><code>import { useState, useEffect } from 'react';
+
+function EffectExamples() {
+  const [count, setCount] = useState(0);
+  const [data, setData] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+  // 1. Effect that runs on every render
+  useEffect(() => {
+    console.log('Component rendered');
+  });
+
+  // 2. Effect that runs only once (on mount)
+  useEffect(() => {
+    console.log('Component mounted');
+    document.title = 'My React App';
+  }, []); // Empty dependency array
+
+  // 3. Effect that runs when count changes
+  useEffect(() => {
+    document.title = `Count: ${count}`;
+  }, [count]); // Dependency array with count
+
+  // 4. Effect with cleanup (like componentWillUnmount)
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup function
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // Runs once, cleanup on unmount
+
+  // 5. Data fetching effect
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/api/data');
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+
+    fetchData();
+  }, []); // Fetch once on mount
+
+  // 6. Effect with multiple dependencies
+  useEffect(() => {
+    if (count > 0 && data) {
+      console.log('Both count and data are available');
+    }
+  }, [count, data]); // Runs when either count or data changes
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Count: {count}&lt;/h3&gt;
+      &lt;button onClick={() => setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+      
+      &lt;p&gt;Window width: {windowWidth}px&lt;/p&gt;
+      
+      {data ? (
+        &lt;div&gt;Data loaded: {JSON.stringify(data)}&lt;/div&gt;
+      ) : (
+        &lt;div&gt;Loading data...&lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- useContext Hook -->
+                        <div class="content-block">
+                            <h2>useContext Hook</h2>
+                            <p>
+                                The useContext hook allows you to subscribe to React context without introducing nesting. 
+                                It's perfect for sharing data across multiple components without prop drilling.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🌐 Context Pattern</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">useContext Example</span>
+                                    </div>
+                                    <pre><code>import { createContext, useContext, useState } from 'react';
+
+// 1. Create Context
+const ThemeContext = createContext();
+const UserContext = createContext();
+
+// 2. Create Provider Component
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === 'light' ? 'dark' : 'light');
+  };
+
+  const value = {
+    theme,
+    toggleTheme
+  };
+
+  return (
+    &lt;ThemeContext.Provider value={value}&gt;
+      {children}
+    &lt;/ThemeContext.Provider&gt;
+  );
+}
+
+function UserProvider({ children }) {
+  const [user, setUser] = useState({
+    name: 'John Doe',
+    email: 'john@example.com'
+  });
+
+  return (
+    &lt;UserContext.Provider value={{ user, setUser }}&gt;
+      {children}
+    &lt;/UserContext.Provider&gt;
+  );
+}
+
+// 3. Components that use Context
+function Header() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
+  const { user } = useContext(UserContext);
+
+  return (
+    &lt;header className={`header ${theme}`}&gt;
+      &lt;h1&gt;Welcome, {user.name}!&lt;/h1&gt;
+      &lt;button onClick={toggleTheme}&gt;
+        Switch to {theme === 'light' ? 'dark' : 'light'} mode
+      &lt;/button&gt;
+    &lt;/header&gt;
+  );
+}
+
+function Profile() {
+  const { user, setUser } = useContext(UserContext);
+  const { theme } = useContext(ThemeContext);
+
+  const updateName = (newName) => {
+    setUser(prev => ({ ...prev, name: newName }));
+  };
+
+  return (
+    &lt;div className={`profile ${theme}`}&gt;
+      &lt;h2&gt;Profile&lt;/h2&gt;
+      &lt;p&gt;Name: {user.name}&lt;/p&gt;
+      &lt;p&gt;Email: {user.email}&lt;/p&gt;
+      &lt;input 
+        value={user.name}
+        onChange={(e) => updateName(e.target.value)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}
+
+// 4. Main App with Providers
+function App() {
+  return (
+    &lt;ThemeProvider&gt;
+      &lt;UserProvider&gt;
+        &lt;Header /&gt;
+        &lt;Profile /&gt;
+      &lt;/UserProvider&gt;
+    &lt;/ThemeProvider&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Custom Hooks -->
+                        <div class="content-block">
+                            <h2>Custom Hooks</h2>
+                            <p>
+                                Custom hooks are JavaScript functions that start with "use" and call other hooks. 
+                                They let you extract component logic into reusable functions.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔧 Custom Hook Examples</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Custom Hooks</span>
+                                    </div>
+                                    <pre><code>import { useState, useEffect } from 'react';
+
+// 1. useCounter - Reusable counter logic
+function useCounter(initialValue = 0) {
+  const [count, setCount] = useState(initialValue);
+
+  const increment = () => setCount(prev => prev + 1);
+  const decrement = () => setCount(prev => prev - 1);
+  const reset = () => setCount(initialValue);
+
+  return { count, increment, decrement, reset };
+}
+
+// 2. useFetch - Reusable data fetching
+function useFetch(url) {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch(url);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (url) {
+      fetchData();
+    }
+  }, [url]);
+
+  return { data, loading, error };
+}
+
+// 3. useLocalStorage - Persist state in localStorage
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      console.error('Error reading localStorage:', error);
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.error('Error setting localStorage:', error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
+
+// 4. useToggle - Simple toggle functionality
+function useToggle(initialValue = false) {
+  const [value, setValue] = useState(initialValue);
+
+  const toggle = () => setValue(prev => !prev);
+  const setTrue = () => setValue(true);
+  const setFalse = () => setValue(false);
+
+  return [value, { toggle, setTrue, setFalse }];
+}
+
+// Using custom hooks in components
+function CounterComponent() {
+  const { count, increment, decrement, reset } = useCounter(10);
+
+  return (
+    &lt;div&gt;
+      &lt;h3&gt;Count: {count}&lt;/h3&gt;
+      &lt;button onClick={increment}&gt;+&lt;/button&gt;
+      &lt;button onClick={decrement}&gt;-&lt;/button&gt;
+      &lt;button onClick={reset}&gt;Reset&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+function DataComponent() {
+  const { data, loading, error } = useFetch('/api/users');
+
+  if (loading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error}&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      {data && data.map(user => (
+        &lt;div key={user.id}&gt;{user.name}&lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+function PreferencesComponent() {
+  const [theme, setTheme] = useLocalStorage('theme', 'light');
+  const [isVisible, { toggle }] = useToggle(false);
+
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}&gt;
+        Current theme: {theme}
+      &lt;/button&gt;
+      
+      &lt;button onClick={toggle}&gt;
+        {isVisible ? 'Hide' : 'Show'} Content
+      &lt;/button&gt;
+      
+      {isVisible && &lt;p&gt;This content is toggleable!&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Hook Rules -->
+                        <div class="content-block">
+                            <h2>Rules of Hooks</h2>
+                            <p>
+                                React hooks have specific rules that must be followed to ensure they work correctly. 
+                                These rules are enforced by the ESLint plugin for React hooks.
+                            </p>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>📋 Hook Rules</h3>
+                                    <ol>
+                                        <li><strong>Only call hooks at the top level</strong> - Never inside loops, conditions, or nested functions</li>
+                                        <li><strong>Only call hooks from React functions</strong> - From functional components or custom hooks</li>
+                                        <li><strong>Custom hooks must start with "use"</strong> - This tells React it's a hook</li>
+                                    </ol>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ Correct Usage</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Good Examples</span>
+                                        </div>
+                                        <pre><code>function GoodComponent() {
+  // ✅ Always at top level
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  
+  useEffect(() => {
+    // ✅ Effect logic here
+  }, []);
+
+  // ✅ Custom hook call
+  const { data } = useFetch('/api/data');
+
+  return &lt;div&gt;{/* JSX */}&lt;/div&gt;;
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>❌ Incorrect Usage</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Bad Examples</span>
+                                        </div>
+                                        <pre><code>function BadComponent() {
+  // ❌ Don't call hooks conditionally
+  if (someCondition) {
+    const [count, setCount] = useState(0);
+  }
+
+  // ❌ Don't call hooks in loops
+  for (let i = 0; i < 10; i++) {
+    useEffect(() => {}, []);
+  }
+
+  // ❌ Don't call hooks in event handlers
+  const handleClick = () => {
+    const [data, setData] = useState(null);
+  };
+
+  return &lt;div&gt;{/* JSX */}&lt;/div&gt;;
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔧 ESLint Plugin</h3>
+                                    <p>Install the React hooks ESLint plugin to catch hook rule violations:</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">ESLint Setup</span>
+                                        </div>
+                                        <pre><code>npm install eslint-plugin-react-hooks
+
+// .eslintrc.js
+{
+  "plugins": ["react-hooks"],
+  "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Hook Patterns -->
+                        <div class="content-block">
+                            <h2>Advanced Hook Patterns</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 useReducer for Complex State</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">useReducer Example</span>
+                                    </div>
+                                    <pre><code>import { useReducer } from 'react';
+
+// Reducer function
+const todoReducer = (state, action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return {
+        ...state,
+        todos: [...state.todos, {
+          id: Date.now(),
+          text: action.payload,
+          completed: false
+        }]
+      };
+    
+    case 'TOGGLE_TODO':
+      return {
+        ...state,
+        todos: state.todos.map(todo =>
+          todo.id === action.payload
+            ? { ...todo, completed: !todo.completed }
+            : todo
+        )
+      };
+    
+    case 'DELETE_TODO':
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.id !== action.payload)
+      };
+    
+    case 'SET_FILTER':
+      return {
+        ...state,
+        filter: action.payload
+      };
+    
+    default:
+      return state;
+  }
+};
+
+function TodoApp() {
+  const initialState = {
+    todos: [],
+    filter: 'all'
+  };
+
+  const [state, dispatch] = useReducer(todoReducer, initialState);
+
+  const addTodo = (text) => {
+    dispatch({ type: 'ADD_TODO', payload: text });
+  };
+
+  const toggleTodo = (id) => {
+    dispatch({ type: 'TOGGLE_TODO', payload: id });
+  };
+
+  const deleteTodo = (id) => {
+    dispatch({ type: 'DELETE_TODO', payload: id });
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;TodoInput onAdd={addTodo} /&gt;
+      &lt;TodoList 
+        todos={state.todos} 
+        onToggle={toggleTodo}
+        onDelete={deleteTodo}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>⚡ Performance Optimization Hooks</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">useMemo and useCallback</span>
+                                    </div>
+                                    <pre><code>import { useState, useMemo, useCallback } from 'react';
+
+function OptimizedComponent({ items }) {
+  const [filter, setFilter] = useState('');
+  const [sortBy, setSortBy] = useState('name');
+
+  // useMemo for expensive calculations
+  const filteredAndSortedItems = useMemo(() => {
+    console.log('Filtering and sorting items...');
+    
+    let filtered = items.filter(item =>
+      item.name.toLowerCase().includes(filter.toLowerCase())
+    );
+    
+    return filtered.sort((a, b) => {
+      if (sortBy === 'name') {
+        return a.name.localeCompare(b.name);
+      } else if (sortBy === 'price') {
+        return a.price - b.price;
+      }
+      return 0;
+    });
+  }, [items, filter, sortBy]); // Only recalculate when these change
+
+  // useCallback for stable function references
+  const handleItemClick = useCallback((itemId) => {
+    console.log('Item clicked:', itemId);
+    // Do something with the item
+  }, []); // Function doesn't depend on any values
+
+  const handleFilterChange = useCallback((newFilter) => {
+    setFilter(newFilter);
+  }, []);
+
+  return (
+    &lt;div&gt;
+      &lt;SearchInput 
+        value={filter}
+        onChange={handleFilterChange}
+      /&gt;
+      
+      &lt;SortSelector 
+        value={sortBy}
+        onChange={setSortBy}
+      /&gt;
+      
+      &lt;ItemList 
+        items={filteredAndSortedItems}
+        onItemClick={handleItemClick}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices -->
+                        <div class="content-block">
+                            <h2>Hook Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>✅ Do's</h3>
+                                    <ul>
+                                        <li>Always follow the Rules of Hooks</li>
+                                        <li>Use custom hooks to share logic</li>
+                                        <li>Keep effects focused and specific</li>
+                                        <li>Use dependency arrays correctly</li>
+                                        <li>Extract complex state logic to useReducer</li>
+                                        <li>Use ESLint plugin for hook validation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>❌ Don'ts</h3>
+                                    <ul>
+                                        <li>Don't call hooks conditionally</li>
+                                        <li>Don't forget cleanup in useEffect</li>
+                                        <li>Don't omit dependencies</li>
+                                        <li>Don't use hooks in regular functions</li>
+                                        <li>Don't over-optimize with useMemo/useCallback</li>
+                                        <li>Don't nest hooks inside loops</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎯 When to Use Each Hook</h3>
+                                    <ul>
+                                        <li><strong>useState:</strong> Simple state management</li>
+                                        <li><strong>useEffect:</strong> Side effects and lifecycle</li>
+                                        <li><strong>useContext:</strong> Avoiding prop drilling</li>
+                                        <li><strong>useReducer:</strong> Complex state logic</li>
+                                        <li><strong>useMemo:</strong> Expensive calculations</li>
+                                        <li><strong>useCallback:</strong> Stable function references</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔄 Common Patterns</h3>
+                                    <ul>
+                                        <li>Data fetching with loading states</li>
+                                        <li>Form handling with validation</li>
+                                        <li>Timer and interval management</li>
+                                        <li>Event listener cleanup</li>
+                                        <li>Local storage persistence</li>
+                                        <li>Component communication</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now have a solid understanding of React Hooks and how they can make your functional components 
+                                more powerful and reusable. Next, you'll learn about managing complex application state.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="state-management.html">State Management</a> - Context API, Redux, and global state patterns</li>
+                                    <li><a href="routing.html">Routing</a> - Building single-page applications with React Router</li>
+                                    <li><a href="dev-tools.html">Development Tools</a> - Essential tools for React development</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

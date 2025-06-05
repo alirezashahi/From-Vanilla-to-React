@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn React Components and JSX - the fundamental building blocks of React applications with practical examples">
+    <meta name="keywords" content="React Components, JSX, Functional Components, Class Components, React Tutorial">
+    
+    <title>Components & JSX - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#core-concepts" class="breadcrumb-link">Core Concepts</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Components & JSX</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Components & JSX</h1>
+                    <p class="page-subtitle">
+                        Master the fundamental building blocks of React applications - components and JSX syntax. 
+                        Learn how to think in components and write declarative UI code.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge beginner">Beginner</span>
+                        <span class="reading-time">10 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- What are Components? -->
+                        <div class="content-block">
+                            <h2>What are Components?</h2>
+                            <p>
+                                Components are the heart of React. Think of them as custom HTML elements that you can create, 
+                                customize, and reuse throughout your application. Just like you use <code>&lt;div&gt;</code>, 
+                                <code>&lt;button&gt;</code>, or <code>&lt;input&gt;</code> elements, you can create your own 
+                                components like <code>&lt;Header&gt;</code>, <code>&lt;UserProfile&gt;</code>, or <code>&lt;ProductCard&gt;</code>.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Vanilla JavaScript Approach</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">HTML + JavaScript</span>
+                                            </div>
+                                            <pre><code>// HTML
+&lt;div id="user-cards"&gt;&lt;/div&gt;
+
+// JavaScript
+function createUserCard(user) {
+  return `
+    &lt;div class="user-card"&gt;
+      &lt;img src="${user.avatar}" alt="${user.name}"&gt;
+      &lt;h3&gt;${user.name}&lt;/h3&gt;
+      &lt;p&gt;${user.email}&lt;/p&gt;
+      &lt;button onclick="followUser(${user.id})"&gt;
+        Follow
+      &lt;/button&gt;
+    &lt;/div&gt;
+  `;
+}
+
+// Usage
+document.getElementById('user-cards').innerHTML = 
+  users.map(createUserCard).join('');</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React Component Approach</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React JSX</span>
+                                            </div>
+                                            <pre><code>// UserCard Component
+function UserCard({ user, onFollow }) {
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;img src={user.avatar} alt={user.name} /&gt;
+      &lt;h3&gt;{user.name}&lt;/h3&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+      &lt;button onClick={() =&gt; onFollow(user.id)}&gt;
+        Follow
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Usage
+&lt;div&gt;
+  {users.map(user =&gt; 
+    &lt;UserCard 
+      key={user.id} 
+      user={user} 
+      onFollow={followUser} 
+    /&gt;
+  )}
+&lt;/div&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Understanding JSX -->
+                        <div class="content-block">
+                            <h2>Understanding JSX</h2>
+                            <p>
+                                JSX (JavaScript XML) is React's syntax extension that lets you write HTML-like code in JavaScript. 
+                                It might look strange at first, but it's just a more intuitive way to describe what your UI should look like.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 JSX is NOT HTML</h3>
+                                <p>While JSX looks like HTML, it's actually JavaScript. Here are the key differences:</p>
+                                
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">JSX vs HTML</span>
+                                    </div>
+                                    <pre><code>// JSX uses className instead of class
+&lt;div className="container"&gt;Content&lt;/div&gt;
+
+// JSX uses camelCase for attributes
+&lt;input onClick={handleClick} onChange={handleChange} /&gt;
+
+// JSX requires self-closing tags
+&lt;img src="image.jpg" alt="Description" /&gt;
+&lt;br /&gt;
+&lt;input type="text" /&gt;
+
+// JSX can embed JavaScript expressions
+&lt;h1&gt;Hello, {user.name}!&lt;/h1&gt;
+&lt;div style={{color: 'red', fontSize: '16px'}}&gt;
+  Dynamic content
+&lt;/div&gt;</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🔄 How JSX Works</h3>
+                                <p>JSX gets compiled to regular JavaScript function calls. Here's what happens under the hood:</p>
+                                
+                                <div class="comparison-container">
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">What You Write (JSX)</div>
+                                        <div class="comparison-content">
+                                            <div class="code-example">
+                                                <div class="code-header">
+                                                    <span class="code-lang">JSX</span>
+                                                </div>
+                                                <pre><code>&lt;div className="greeting"&gt;
+  &lt;h1&gt;Hello, {name}!&lt;/h1&gt;
+  &lt;p&gt;Welcome to React&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">What React Sees (JavaScript)</div>
+                                        <div class="comparison-content">
+                                            <div class="code-example">
+                                                <div class="code-header">
+                                                    <span class="code-lang">JavaScript</span>
+                                                </div>
+                                                <pre><code>React.createElement(
+  'div',
+  { className: 'greeting' },
+  React.createElement('h1', null, 'Hello, ', name, '!'),
+  React.createElement('p', null, 'Welcome to React')
+);</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Functional Components -->
+                        <div class="content-block">
+                            <h2>Functional Components</h2>
+                            <p>
+                                Modern React uses functional components - JavaScript functions that return JSX. 
+                                They're simple, easy to understand, and work great with React Hooks.
+                            </p>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Basic Functional Component</span>
+                                </div>
+                                <pre><code>// Simple component with no props
+function Welcome() {
+  return &lt;h1&gt;Welcome to our website!&lt;/h1&gt;;
+}
+
+// Component with props
+function Greeting({ name, age }) {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;Hello, {name}!&lt;/h2&gt;
+      &lt;p&gt;You are {age} years old.&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Component with conditional rendering
+function UserStatus({ isLoggedIn, username }) {
+  return (
+    &lt;div&gt;
+      {isLoggedIn ? (
+        &lt;p&gt;Welcome back, {username}!&lt;/p&gt;
+      ) : (
+        &lt;p&gt;Please log in to continue.&lt;/p&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>💡 Component Rules</h3>
+                                <ul>
+                                    <li><strong>Component names must start with a capital letter</strong> (e.g., <code>UserCard</code>, not <code>userCard</code>)</li>
+                                    <li><strong>Components must return JSX</strong> (or null, string, number, or array)</li>
+                                    <li><strong>Components can only return one root element</strong> (use fragments <code>&lt;&gt;&lt;/&gt;</code> or <code>&lt;div&gt;</code> wrapper)</li>
+                                    <li><strong>Props are read-only</strong> - never modify them directly</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Class Components (Legacy) -->
+                        <div class="content-block">
+                            <h2>Class Components (Legacy)</h2>
+                            <p>
+                                Before functional components and hooks, React used class components. You'll still see them in older codebases, 
+                                so it's good to understand them.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Class Component</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Class Component</span>
+                                            </div>
+                                            <pre><code>import React, { Component } from 'react';
+
+class Greeting extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: 'Hello!'
+    };
+  }
+
+  render() {
+    return (
+      &lt;div&gt;
+        &lt;h1&gt;{this.state.message}&lt;/h1&gt;
+        &lt;p&gt;Welcome, {this.props.name}!&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Functional Component (Modern)</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Functional Component</span>
+                                            </div>
+                                            <pre><code>import React, { useState } from 'react';
+
+function Greeting({ name }) {
+  const [message, setMessage] = useState('Hello!');
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{message}&lt;/h1&gt;
+      &lt;p&gt;Welcome, {name}!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📝 Why Functional Components?</h3>
+                                <ul>
+                                    <li><strong>Simpler syntax</strong> - Less boilerplate code</li>
+                                    <li><strong>Better performance</strong> - Easier to optimize</li>
+                                    <li><strong>Hooks compatibility</strong> - Access to modern React features</li>
+                                    <li><strong>Easier testing</strong> - Pure functions are easier to test</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Component Composition -->
+                        <div class="content-block">
+                            <h2>Component Composition</h2>
+                            <p>
+                                One of React's superpowers is component composition - building complex UIs by combining simple components.
+                            </p>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Component Composition Example</span>
+                                </div>
+                                <pre><code>// Small, focused components
+function Avatar({ src, alt }) {
+  return &lt;img src={src} alt={alt} className="avatar" /&gt;;
+}
+
+function UserInfo({ name, email }) {
+  return (
+    &lt;div className="user-info"&gt;
+      &lt;h3&gt;{name}&lt;/h3&gt;
+      &lt;p&gt;{email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function ActionButton({ onClick, children }) {
+  return (
+    &lt;button className="action-btn" onClick={onClick}&gt;
+      {children}
+    &lt;/button&gt;
+  );
+}
+
+// Composed component using smaller components
+function UserCard({ user, onFollow, onMessage }) {
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;Avatar src={user.avatar} alt={user.name} /&gt;
+      &lt;UserInfo name={user.name} email={user.email} /&gt;
+      &lt;div className="actions"&gt;
+        &lt;ActionButton onClick={() =&gt; onFollow(user.id)}&gt;
+          Follow
+        &lt;/ActionButton&gt;
+        &lt;ActionButton onClick={() =&gt; onMessage(user.id)}&gt;
+          Message
+        &lt;/ActionButton&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🔧 Reusability</h3>
+                                    <p>Small components can be reused across different parts of your application.</p>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🧪 Testability</h3>
+                                    <p>Small components are easier to test in isolation.</p>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔍 Maintainability</h3>
+                                    <p>When each component has a single responsibility, bugs are easier to find and fix.</p>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>👥 Team Collaboration</h3>
+                                    <p>Different team members can work on different components simultaneously.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- JSX Best Practices -->
+                        <div class="content-block">
+                            <h2>JSX Best Practices</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>✅ Do's and Don'ts</h3>
+                                
+                                <h4>✅ Good Practices:</h4>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Good JSX</span>
+                                    </div>
+                                    <pre><code>// Use descriptive component names
+function UserProfileCard({ user }) { /* ... */ }
+
+// Use fragments to avoid unnecessary divs
+function App() {
+  return (
+    &lt;&gt;
+      &lt;Header /&gt;
+      &lt;MainContent /&gt;
+      &lt;Footer /&gt;
+    &lt;/&gt;
+  );
+}
+
+// Use meaningful prop names
+&lt;Button 
+  isLoading={isSubmitting} 
+  disabled={!isFormValid}
+  onClick={handleSubmit}
+&gt;
+  Submit
+&lt;/Button&gt;
+
+// Extract complex expressions
+function TodoItem({ todo }) {
+  const isOverdue = new Date(todo.dueDate) &lt; new Date();
+  
+  return (
+    &lt;div className={isOverdue ? 'overdue' : 'normal'}&gt;
+      {todo.title}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                                
+                                <h4>❌ Avoid:</h4>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Avoid These</span>
+                                    </div>
+                                    <pre><code>// Don't modify props
+function BadComponent({ user }) {
+  user.name = user.name.toUpperCase(); // ❌ Never do this
+  return &lt;div&gt;{user.name}&lt;/div&gt;;
+}
+
+// Don't use array indices as keys (unless list never changes)
+{items.map((item, index) =&gt; 
+  &lt;Item key={index} data={item} /&gt; // ❌ Avoid
+)}
+
+// Don't put complex logic in JSX
+&lt;div&gt;
+  {/* ❌ Too complex */}
+  {user.posts.filter(post =&gt; post.published)
+              .sort((a, b) =&gt; new Date(b.date) - new Date(a.date))
+              .slice(0, 5)
+              .map(post =&gt; &lt;Post key={post.id} post={post} /&gt;)}
+&lt;/div&gt;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                Now that you understand components and JSX, you're ready to learn how components communicate 
+                                with each other and manage their internal state.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="props-state.html">Props & State</a> - Learn how data flows in React</li>
+                                    <li><a href="event-handling.html">Event Handling</a> - Make your components interactive</li>
+                                    <li><a href="conditional-rendering.html">Conditional Rendering</a> - Show different content based on conditions</li>
+                                    <li><a href="hooks.html">React Hooks</a> - Modern state management and side effects</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

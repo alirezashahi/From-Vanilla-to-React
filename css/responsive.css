@@ -1,0 +1,442 @@
+/* Mobile First Responsive Design */
+
+/* Breakpoints */
+/* 
+  xs: 0px and up (default)
+  sm: 576px and up
+  md: 768px and up
+  lg: 992px and up
+  xl: 1200px and up
+  xxl: 1400px and up
+*/
+
+/* Small devices (landscape phones, 576px and up) */
+@media (max-width: 575.98px) {
+    /* Typography adjustments for small screens */
+    :root {
+        --font-size-5xl: 2rem;
+        --font-size-4xl: 1.75rem;
+        --font-size-3xl: 1.5rem;
+        --spacing-3xl: 2rem;
+        --spacing-2xl: 1.5rem;
+    }
+    
+    /* Container adjustments */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Navigation - Mobile */
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        right: 0;
+        background: var(--color-bg-primary);
+        border-top: 1px solid var(--color-border);
+        flex-direction: column;
+        padding: var(--spacing-md);
+        gap: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-20px);
+        transition: all var(--transition-normal);
+        box-shadow: var(--shadow-lg);
+        max-height: calc(100vh - var(--header-height));
+        overflow-y: auto;
+    }
+    
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .nav-item {
+        width: 100%;
+        border-bottom: 1px solid var(--color-border-light);
+    }
+    
+    .nav-item:last-child {
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-lg);
+    }
+    
+    /* Dropdown adjustments for mobile */
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        border: none;
+        box-shadow: none;
+        background: var(--color-bg-secondary);
+        border-radius: 0;
+        margin-top: var(--spacing-sm);
+        padding: 0;
+    }
+    
+    .dropdown-menu a {
+        padding: var(--spacing-sm) var(--spacing-lg);
+        font-size: var(--font-size-base);
+    }
+    
+    /* Hero section mobile */
+    .hero {
+        padding: var(--spacing-2xl) 0;
+        min-height: auto;
+    }
+    
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+        text-align: center;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-4xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    .hero-actions {
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Code preview mobile */
+    .code-preview {
+        max-width: 100%;
+    }
+    
+    .code-content {
+        padding: var(--spacing-md);
+        font-size: var(--font-size-xs);
+    }
+    
+    /* Grids mobile */
+    .benefits-grid,
+    .sections-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    .path-steps {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    /* Cards mobile */
+    .benefit-card,
+    .section-card {
+        padding: var(--spacing-lg);
+    }
+    
+    /* Footer mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+        text-align: center;
+    }
+    
+    /* Section padding mobile */
+    section {
+        padding: var(--spacing-2xl) 0;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-2xl);
+        text-align: center;
+    }
+    
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .sections-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .path-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 768px) {
+    /* Hide mobile navigation toggle */
+    .nav-toggle {
+        display: none;
+    }
+    
+    /* Ensure desktop navigation is visible */
+    .nav-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        background: transparent;
+        border: none;
+        flex-direction: row;
+        padding: 0;
+        box-shadow: none;
+        max-height: none;
+        overflow: visible;
+    }
+    
+    .nav-item {
+        width: auto;
+        border-bottom: none;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+    
+    /* Restore dropdown behavior for desktop */
+    .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        background-color: var(--color-bg-primary);
+        border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-lg);
+        border-radius: var(--radius-md);
+        margin-top: 0;
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .dropdown-menu a {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-base);
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .hero-title {
+        font-size: var(--font-size-5xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-2xl);
+    }
+    
+    .benefits-grid,
+    .sections-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .path-steps {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Print styles */
+@media print {
+    /* Hide navigation and interactive elements */
+    .main-header,
+    .nav-toggle,
+    .theme-toggle,
+    .hero-actions,
+    .btn {
+        display: none !important;
+    }
+    
+    /* Adjust main content */
+    .main-content {
+        margin-top: 0;
+    }
+    
+    /* Reset colors for print */
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    /* Ensure good contrast */
+    h1, h2, h3, h4, h5, h6 {
+        color: black !important;
+    }
+    
+    p, li {
+        color: #333 !important;
+    }
+    
+    /* Remove shadows and borders */
+    .benefit-card,
+    .section-card,
+    .code-preview {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+    }
+    
+    /* Ensure links are visible */
+    a {
+        color: #007acc !important;
+        text-decoration: underline !important;
+    }
+    
+    /* Page breaks */
+    section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+        page-break-after: avoid;
+        break-after: avoid;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    :root {
+        --color-border: #000000;
+        --color-border-light: #333333;
+    }
+    
+    [data-theme="dark"] {
+        --color-border: #ffffff;
+        --color-border-light: #cccccc;
+    }
+    
+    .btn {
+        border-width: 3px;
+    }
+    
+    .nav-link:focus,
+    .btn:focus,
+    a:focus {
+        outline: 3px solid currentColor;
+        outline-offset: 3px;
+    }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .fade-in-up {
+        animation: none;
+    }
+}
+
+/* Orientation specific styles */
+@media (orientation: landscape) and (max-height: 600px) {
+    .hero {
+        padding: var(--spacing-xl) 0;
+        min-height: auto;
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+        margin-bottom: var(--spacing-md);
+    }
+}
+
+/* Focus improvements for keyboard navigation */
+@media (any-hover: none) {
+    /* Touch devices - improve button sizing */
+    .btn {
+        min-height: 44px;
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+    
+    .nav-link {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .theme-toggle {
+        min-height: 44px;
+        min-width: 44px;
+    }
+}
+
+/* Dark mode media query support */
+@media (prefers-color-scheme: dark) {
+    /* This will be overridden by the theme toggle, but provides a fallback */
+    :root:not([data-theme]) {
+        --color-bg-primary: #1a1a1a;
+        --color-bg-secondary: #2d2d2d;
+        --color-bg-tertiary: #404040;
+        --color-bg-code: #2d2d2d;
+        
+        --color-text-primary: #ffffff;
+        --color-text-secondary: #cccccc;
+        --color-text-muted: #999999;
+        
+        --color-border: #404040;
+        --color-border-light: #555555;
+    }
+}
+
+/* Hover support detection */
+@media (hover: hover) {
+    /* Only apply hover effects on devices that support hover */
+    .benefit-card:hover,
+    .section-card:hover {
+        transform: translateY(-5px);
+    }
+}
+
+@media (hover: none) {
+    /* Remove hover transforms on touch devices */
+    .benefit-card:hover,
+    .section-card:hover {
+        transform: none;
+    }
+    
+    /* But keep focus states */
+    .benefit-card:focus,
+    .section-card:focus {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-lg);
+    }
+} 

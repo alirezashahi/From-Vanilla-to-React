@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn Next.js - The React framework for production with SSR, SSG, routing, and full-stack capabilities">
+    <meta name="keywords" content="Next.js, React Framework, SSR, SSG, Full-stack React, React Tutorial">
+    
+    <title>Next.js - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#ecosystem" class="breadcrumb-link">Ecosystem</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Next.js</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Next.js</h1>
+                    <p class="page-subtitle">
+                        Discover Next.js, the React framework for production. Learn about server-side rendering, 
+                        static generation, API routes, and full-stack React development.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge advanced">Advanced</span>
+                        <span class="reading-time">15 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- What is Next.js -->
+                        <div class="content-block">
+                            <h2>What is Next.js?</h2>
+                            <p>
+                                Next.js is a full-stack React framework that gives you building blocks to create web applications. 
+                                It handles the tooling and configuration needed for React, and provides additional structure, 
+                                features, and optimizations for your application.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 Key Benefits</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>⚡ Performance</h4>
+                                        <ul>
+                                            <li>Automatic code splitting</li>
+                                            <li>Image optimization</li>
+                                            <li>Font optimization</li>
+                                            <li>Script optimization</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🔍 SEO</h4>
+                                        <ul>
+                                            <li>Server-side rendering</li>
+                                            <li>Static site generation</li>
+                                            <li>Meta tag management</li>
+                                            <li>Sitemap generation</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🛠️ Developer Experience</h4>
+                                        <ul>
+                                            <li>Zero configuration</li>
+                                            <li>Fast refresh</li>
+                                            <li>Built-in CSS support</li>
+                                            <li>TypeScript support</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🌐 Full-stack</h4>
+                                        <ul>
+                                            <li>API routes</li>
+                                            <li>Middleware</li>
+                                            <li>Database integration</li>
+                                            <li>Authentication</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- React vs Next.js -->
+                        <div class="content-block">
+                            <h2>React vs Next.js</h2>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React (Client-Side)</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>📱 Single Page Application</h4>
+                                            <ul>
+                                                <li><strong>Rendering:</strong> Client-side only</li>
+                                                <li><strong>Initial Load:</strong> Shows blank page until JS loads</li>
+                                                <li><strong>SEO:</strong> Limited without additional setup</li>
+                                                <li><strong>Routing:</strong> Requires React Router</li>
+                                                <li><strong>Performance:</strong> Depends on bundle size</li>
+                                            </ul>
+                                            
+                                            <h4>✅ Best For:</h4>
+                                            <ul>
+                                                <li>Interactive dashboards</li>
+                                                <li>Web applications</li>
+                                                <li>Admin panels</li>
+                                                <li>Complex user interfaces</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Next.js (Full-Stack)</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>🌐 Multiple Rendering Options</h4>
+                                            <ul>
+                                                <li><strong>Rendering:</strong> SSR, SSG, or Client-side</li>
+                                                <li><strong>Initial Load:</strong> Shows content immediately</li>
+                                                <li><strong>SEO:</strong> Excellent out of the box</li>
+                                                <li><strong>Routing:</strong> File-based routing built-in</li>
+                                                <li><strong>Performance:</strong> Optimized by default</li>
+                                            </ul>
+                                            
+                                            <h4>✅ Best For:</h4>
+                                            <ul>
+                                                <li>Marketing websites</li>
+                                                <li>E-commerce sites</li>
+                                                <li>Blogs and documentation</li>
+                                                <li>Full-stack applications</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Getting Started -->
+                        <div class="content-block">
+                            <h2>Getting Started with Next.js</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Creating a Next.js App</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Installation</span>
+                                    </div>
+                                    <pre><code># Create a new Next.js app
+npx create-next-app@latest my-app
+
+# With TypeScript
+npx create-next-app@latest my-app --typescript
+
+# With Tailwind CSS
+npx create-next-app@latest my-app --tailwind
+
+# Navigate to project
+cd my-app
+
+# Start development server
+npm run dev</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📁 Project Structure</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Next.js Project Structure</span>
+                                    </div>
+                                    <pre><code>my-app/
+├── pages/           # File-based routing
+│   ├── index.js     # Home page (/)
+│   ├── about.js     # About page (/about)
+│   └── api/         # API routes
+│       └── hello.js # API endpoint (/api/hello)
+├── public/          # Static files
+│   ├── favicon.ico
+│   └── images/
+├── styles/          # CSS files
+│   ├── globals.css
+│   └── Home.module.css
+├── components/      # Reusable components
+├── lib/             # Utility functions
+├── next.config.js   # Next.js configuration
+└── package.json</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- File-based Routing -->
+                        <div class="content-block">
+                            <h2>File-based Routing</h2>
+                            <p>
+                                Next.js uses the file system for routing. Pages are associated with routes based on their file names.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🗂️ Routing Examples</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">File Structure to Routes</span>
+                                    </div>
+                                    <pre><code>pages/
+├── index.js          → /
+├── about.js          → /about
+├── contact.js        → /contact
+├── blog/
+│   ├── index.js      → /blog
+│   ├── [slug].js     → /blog/my-post
+│   └── [year]/
+│       └── [month].js → /blog/2024/january
+├── products/
+│   ├── [id].js       → /products/123
+│   └── [...slug].js  → /products/category/subcategory
+└── 404.js            → Custom 404 page</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🔗 Dynamic Routes</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Dynamic Route Example</span>
+                                    </div>
+                                    <pre><code>// pages/blog/[slug].js
+import { useRouter } from 'next/router'
+
+export default function BlogPost() {
+  const router = useRouter()
+  const { slug } = router.query
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Blog Post: {slug}&lt;/h1&gt;
+    &lt;/div&gt;
+  )
+}
+
+// pages/products/[...params].js - Catch-all routes
+export default function Product() {
+  const router = useRouter()
+  const { params } = router.query
+  // params could be ['category', 'subcategory', 'item']
+
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Product: {params?.join(' / ')}&lt;/h1&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rendering Methods -->
+                        <div class="content-block">
+                            <h2>Rendering Methods</h2>
+                            <p>
+                                Next.js supports multiple rendering methods, allowing you to choose the best approach for each page.
+                            </p>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>📊 Static Site Generation (SSG)</h3>
+                                    <p>Pages are generated at build time and served as static files.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">SSG Example</span>
+                                        </div>
+                                        <pre><code>// pages/posts/index.js
+export default function Posts({ posts }) {
+  return (
+    &lt;div&gt;
+      {posts.map(post => (
+        &lt;div key={post.id}&gt;
+          &lt;h2&gt;{post.title}&lt;/h2&gt;
+          &lt;p&gt;{post.excerpt}&lt;/p&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  )
+}
+
+// This function runs at build time
+export async function getStaticProps() {
+  const posts = await fetchPosts()
+  
+  return {
+    props: {
+      posts,
+    },
+    // Regenerate page every 60 seconds
+    revalidate: 60,
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🖥️ Server-Side Rendering (SSR)</h3>
+                                    <p>Pages are generated on each request.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">SSR Example</span>
+                                        </div>
+                                        <pre><code>// pages/profile.js
+export default function Profile({ user }) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Welcome, {user.name}!&lt;/h1&gt;
+      &lt;p&gt;Last login: {user.lastLogin}&lt;/p&gt;
+    &lt;/div&gt;
+  )
+}
+
+// This function runs on every request
+export async function getServerSideProps(context) {
+  const { req } = context
+  const user = await getUserFromRequest(req)
+  
+  return {
+    props: {
+      user,
+    },
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎯 Incremental Static Regeneration (ISR)</h3>
+                                    <p>Combine benefits of static and dynamic rendering.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">ISR Example</span>
+                                        </div>
+                                        <pre><code>export async function getStaticProps() {
+  const posts = await fetchPosts()
+  
+  return {
+    props: {
+      posts,
+    },
+    // Regenerate at most once per hour
+    revalidate: 3600,
+  }
+}
+
+export async function getStaticPaths() {
+  const paths = await getPostPaths()
+  
+  return {
+    paths,
+    // Enable ISR for new pages
+    fallback: 'blocking',
+  }
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📱 Client-Side Rendering (CSR)</h3>
+                                    <p>Standard React behavior - render on the client.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">CSR Example</span>
+                                        </div>
+                                        <pre><code>import { useState, useEffect } from 'react'
+
+export default function Dashboard() {
+  const [data, setData] = useState(null)
+  
+  useEffect(() => {
+    fetch('/api/dashboard-data')
+      .then(res => res.json())
+      .then(setData)
+  }, [])
+  
+  if (!data) return &lt;div&gt;Loading...&lt;/div&gt;
+  
+  return &lt;div&gt;{/* Dashboard content */}&lt;/div&gt;
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- API Routes -->
+                        <div class="content-block">
+                            <h2>API Routes</h2>
+                            <p>
+                                Next.js allows you to create API endpoints as serverless functions, 
+                                enabling full-stack development within a single project.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔧 Creating API Routes</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">API Route Examples</span>
+                                    </div>
+                                    <pre><code>// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ message: 'Hello from Next.js API!' })
+}
+
+// pages/api/users/[id].js - Dynamic API route
+export default async function handler(req, res) {
+  const { id } = req.query
+  const { method } = req
+
+  switch (method) {
+    case 'GET':
+      const user = await getUserById(id)
+      res.status(200).json(user)
+      break
+      
+    case 'PUT':
+      const updatedUser = await updateUser(id, req.body)
+      res.status(200).json(updatedUser)
+      break
+      
+    case 'DELETE':
+      await deleteUser(id)
+      res.status(204).end()
+      break
+      
+    default:
+      res.setHeader('Allow', ['GET', 'PUT', 'DELETE'])
+      res.status(405).end(`Method ${method} Not Allowed`)
+  }
+}
+
+// pages/api/posts.js - Handle form submissions
+export default async function handler(req, res) {
+  if (req.method === 'POST') {
+    try {
+      const { title, content } = req.body
+      const post = await createPost({ title, content })
+      res.status(201).json(post)
+    } catch (error) {
+      res.status(500).json({ error: 'Failed to create post' })
+    }
+  } else {
+    res.status(405).json({ error: 'Method not allowed' })
+  }
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Built-in Features -->
+                        <div class="content-block">
+                            <h2>Built-in Optimizations</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🖼️ Image Optimization</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Next.js Image</span>
+                                        </div>
+                                        <pre><code>import Image from 'next/image'
+
+export default function Profile() {
+  return (
+    &lt;div&gt;
+      &lt;Image
+        src="/profile.jpg"
+        alt="Profile picture"
+        width={300}
+        height={300}
+        priority // Load immediately
+        placeholder="blur" // Show blur while loading
+      /&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📝 Head Management</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">SEO with Head</span>
+                                        </div>
+                                        <pre><code>import Head from 'next/head'
+
+export default function Post({ post }) {
+  return (
+    &lt;&gt;
+      &lt;Head&gt;
+        &lt;title&gt;{post.title} | My Blog&lt;/title&gt;
+        &lt;meta name="description" content={post.excerpt} /&gt;
+        &lt;meta property="og:title" content={post.title} /&gt;
+        &lt;meta property="og:description" content={post.excerpt} /&gt;
+        &lt;meta property="og:image" content={post.image} /&gt;
+      &lt;/Head&gt;
+      
+      &lt;article&gt;
+        &lt;h1&gt;{post.title}&lt;/h1&gt;
+        &lt;div&gt;{post.content}&lt;/div&gt;
+      &lt;/article&gt;
+    &lt;/&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎨 CSS Support</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">CSS Modules</span>
+                                        </div>
+                                        <pre><code>// styles/Button.module.css
+.button {
+  background: blue;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+}
+
+.primary {
+  background: green;
+}
+
+// components/Button.js
+import styles from '../styles/Button.module.css'
+
+export default function Button({ children, primary }) {
+  const className = primary 
+    ? `${styles.button} ${styles.primary}`
+    : styles.button
+    
+  return (
+    &lt;button className={className}&gt;
+      {children}
+    &lt;/button&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📦 Automatic Code Splitting</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Dynamic Imports</span>
+                                        </div>
+                                        <pre><code>import { useState } from 'react'
+import dynamic from 'next/dynamic'
+
+// Load component only when needed
+const DynamicChart = dynamic(
+  () => import('../components/Chart'),
+  { 
+    loading: () => &lt;p&gt;Loading chart...&lt;/p&gt;,
+    ssr: false // Don't render on server
+  }
+)
+
+export default function Dashboard() {
+  const [showChart, setShowChart] = useState(false)
+  
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => setShowChart(true)}&gt;
+        Show Chart
+      &lt;/button&gt;
+      
+      {showChart && &lt;DynamicChart /&gt;}
+    &lt;/div&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- When to Use Next.js -->
+                        <div class="content-block">
+                            <h2>When to Use Next.js</h2>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">✅ Great for Next.js</div>
+                                    <div class="comparison-content">
+                                        <ul>
+                                            <li><strong>Marketing websites</strong> - Need SEO and fast loading</li>
+                                            <li><strong>E-commerce</strong> - Product pages need to be indexed</li>
+                                            <li><strong>Blogs & Documentation</strong> - Static content with good SEO</li>
+                                            <li><strong>Corporate websites</strong> - Professional sites with content</li>
+                                            <li><strong>Full-stack apps</strong> - Need both frontend and backend</li>
+                                            <li><strong>Portfolios</strong> - Personal or business showcases</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">❌ Consider React instead</div>
+                                    <div class="comparison-content">
+                                        <ul>
+                                            <li><strong>Internal dashboards</strong> - Private apps don't need SEO</li>
+                                            <li><strong>Admin panels</strong> - Behind authentication anyway</li>
+                                            <li><strong>Desktop-like apps</strong> - Complex interactions, less content</li>
+                                            <li><strong>Real-time apps</strong> - Chat, games, collaborative tools</li>
+                                            <li><strong>Simple SPAs</strong> - When SSR/SSG adds no value</li>
+                                            <li><strong>Mobile apps</strong> - React Native might be better</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                Next.js is a powerful framework that can handle everything from static sites to full-stack applications. 
+                                It's an excellent choice when you need SEO, performance, and developer experience.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="libraries.html">Popular Libraries</a> - UI libraries and ecosystem tools</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                    <li><a href="learning-path.html">Learning Path</a> - Structured approach to mastering React</li>
+                                    <li><a href="resources.html">Resources</a> - External learning materials and documentation</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master React Conditional Rendering and Lists - learn to show/hide content dynamically and render arrays of data">
+    <meta name="keywords" content="React Conditional Rendering, React Lists, map function, dynamic content, React Tutorial">
+    
+    <title>Conditional Rendering & Lists - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#core-concepts" class="breadcrumb-link">Core Concepts</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Conditional Rendering & Lists</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Conditional Rendering & Lists</h1>
+                    <p class="page-subtitle">
+                        Learn how to dynamically show or hide content based on conditions, 
+                        and how to render lists of data efficiently in React applications.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <span class="reading-time">12 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Conditional Rendering Intro -->
+                        <div class="content-block">
+                            <h2>What is Conditional Rendering?</h2>
+                            <p>
+                                Conditional rendering in React lets you show different content based on certain conditions. 
+                                Instead of having all content visible at once, you can dynamically choose what to display 
+                                based on state, props, or any other data.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Vanilla JavaScript</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">JavaScript</span>
+                                            </div>
+                                            <pre><code>// HTML
+&lt;div id="message"&gt;&lt;/div&gt;
+&lt;button id="toggleBtn"&gt;Toggle&lt;/button&gt;
+
+// JavaScript
+let isVisible = false;
+const messageDiv = document.getElementById('message');
+const toggleBtn = document.getElementById('toggleBtn');
+
+function updateDisplay() {
+  if (isVisible) {
+    messageDiv.innerHTML = '&lt;p&gt;Hello! I am visible.&lt;/p&gt;';
+    messageDiv.style.display = 'block';
+  } else {
+    messageDiv.style.display = 'none';
+  }
+}
+
+toggleBtn.addEventListener('click', () =&gt; {
+  isVisible = !isVisible;
+  updateDisplay();
+});
+
+updateDisplay(); // Initial render</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React Conditional Rendering</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React JSX</span>
+                                            </div>
+                                            <pre><code>function ConditionalExample() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  return (
+    &lt;div&gt;
+      {/* Conditional rendering using && */}
+      {isVisible && &lt;p&gt;Hello! I am visible.&lt;/p&gt;}
+      
+      {/* Toggle button */}
+      &lt;button onClick={() =&gt; setIsVisible(!isVisible)}&gt;
+        Toggle
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Conditional Rendering Techniques -->
+                        <div class="content-block">
+                            <h2>Conditional Rendering Techniques</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>1. Logical AND (&&) Operator</h3>
+                                <p>The most common way to conditionally render elements. Shows content only when condition is true.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Logical AND Pattern</span>
+                                    </div>
+                                    <pre><code>function UserGreeting({ user }) {
+  return (
+    &lt;div&gt;
+      {/* Show greeting only if user exists */}
+      {user && &lt;h2&gt;Welcome back, {user.name}!&lt;/h2&gt;}
+      
+      {/* Show notifications only if user has any */}
+      {user?.notifications?.length &gt; 0 && (
+        &lt;div className="notifications"&gt;
+          You have {user.notifications.length} new messages
+        &lt;/div&gt;
+      )}
+      
+      {/* Show premium features only for premium users */}
+      {user?.isPremium && (
+        &lt;div className="premium-features"&gt;
+          &lt;h3&gt;Premium Features&lt;/h3&gt;
+          &lt;p&gt;Unlock advanced functionality&lt;/p&gt;
+        &lt;/div&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>2. Ternary Operator (? :)</h3>
+                                <p>Perfect for showing one thing or another based on a condition.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Ternary Pattern</span>
+                                    </div>
+                                    <pre><code>function LoginStatus({ isLoggedIn, user }) {
+  return (
+    &lt;div&gt;
+      {/* Simple ternary for different content */}
+      &lt;h1&gt;
+        {isLoggedIn ? `Welcome, ${user.name}!` : 'Please log in'}
+      &lt;/h1&gt;
+      
+      {/* Ternary for different components */}
+      {isLoggedIn ? (
+        &lt;UserDashboard user={user} /&gt;
+      ) : (
+        &lt;LoginForm /&gt;
+      )}
+      
+      {/* Ternary for different styles */}
+      &lt;button 
+        className={isLoggedIn ? 'logout-btn' : 'login-btn'}
+        onClick={isLoggedIn ? handleLogout : handleLogin}
+      &gt;
+        {isLoggedIn ? 'Logout' : 'Login'}
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>3. If/Else Statements</h3>
+                                <p>For complex logic, use regular JavaScript if/else statements before the return.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">If/Else Pattern</span>
+                                    </div>
+                                    <pre><code>function UserProfile({ user, loading, error }) {
+  // Handle different states with if/else
+  if (loading) {
+    return (
+      &lt;div className="loading"&gt;
+        &lt;p&gt;Loading user profile...&lt;/p&gt;
+        &lt;div className="spinner"&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    );
+  }
+  
+  if (error) {
+    return (
+      &lt;div className="error"&gt;
+        &lt;h2&gt;Something went wrong&lt;/h2&gt;
+        &lt;p&gt;{error.message}&lt;/p&gt;
+        &lt;button onClick={handleRetry}&gt;Try Again&lt;/button&gt;
+      &lt;/div&gt;
+    );
+  }
+  
+  if (!user) {
+    return (
+      &lt;div className="no-user"&gt;
+        &lt;h2&gt;User not found&lt;/h2&gt;
+        &lt;p&gt;The user you're looking for doesn't exist.&lt;/p&gt;
+      &lt;/div&gt;
+    );
+  }
+  
+  // Main content when everything is good
+  return (
+    &lt;div className="user-profile"&gt;
+      &lt;img src={user.avatar} alt={`${user.name}'s avatar`} /&gt;
+      &lt;h1&gt;{user.name}&lt;/h1&gt;
+      &lt;p&gt;{user.bio}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>4. Switch Statements</h3>
+                                <p>Useful when you have multiple conditions to check against a single value.</p>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Switch Pattern</span>
+                                    </div>
+                                    <pre><code>function StatusIndicator({ status }) {
+  const getStatusContent = () =&gt; {
+    switch (status) {
+      case 'loading':
+        return (
+          &lt;div className="status loading"&gt;
+            &lt;span className="icon"&gt;⏳&lt;/span&gt;
+            &lt;span&gt;Loading...&lt;/span&gt;
+          &lt;/div&gt;
+        );
+      
+      case 'success':
+        return (
+          &lt;div className="status success"&gt;
+            &lt;span className="icon"&gt;✅&lt;/span&gt;
+            &lt;span&gt;Success!&lt;/span&gt;
+          &lt;/div&gt;
+        );
+      
+      case 'error':
+        return (
+          &lt;div className="status error"&gt;
+            &lt;span className="icon"&gt;❌&lt;/span&gt;
+            &lt;span&gt;Error occurred&lt;/span&gt;
+          &lt;/div&gt;
+        );
+      
+      case 'warning':
+        return (
+          &lt;div className="status warning"&gt;
+            &lt;span className="icon"&gt;⚠️&lt;/span&gt;
+            &lt;span&gt;Warning&lt;/span&gt;
+          &lt;/div&gt;
+        );
+      
+      default:
+        return (
+          &lt;div className="status neutral"&gt;
+            &lt;span className="icon"&gt;ℹ️&lt;/span&gt;
+            &lt;span&gt;Ready&lt;/span&gt;
+          &lt;/div&gt;
+        );
+    }
+  };
+
+  return &lt;div&gt;{getStatusContent()}&lt;/div&gt;;
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rendering Lists -->
+                        <div class="content-block">
+                            <h2>Rendering Lists in React</h2>
+                            <p>
+                                One of the most common tasks in React is rendering lists of data. 
+                                React makes this easy with JavaScript's map() function and JSX.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Vanilla JavaScript</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">JavaScript</span>
+                                            </div>
+                                            <pre><code>// HTML
+&lt;ul id="todo-list"&gt;&lt;/ul&gt;
+
+// JavaScript
+const todos = [
+  { id: 1, text: 'Learn JavaScript', done: true },
+  { id: 2, text: 'Learn React', done: false },
+  { id: 3, text: 'Build a project', done: false }
+];
+
+function renderTodos() {
+  const todoList = document.getElementById('todo-list');
+  todoList.innerHTML = ''; // Clear existing content
+  
+  todos.forEach(todo =&gt; {
+    const li = document.createElement('li');
+    li.innerHTML = `
+      &lt;span class="${todo.done ? 'done' : ''}"&gt;
+        ${todo.text}
+      &lt;/span&gt;
+      &lt;button onclick="toggleTodo(${todo.id})"&gt;
+        ${todo.done ? 'Undo' : 'Complete'}
+      &lt;/button&gt;
+    `;
+    todoList.appendChild(li);
+  });
+}
+
+renderTodos(); // Initial render</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React List Rendering</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React JSX</span>
+                                            </div>
+                                            <pre><code>function TodoList() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Learn JavaScript', done: true },
+    { id: 2, text: 'Learn React', done: false },
+    { id: 3, text: 'Build a project', done: false }
+  ]);
+
+  const toggleTodo = (id) =&gt; {
+    setTodos(prev =&gt; 
+      prev.map(todo =&gt; 
+        todo.id === id 
+          ? { ...todo, done: !todo.done }
+          : todo
+      )
+    );
+  };
+
+  return (
+    &lt;ul&gt;
+      {todos.map(todo =&gt; (
+        &lt;li key={todo.id}&gt;
+          &lt;span className={todo.done ? 'done' : ''}&gt;
+            {todo.text}
+          &lt;/span&gt;
+          &lt;button onClick={() =&gt; toggleTodo(todo.id)}&gt;
+            {todo.done ? 'Undo' : 'Complete'}
+          &lt;/button&gt;
+        &lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- The Key Prop -->
+                        <div class="content-block">
+                            <h2>The Importance of Keys</h2>
+                            <p>
+                                When rendering lists, React needs a way to track each item uniquely. 
+                                The <code>key</code> prop helps React identify which items have changed, 
+                                been added, or removed, leading to better performance and fewer bugs.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔑 Why Keys Matter</h3>
+                                <ul>
+                                    <li><strong>Performance:</strong> React can efficiently update only changed items</li>
+                                    <li><strong>State preservation:</strong> Component state stays with the correct item</li>
+                                    <li><strong>Animation:</strong> Smooth transitions when items are added/removed</li>
+                                    <li><strong>Form inputs:</strong> Input values stay with the correct items</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Key Examples</span>
+                                </div>
+                                <pre><code>function ProductList({ products }) {
+  return (
+    &lt;div className="product-grid"&gt;
+      {products.map(product =&gt; (
+        {/* ✅ Good: Using unique, stable ID */}
+        &lt;ProductCard 
+          key={product.id}
+          product={product}
+        /&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}
+
+function BadExample({ items }) {
+  return (
+    &lt;ul&gt;
+      {items.map((item, index) =&gt; (
+        {/* ❌ Bad: Using array index as key */}
+        &lt;li key={index}&gt;{item.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+function GoodExample({ items }) {
+  return (
+    &lt;ul&gt;
+      {items.map(item =&gt; (
+        {/* ✅ Good: Using unique property */}
+        &lt;li key={item.id}&gt;{item.name}&lt;/li&gt;
+      ))}
+    &lt;/ul&gt;
+  );
+}
+
+function ComplexExample({ comments }) {
+  return (
+    &lt;div&gt;
+      {comments.map(comment =&gt; (
+        &lt;div key={comment.id} className="comment"&gt;
+          &lt;h4&gt;{comment.author}&lt;/h4&gt;
+          &lt;p&gt;{comment.text}&lt;/p&gt;
+          
+          {/* Nested list also needs keys */}
+          {comment.replies && (
+            &lt;div className="replies"&gt;
+              {comment.replies.map(reply =&gt; (
+                &lt;div key={reply.id} className="reply"&gt;
+                  &lt;strong&gt;{reply.author}:&lt;/strong&gt; {reply.text}
+                &lt;/div&gt;
+              ))}
+            &lt;/div&gt;
+          )}
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Advanced List Patterns -->
+                        <div class="content-block">
+                            <h2>Advanced List Rendering Patterns</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🔄 Filtering and Searching</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Filtered Lists</span>
+                                    </div>
+                                    <pre><code>function SearchableList({ items }) {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filter, setFilter] = useState('all');
+
+  // Filter items based on search and filter criteria
+  const filteredItems = items.filter(item =&gt; {
+    const matchesSearch = item.name
+      .toLowerCase()
+      .includes(searchTerm.toLowerCase());
+    
+    const matchesFilter = filter === 'all' || item.category === filter;
+    
+    return matchesSearch && matchesFilter;
+  });
+
+  return (
+    &lt;div&gt;
+      {/* Search input */}
+      &lt;input
+        type="text"
+        placeholder="Search items..."
+        value={searchTerm}
+        onChange={(e) =&gt; setSearchTerm(e.target.value)}
+      /&gt;
+      
+      {/* Filter dropdown */}
+      &lt;select 
+        value={filter} 
+        onChange={(e) =&gt; setFilter(e.target.value)}
+      &gt;
+        &lt;option value="all"&gt;All Categories&lt;/option&gt;
+        &lt;option value="electronics"&gt;Electronics&lt;/option&gt;
+        &lt;option value="clothing"&gt;Clothing&lt;/option&gt;
+        &lt;option value="books"&gt;Books&lt;/option&gt;
+      &lt;/select&gt;
+      
+      {/* Results count */}
+      &lt;p&gt;{filteredItems.length} items found&lt;/p&gt;
+      
+      {/* Render filtered items */}
+      {filteredItems.length &gt; 0 ? (
+        &lt;div className="items-grid"&gt;
+          {filteredItems.map(item =&gt; (
+            &lt;ItemCard key={item.id} item={item} /&gt;
+          ))}
+        &lt;/div&gt;
+      ) : (
+        &lt;p&gt;No items match your criteria.&lt;/p&gt;
+      )}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📊 Sorting and Grouping</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Sorted and Grouped Lists</span>
+                                    </div>
+                                    <pre><code>function SortableList({ data }) {
+  const [sortBy, setSortBy] = useState('name');
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [groupBy, setGroupBy] = useState('none');
+
+  // Sort the data
+  const sortedData = [...data].sort((a, b) =&gt; {
+    let aVal = a[sortBy];
+    let bVal = b[sortBy];
+    
+    if (typeof aVal === 'string') {
+      aVal = aVal.toLowerCase();
+      bVal = bVal.toLowerCase();
+    }
+    
+    if (sortOrder === 'asc') {
+      return aVal &lt; bVal ? -1 : aVal &gt; bVal ? 1 : 0;
+    } else {
+      return aVal &gt; bVal ? -1 : aVal &lt; bVal ? 1 : 0;
+    }
+  });
+
+  // Group the data if needed
+  const groupedData = groupBy === 'none' 
+    ? { 'All Items': sortedData }
+    : sortedData.reduce((groups, item) =&gt; {
+        const group = item[groupBy];
+        if (!groups[group]) {
+          groups[group] = [];
+        }
+        groups[group].push(item);
+        return groups;
+      }, {});
+
+  return (
+    &lt;div&gt;
+      {/* Controls */}
+      &lt;div className="controls"&gt;
+        &lt;select 
+          value={sortBy} 
+          onChange={(e) =&gt; setSortBy(e.target.value)}
+        &gt;
+          &lt;option value="name"&gt;Sort by Name&lt;/option&gt;
+          &lt;option value="price"&gt;Sort by Price&lt;/option&gt;
+          &lt;option value="date"&gt;Sort by Date&lt;/option&gt;
+        &lt;/select&gt;
+        
+        &lt;button onClick={() =&gt; setSortOrder(prev =&gt; 
+          prev === 'asc' ? 'desc' : 'asc')}&gt;
+          {sortOrder === 'asc' ? '↑' : '↓'}
+        &lt;/button&gt;
+        
+        &lt;select 
+          value={groupBy} 
+          onChange={(e) =&gt; setGroupBy(e.target.value)}
+        &gt;
+          &lt;option value="none"&gt;No Grouping&lt;/option&gt;
+          &lt;option value="category"&gt;Group by Category&lt;/option&gt;
+          &lt;option value="status"&gt;Group by Status&lt;/option&gt;
+        &lt;/select&gt;
+      &lt;/div&gt;
+      
+      {/* Render grouped data */}
+      {Object.entries(groupedData).map(([groupName, items]) =&gt; (
+        &lt;div key={groupName} className="group"&gt;
+          {groupBy !== 'none' && &lt;h3&gt;{groupName}&lt;/h3&gt;}
+          &lt;div className="items"&gt;
+            {items.map(item =&gt; (
+              &lt;ItemCard key={item.id} item={item} /&gt;
+            ))}
+          &lt;/div&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🔄 Dynamic Lists with CRUD Operations</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Dynamic List Management</span>
+                                    </div>
+                                    <pre><code>function DynamicTodoList() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Learn React', completed: false },
+    { id: 2, text: 'Build a project', completed: false }
+  ]);
+  const [newTodo, setNewTodo] = useState('');
+  const [editingId, setEditingId] = useState(null);
+  const [editText, setEditText] = useState('');
+
+  // Create new todo
+  const addTodo = (e) =&gt; {
+    e.preventDefault();
+    if (newTodo.trim()) {
+      setTodos(prev =&gt; [...prev, {
+        id: Date.now(),
+        text: newTodo.trim(),
+        completed: false
+      }]);
+      setNewTodo('');
+    }
+  };
+
+  // Update todo
+  const updateTodo = (id, newText) =&gt; {
+    setTodos(prev =&gt; prev.map(todo =&gt;
+      todo.id === id ? { ...todo, text: newText } : todo
+    ));
+    setEditingId(null);
+  };
+
+  // Delete todo
+  const deleteTodo = (id) =&gt; {
+    setTodos(prev =&gt; prev.filter(todo =&gt; todo.id !== id));
+  };
+
+  // Toggle completion
+  const toggleComplete = (id) =&gt; {
+    setTodos(prev =&gt; prev.map(todo =&gt;
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    ));
+  };
+
+  // Start editing
+  const startEditing = (id, text) =&gt; {
+    setEditingId(id);
+    setEditText(text);
+  };
+
+  return (
+    &lt;div className="todo-app"&gt;
+      {/* Add new todo form */}
+      &lt;form onSubmit={addTodo}&gt;
+        &lt;input
+          type="text"
+          value={newTodo}
+          onChange={(e) =&gt; setNewTodo(e.target.value)}
+          placeholder="Add a new todo..."
+        /&gt;
+        &lt;button type="submit"&gt;Add&lt;/button&gt;
+      &lt;/form&gt;
+
+      {/* Todo list */}
+      &lt;ul className="todo-list"&gt;
+        {todos.map(todo =&gt; (
+          &lt;li key={todo.id} className={todo.completed ? 'completed' : ''}&gt;
+            {editingId === todo.id ? (
+              &lt;div className="editing"&gt;
+                &lt;input
+                  type="text"
+                  value={editText}
+                  onChange={(e) =&gt; setEditText(e.target.value)}
+                  onBlur={() =&gt; updateTodo(todo.id, editText)}
+                  onKeyDown={(e) =&gt; {
+                    if (e.key === 'Enter') {
+                      updateTodo(todo.id, editText);
+                    } else if (e.key === 'Escape') {
+                      setEditingId(null);
+                    }
+                  }}
+                  autoFocus
+                /&gt;
+              &lt;/div&gt;
+            ) : (
+              &lt;&gt;
+                &lt;span 
+                  className="todo-text"
+                  onDoubleClick={() =&gt; startEditing(todo.id, todo.text)}
+                &gt;
+                  {todo.text}
+                &lt;/span&gt;
+                
+                &lt;div className="todo-actions"&gt;
+                  &lt;button 
+                    onClick={() =&gt; toggleComplete(todo.id)}
+                    className="toggle-btn"
+                  &gt;
+                    {todo.completed ? '↶' : '✓'}
+                  &lt;/button&gt;
+                  
+                  &lt;button 
+                    onClick={() =&gt; startEditing(todo.id, todo.text)}
+                    className="edit-btn"
+                  &gt;
+                    ✏️
+                  &lt;/button&gt;
+                  
+                  &lt;button 
+                    onClick={() =&gt; deleteTodo(todo.id)}
+                    className="delete-btn"
+                  &gt;
+                    🗑️
+                  &lt;/button&gt;
+                &lt;/div&gt;
+              &lt;/&gt;
+            )}
+          &lt;/li&gt;
+        ))}
+      &lt;/ul&gt;
+
+      {/* Summary */}
+      &lt;div className="summary"&gt;
+        &lt;p&gt;
+          {todos.filter(t =&gt; !t.completed).length} of {todos.length} remaining
+        &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices -->
+                        <div class="content-block">
+                            <h2>Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>✅ Conditional Rendering</h3>
+                                    <ul>
+                                        <li>Use && for simple show/hide logic</li>
+                                        <li>Use ternary for either/or scenarios</li>
+                                        <li>Use if/else for complex conditions</li>
+                                        <li>Guard against null/undefined values</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ List Rendering</h3>
+                                    <ul>
+                                        <li>Always provide unique keys</li>
+                                        <li>Use stable IDs, not array indices</li>
+                                        <li>Extract list items into components</li>
+                                        <li>Handle empty states gracefully</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ Performance</h3>
+                                    <ul>
+                                        <li>Memoize expensive computations</li>
+                                        <li>Use React.memo for pure components</li>
+                                        <li>Virtualize very long lists</li>
+                                        <li>Avoid creating objects in render</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>❌ Common Mistakes</h3>
+                                    <ul>
+                                        <li>Using array index as key</li>
+                                        <li>Not handling loading/error states</li>
+                                        <li>Complex logic in JSX</li>
+                                        <li>Forgetting to handle empty arrays</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now understand how to conditionally render content and work with lists in React. 
+                                These skills are fundamental to building dynamic, interactive applications. 
+                                Next, you'll dive into React Hooks for more advanced state management.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="hooks.html">React Hooks</a> - Advanced state management with useEffect and custom hooks</li>
+                                    <li><a href="state-management.html">State Management</a> - Managing complex application state</li>
+                                    <li><a href="routing.html">Routing</a> - Building single-page applications</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

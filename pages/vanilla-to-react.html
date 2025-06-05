@@ -1,0 +1,787 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete guide for transitioning from vanilla JavaScript to React - migration patterns, best practices, and step-by-step approach">
+    <meta name="keywords" content="Vanilla JS to React, JavaScript Migration, React Transition Guide">
+    
+    <title>From Vanilla to React - Transition Guide</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#transition" class="breadcrumb-link">Transition Guide</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">From Vanilla to React</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>From Vanilla to React</h1>
+                    <p class="page-subtitle">
+                        Your complete migration guide from vanilla JavaScript to React. 
+                        Learn step-by-step approaches, common patterns, and best practices for a smooth transition.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge beginner">Beginner</span>
+                        <span class="reading-time">20 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Migration Overview -->
+                        <div class="content-block">
+                            <h2>Migration Overview</h2>
+                            <p>
+                                Transitioning from vanilla JavaScript to React isn't about abandoning everything you know. 
+                                It's about applying your existing knowledge in a new, more structured way that makes 
+                                building complex UIs easier and more maintainable.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 What You'll Gain</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>📦 Component Reusability</h4>
+                                        <p>Build once, use everywhere. Components eliminate code duplication.</p>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🔄 Declarative UI</h4>
+                                        <p>Describe what the UI should look like, not how to manipulate it.</p>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🎛️ State Management</h4>
+                                        <p>Predictable state updates and automatic UI synchronization.</p>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🔧 Developer Tools</h4>
+                                        <p>Amazing debugging tools and development experience.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Step-by-Step Migration -->
+                        <div class="content-block">
+                            <h2>Step-by-Step Migration Process</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Phase 1: Learn the Fundamentals</h3>
+                                <div class="code-comparison">
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">What You Know (Vanilla JS)</div>
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Your Current Skills</span>
+                                            </div>
+                                            <pre><code>// DOM Manipulation
+const button = document.getElementById('myButton');
+button.addEventListener('click', handleClick);
+
+// Creating Elements
+const div = document.createElement('div');
+div.textContent = 'Hello World';
+document.body.appendChild(div);
+
+// Updating Content
+function updateCounter(count) {
+  document.getElementById('counter').textContent = count;
+}
+
+// Event Handling
+function handleClick(event) {
+  console.log('Button clicked!');
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">React Equivalent</div>
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React Approach</span>
+                                            </div>
+                                            <pre><code>// Component with State
+function Counter() {
+  const [count, setCount] = useState(0);
+  
+  const handleClick = () => {
+    console.log('Button clicked!');
+    setCount(count + 1);
+  };
+  
+  return (
+    &lt;div&gt;
+      &lt;div&gt;Hello World&lt;/div&gt;
+      &lt;div id="counter"&gt;{count}&lt;/div&gt;
+      &lt;button id="myButton" onClick={handleClick}&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🛠️ Phase 2: Identify Reusable Patterns</h3>
+                                <p>Look at your existing code and identify repeated patterns that could become components:</p>
+                                
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Converting Patterns to Components</span>
+                                    </div>
+                                    <pre><code>// Vanilla JS: Repeated modal code
+function createModal(title, content) {
+  const modal = document.createElement('div');
+  modal.className = 'modal';
+  modal.innerHTML = `
+    &lt;div class="modal-content"&gt;
+      &lt;h2&gt;${title}&lt;/h2&gt;
+      &lt;p&gt;${content}&lt;/p&gt;
+      &lt;button class="close-btn"&gt;Close&lt;/button&gt;
+    &lt;/div&gt;
+  `;
+  document.body.appendChild(modal);
+}
+
+// React: Reusable Modal Component
+function Modal({ title, content, isOpen, onClose }) {
+  if (!isOpen) return null;
+  
+  return (
+    &lt;div className="modal"&gt;
+      &lt;div className="modal-content"&gt;
+        &lt;h2&gt;{title}&lt;/h2&gt;
+        &lt;p&gt;{content}&lt;/p&gt;
+        &lt;button className="close-btn" onClick={onClose}&gt;
+          Close
+        &lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Usage is clean and declarative
+function App() {
+  const [showModal, setShowModal] = useState(false);
+  
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => setShowModal(true)}&gt;
+        Open Modal
+      &lt;/button&gt;
+      
+      &lt;Modal 
+        title="Welcome"
+        content="This is a reusable modal!"
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+      /&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📊 Phase 3: Convert Data Handling</h3>
+                                
+                                <div class="code-comparison">
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">Vanilla JS Data Flow</div>
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Imperative Updates</span>
+                                            </div>
+                                            <pre><code>let todos = [];
+
+function addTodo(text) {
+  todos.push({ id: Date.now(), text, done: false });
+  renderTodos();
+}
+
+function toggleTodo(id) {
+  const todo = todos.find(t => t.id === id);
+  if (todo) {
+    todo.done = !todo.done;
+    renderTodos();
+  }
+}
+
+function renderTodos() {
+  const container = document.getElementById('todos');
+  container.innerHTML = '';
+  
+  todos.forEach(todo => {
+    const div = document.createElement('div');
+    div.innerHTML = `
+      &lt;input 
+        type="checkbox" 
+        ${todo.done ? 'checked' : ''}
+        onchange="toggleTodo(${todo.id})"
+      &gt;
+      &lt;span&gt;${todo.text}&lt;/span&gt;
+    `;
+    container.appendChild(div);
+  });
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">React Data Flow</div>
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Declarative Updates</span>
+                                            </div>
+                                            <pre><code>function TodoApp() {
+  const [todos, setTodos] = useState([]);
+  
+  const addTodo = (text) => {
+    setTodos([...todos, { 
+      id: Date.now(), 
+      text, 
+      done: false 
+    }]);
+  };
+  
+  const toggleTodo = (id) => {
+    setTodos(todos.map(todo =>
+      todo.id === id 
+        ? { ...todo, done: !todo.done }
+        : todo
+    ));
+  };
+  
+  return (
+    &lt;div&gt;
+      &lt;TodoInput onAdd={addTodo} /&gt;
+      &lt;div id="todos"&gt;
+        {todos.map(todo => (
+          &lt;TodoItem 
+            key={todo.id}
+            todo={todo}
+            onToggle={toggleTodo}
+          /&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Common Migration Patterns -->
+                        <div class="content-block">
+                            <h2>Common Migration Patterns</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🔄 Event Handling</h3>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Before & After</span>
+                                        </div>
+                                        <pre><code>// Vanilla JS
+document.getElementById('btn').addEventListener('click', (e) => {
+  e.preventDefault();
+  console.log('Clicked!');
+});
+
+// React
+&lt;button onClick={(e) => {
+  e.preventDefault();
+  console.log('Clicked!');
+}}&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📝 Form Handling</h3>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Form Migration</span>
+                                        </div>
+                                        <pre><code>// Vanilla JS
+const form = document.querySelector('form');
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const name = formData.get('name');
+  // Process form...
+});
+
+// React
+function ContactForm() {
+  const [name, setName] = useState('');
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Process form...
+  };
+  
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input 
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      /&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔄 API Calls</h3>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Async Data</span>
+                                        </div>
+                                        <pre><code>// Vanilla JS
+async function loadUsers() {
+  const response = await fetch('/api/users');
+  const users = await response.json();
+  
+  const container = document.getElementById('users');
+  container.innerHTML = users.map(user => 
+    `&lt;div&gt;${user.name}&lt;/div&gt;`
+  ).join('');
+}
+
+// React
+function UserList() {
+  const [users, setUsers] = useState([]);
+  
+  useEffect(() => {
+    fetch('/api/users')
+      .then(res => res.json())
+      .then(setUsers);
+  }, []);
+  
+  return (
+    &lt;div&gt;
+      {users.map(user => (
+        &lt;div key={user.id}&gt;{user.name}&lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎨 Dynamic Styling</h3>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Conditional Styles</span>
+                                        </div>
+                                        <pre><code>// Vanilla JS
+const element = document.getElementById('status');
+if (isActive) {
+  element.classList.add('active');
+  element.style.color = 'green';
+} else {
+  element.classList.remove('active');
+  element.style.color = 'red';
+}
+
+// React
+&lt;div 
+  className={`status ${isActive ? 'active' : ''}`}
+  style={{ color: isActive ? 'green' : 'red' }}
+&gt;
+  Status
+&lt;/div&gt;</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Migration Checklist -->
+                        <div class="content-block">
+                            <h2>Migration Checklist</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>✅ Pre-Migration Planning</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>📋 Audit Your Code</h4>
+                                        <ul>
+                                            <li>☐ Identify repeated UI patterns</li>
+                                            <li>☐ List all event handlers</li>
+                                            <li>☐ Document data flow</li>
+                                            <li>☐ Note third-party dependencies</li>
+                                            <li>☐ Map out component hierarchy</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>⚙️ Setup Environment</h4>
+                                        <ul>
+                                            <li>☐ Install Node.js and npm</li>
+                                            <li>☐ Choose build tool (CRA or Vite)</li>
+                                            <li>☐ Set up development environment</li>
+                                            <li>☐ Install React DevTools</li>
+                                            <li>☐ Configure code editor</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🏗️ Migration Steps</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>📦 Phase 1: Component Creation</h4>
+                                        <ul>
+                                            <li>☐ Start with simplest components</li>
+                                            <li>☐ Convert reusable UI pieces</li>
+                                            <li>☐ Replace innerHTML with JSX</li>
+                                            <li>☐ Update class to className</li>
+                                            <li>☐ Convert event listeners</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🎛️ Phase 2: State Management</h4>
+                                        <ul>
+                                            <li>☐ Identify state variables</li>
+                                            <li>☐ Convert to useState hooks</li>
+                                            <li>☐ Update state setter functions</li>
+                                            <li>☐ Handle side effects with useEffect</li>
+                                            <li>☐ Lift state up when needed</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🔄 Phase 3: Data Flow</h4>
+                                        <ul>
+                                            <li>☐ Convert API calls to useEffect</li>
+                                            <li>☐ Implement proper loading states</li>
+                                            <li>☐ Add error handling</li>
+                                            <li>☐ Update form handling</li>
+                                            <li>☐ Test component interactions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>✨ Phase 4: Polish & Optimize</h4>
+                                        <ul>
+                                            <li>☐ Add proper key props</li>
+                                            <li>☐ Implement error boundaries</li>
+                                            <li>☐ Optimize re-renders</li>
+                                            <li>☐ Add accessibility features</li>
+                                            <li>☐ Write tests</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices -->
+                        <div class="content-block">
+                            <h2>Migration Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🎯 Start Small</h3>
+                                    <ul>
+                                        <li>Begin with isolated components</li>
+                                        <li>Don't migrate everything at once</li>
+                                        <li>Test each component thoroughly</li>
+                                        <li>Gradually increase complexity</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔄 Incremental Approach</h3>
+                                    <ul>
+                                        <li>You can mix React with vanilla JS</li>
+                                        <li>Migrate page by page</li>
+                                        <li>Keep existing APIs working</li>
+                                        <li>Plan for gradual rollout</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📚 Learn as You Go</h3>
+                                    <ul>
+                                        <li>Don't try to learn everything first</li>
+                                        <li>Focus on immediate needs</li>
+                                        <li>Read documentation actively</li>
+                                        <li>Join React communities</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🧪 Test Everything</h3>
+                                    <ul>
+                                        <li>Set up testing from the start</li>
+                                        <li>Test user interactions</li>
+                                        <li>Verify edge cases</li>
+                                        <li>Monitor performance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Common Pitfalls -->
+                        <div class="content-block">
+                            <h2>Common Pitfalls to Avoid</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>⚠️ Watch Out For</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>🔄 Direct DOM Manipulation</h4>
+                                        <p>Avoid using document.getElementById() or direct DOM manipulation in React. Let React manage the DOM.</p>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">❌ Don't Do This</span>
+                                            </div>
+                                            <pre><code>function BadComponent() {
+  useEffect(() => {
+    document.getElementById('myDiv').style.color = 'red';
+  });
+  
+  return &lt;div id="myDiv"&gt;Text&lt;/div&gt;;
+}</code></pre>
+                                        </div>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">✅ Do This Instead</span>
+                                            </div>
+                                            <pre><code>function GoodComponent() {
+  const [color, setColor] = useState('red');
+  
+  return (
+    &lt;div style={{ color }}&gt;
+      Text
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🔄 State Mutations</h4>
+                                        <p>Never mutate state directly. Always create new objects/arrays.</p>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">❌ Mutating State</span>
+                                            </div>
+                                            <pre><code>const [items, setItems] = useState([]);
+
+// Wrong - mutates existing array
+const addItem = (item) => {
+  items.push(item);
+  setItems(items);
+};</code></pre>
+                                        </div>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">✅ Immutable Updates</span>
+                                            </div>
+                                            <pre><code>const [items, setItems] = useState([]);
+
+// Correct - creates new array
+const addItem = (item) => {
+  setItems([...items, item]);
+};</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>Your Migration Journey</h2>
+                            <p>
+                                Congratulations! You now have a clear roadmap for transitioning from vanilla JavaScript to React. 
+                                Remember, this is a journey, not a race. Take your time to understand each concept thoroughly.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Your Journey</h3>
+                                <ol>
+                                    <li><a href="learning-path.html">Learning Path</a> - Structured approach to mastering React</li>
+                                    <li><a href="resources.html">Resources</a> - External learning materials and documentation</li>
+                                    <li><a href="../index.html">Home</a> - Review all concepts from the beginning</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

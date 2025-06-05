@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Essential React Development Tools - Create React App, Vite, React DevTools, and build tools for modern React development">
+    <meta name="keywords" content="React Development Tools, Create React App, Vite, React DevTools, Build Tools">
+    
+    <title>Development Tools - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#ecosystem" class="breadcrumb-link">Ecosystem</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Development Tools</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Development Tools</h1>
+                    <p class="page-subtitle">
+                        Discover essential tools that make React development faster, easier, and more enjoyable. 
+                        From build tools to debugging utilities, learn what every React developer should know.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <span class="reading-time">12 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Build Tools Comparison -->
+                        <div class="content-block">
+                            <h2>Build Tools: Create React App vs Vite</h2>
+                            <p>
+                                Build tools handle the complex setup needed for modern React development: 
+                                JSX compilation, hot reloading, bundling, and optimization. Here are the two most popular choices.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Create React App (CRA)</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>📦 What is CRA?</h4>
+                                            <p>Official React toolchain that sets up a modern web app with zero configuration.</p>
+                                            
+                                            <h4>✅ Pros:</h4>
+                                            <ul>
+                                                <li>Official React team support</li>
+                                                <li>Zero configuration needed</li>
+                                                <li>Battle-tested and stable</li>
+                                                <li>Great for beginners</li>
+                                                <li>Excellent documentation</li>
+                                            </ul>
+                                            
+                                            <h4>❌ Cons:</h4>
+                                            <ul>
+                                                <li>Slower development server</li>
+                                                <li>Larger bundle sizes</li>
+                                                <li>Less flexible configuration</li>
+                                                <li>Longer build times</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Getting Started with CRA</span>
+                                            </div>
+                                            <pre><code># Create new React app
+npx create-react-app my-app
+cd my-app
+
+# Start development server
+npm start
+
+# Build for production
+npm run build
+
+# Run tests
+npm test
+
+# Eject (reveals configuration)
+npm run eject</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Vite</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>⚡ What is Vite?</h4>
+                                            <p>Next-generation build tool that's significantly faster than traditional bundlers.</p>
+                                            
+                                            <h4>✅ Pros:</h4>
+                                            <ul>
+                                                <li>Lightning-fast development server</li>
+                                                <li>Instant hot module replacement</li>
+                                                <li>Smaller bundle sizes</li>
+                                                <li>Modern ES modules support</li>
+                                                <li>Highly configurable</li>
+                                            </ul>
+                                            
+                                            <h4>❌ Cons:</h4>
+                                            <ul>
+                                                <li>Less mature ecosystem</li>
+                                                <li>May require more configuration</li>
+                                                <li>Learning curve for advanced features</li>
+                                            </ul>
+                                        </div>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Getting Started with Vite</span>
+                                            </div>
+                                            <pre><code># Create new React app with Vite
+npm create vite@latest my-app -- --template react
+cd my-app
+npm install
+
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- React Developer Tools -->
+                        <div class="content-block">
+                            <h2>React Developer Tools</h2>
+                            <p>
+                                The React Developer Tools are essential browser extensions that help you inspect 
+                                React component hierarchies, examine props and state, and debug performance issues.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔍 Installation and Features</h3>
+                                
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>📥 Installation</h4>
+                                        <ul>
+                                            <li><strong>Chrome:</strong> Install from Chrome Web Store</li>
+                                            <li><strong>Firefox:</strong> Install from Firefox Add-ons</li>
+                                            <li><strong>Edge:</strong> Install from Microsoft Edge Add-ons</li>
+                                            <li><strong>Standalone:</strong> Available as desktop app</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🧩 Components Tab</h4>
+                                        <ul>
+                                            <li>View component hierarchy</li>
+                                            <li>Inspect props and state</li>
+                                            <li>Edit props and state live</li>
+                                            <li>See component source code</li>
+                                            <li>Track component updates</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>📊 Profiler Tab</h4>
+                                        <ul>
+                                            <li>Measure component performance</li>
+                                            <li>Identify slow components</li>
+                                            <li>Track render times</li>
+                                            <li>Find unnecessary re-renders</li>
+                                            <li>Analyze component interactions</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>⚙️ Advanced Features</h4>
+                                        <ul>
+                                            <li>Component highlighting</li>
+                                            <li>Search and filter components</li>
+                                            <li>Hook inspection</li>
+                                            <li>Context value viewing</li>
+                                            <li>Suspense boundary tracking</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Using DevTools Effectively</span>
+                                </div>
+                                <pre><code>// Add displayName to components for better debugging
+function UserProfile({ user }) {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;{user.name}&lt;/h1&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+UserProfile.displayName = 'UserProfile';
+
+// Use React.memo with a name for optimization tracking
+const MemoizedComponent = React.memo(function ExpensiveComponent({ data }) {
+  // Expensive computation here
+  return &lt;div&gt;{/* rendered content */}&lt;/div&gt;;
+});
+
+// Add debugging hooks for development
+function useDebugValue(value, formatFn) {
+  React.useDebugValue(value, formatFn);
+}
+
+function useUser(userId) {
+  const [user, setUser] = useState(null);
+  
+  // This will show in DevTools
+  useDebugValue(user, user => user?.name ?? 'Loading...');
+  
+  useEffect(() => {
+    // fetch user data
+  }, [userId]);
+  
+  return user;
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Code Editors and Extensions -->
+                        <div class="content-block">
+                            <h2>Code Editors and Extensions</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>📝 Visual Studio Code</h3>
+                                    <p>Most popular editor for React development with excellent JSX support.</p>
+                                    
+                                    <h4>🔌 Essential Extensions:</h4>
+                                    <ul>
+                                        <li><strong>ES7+ React/Redux/React-Native snippets</strong> - Code snippets</li>
+                                        <li><strong>Prettier</strong> - Code formatting</li>
+                                        <li><strong>ESLint</strong> - Code linting</li>
+                                        <li><strong>Auto Rename Tag</strong> - Sync HTML/JSX tags</li>
+                                        <li><strong>Bracket Pair Colorizer</strong> - Visual bracket matching</li>
+                                        <li><strong>GitLens</strong> - Enhanced Git capabilities</li>
+                                        <li><strong>Thunder Client</strong> - API testing</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>⚛️ Other Editors</h3>
+                                    
+                                    <h4>WebStorm:</h4>
+                                    <ul>
+                                        <li>Built-in React support</li>
+                                        <li>Advanced refactoring tools</li>
+                                        <li>Integrated debugging</li>
+                                        <li>Paid but feature-rich</li>
+                                    </ul>
+                                    
+                                    <h4>Atom (Sunset):</h4>
+                                    <ul>
+                                        <li>Good React packages available</li>
+                                        <li>Highly customizable</li>
+                                        <li>Development discontinued</li>
+                                    </ul>
+                                    
+                                    <h4>Vim/Neovim:</h4>
+                                    <ul>
+                                        <li>CoC.nvim for language server</li>
+                                        <li>vim-jsx-pretty for JSX syntax</li>
+                                        <li>High performance</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Package Managers -->
+                        <div class="content-block">
+                            <h2>Package Managers</h2>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">npm (Node Package Manager)</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>📦 Default Choice</h4>
+                                            <p>Comes with Node.js, most widely used and supported.</p>
+                                            
+                                            <div class="code-example">
+                                                <div class="code-header">
+                                                    <span class="code-lang">npm Commands</span>
+                                                </div>
+                                                <pre><code># Install dependencies
+npm install
+
+# Add a package
+npm install react-router-dom
+
+# Add dev dependency
+npm install --save-dev @types/react
+
+# Remove package
+npm uninstall package-name
+
+# Update packages
+npm update
+
+# Run scripts
+npm start
+npm run build</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Yarn</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>🚀 Faster Alternative</h4>
+                                            <p>Facebook's package manager with improved performance and features.</p>
+                                            
+                                            <div class="code-example">
+                                                <div class="code-header">
+                                                    <span class="code-lang">Yarn Commands</span>
+                                                </div>
+                                                <pre><code># Install dependencies
+yarn
+
+# Add a package
+yarn add react-router-dom
+
+# Add dev dependency
+yarn add --dev @types/react
+
+# Remove package
+yarn remove package-name
+
+# Update packages
+yarn upgrade
+
+# Run scripts
+yarn start
+yarn build</code></pre>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📋 Package Manager Comparison</h3>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Feature</th>
+                                            <th>npm</th>
+                                            <th>Yarn</th>
+                                            <th>pnpm</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Installation Speed</td>
+                                            <td>Good</td>
+                                            <td>Fast</td>
+                                            <td>Fastest</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Disk Space</td>
+                                            <td>Standard</td>
+                                            <td>Standard</td>
+                                            <td>Efficient</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Lock File</td>
+                                            <td>package-lock.json</td>
+                                            <td>yarn.lock</td>
+                                            <td>pnpm-lock.yaml</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Workspaces</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                            <td>Yes</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Testing Tools -->
+                        <div class="content-block">
+                            <h2>Testing Tools</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🧪 Jest</h3>
+                                    <p>JavaScript testing framework with built-in assertions, mocking, and code coverage.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Jest Example</span>
+                                        </div>
+                                        <pre><code>// Button.test.js
+import { render, screen, fireEvent } from '@testing-library/react';
+import Button from './Button';
+
+describe('Button Component', () => {
+  test('renders button with text', () => {
+    render(&lt;Button&gt;Click me&lt;/Button&gt;);
+    expect(screen.getByText('Click me')).toBeInTheDocument();
+  });
+
+  test('calls onClick when clicked', () => {
+    const handleClick = jest.fn();
+    render(&lt;Button onClick={handleClick}&gt;Click me&lt;/Button&gt;);
+    
+    fireEvent.click(screen.getByText('Click me'));
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔬 React Testing Library</h3>
+                                    <p>Testing utility that encourages testing behavior rather than implementation.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">RTL Example</span>
+                                        </div>
+                                        <pre><code>import { render, screen, waitFor } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import UserProfile from './UserProfile';
+
+test('displays user information after loading', async () => {
+  render(&lt;UserProfile userId="123" /&gt;);
+  
+  // Wait for async data to load
+  await waitFor(() => {
+    expect(screen.getByText('John Doe')).toBeInTheDocument();
+  });
+  
+  // Test user interaction
+  const user = userEvent.setup();
+  await user.click(screen.getByText('Edit Profile'));
+  
+  expect(screen.getByRole('textbox', { name: /name/i })).toBeInTheDocument();
+});</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Development Server Tools -->
+                        <div class="content-block">
+                            <h2>Development Server and Debugging</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🔥 Hot Module Replacement</h3>
+                                    <p>Updates code in the browser without losing application state.</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">HMR Configuration</span>
+                                        </div>
+                                        <pre><code>// vite.config.js
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    port: 3000,
+    open: true, // Auto-open browser
+    hmr: {
+      overlay: true // Show errors in browser overlay
+    }
+  }
+})</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🐛 Browser DevTools</h3>
+                                    <p>Built-in browser debugging capabilities for React apps.</p>
+                                    
+                                    <ul>
+                                        <li><strong>Console:</strong> View logs and errors</li>
+                                        <li><strong>Sources:</strong> Set breakpoints in code</li>
+                                        <li><strong>Network:</strong> Monitor API calls</li>
+                                        <li><strong>Performance:</strong> Profile component rendering</li>
+                                        <li><strong>Application:</strong> Inspect localStorage/sessionStorage</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📱 Mobile Development</h3>
+                                    <p>Tools for testing React apps on mobile devices.</p>
+                                    
+                                    <ul>
+                                        <li><strong>Chrome DevTools Device Mode:</strong> Simulate mobile devices</li>
+                                        <li><strong>BrowserStack:</strong> Test on real devices</li>
+                                        <li><strong>Expo:</strong> For React Native development</li>
+                                        <li><strong>ngrok:</strong> Expose local dev server to internet</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>⚡ Performance Tools</h3>
+                                    <p>Monitor and optimize React application performance.</p>
+                                    
+                                    <ul>
+                                        <li><strong>Lighthouse:</strong> Web performance audits</li>
+                                        <li><strong>Webpack Bundle Analyzer:</strong> Analyze bundle size</li>
+                                        <li><strong>React DevTools Profiler:</strong> Component performance</li>
+                                        <li><strong>Web Vitals:</strong> Core web performance metrics</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Tool Recommendations -->
+                        <div class="content-block">
+                            <h2>Recommended Tool Stack</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 For Beginners</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>Essential Setup</h4>
+                                        <ul>
+                                            <li><strong>Build Tool:</strong> Create React App</li>
+                                            <li><strong>Editor:</strong> VS Code</li>
+                                            <li><strong>Package Manager:</strong> npm</li>
+                                            <li><strong>Browser:</strong> Chrome with React DevTools</li>
+                                            <li><strong>Version Control:</strong> Git + GitHub</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>VS Code Extensions</h4>
+                                        <ul>
+                                            <li>ES7+ React/Redux snippets</li>
+                                            <li>Prettier</li>
+                                            <li>ESLint</li>
+                                            <li>Auto Rename Tag</li>
+                                            <li>GitLens</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>⚡ For Advanced Users</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>Performance-Focused</h4>
+                                        <ul>
+                                            <li><strong>Build Tool:</strong> Vite</li>
+                                            <li><strong>Package Manager:</strong> pnpm</li>
+                                            <li><strong>Testing:</strong> Vitest + Testing Library</li>
+                                            <li><strong>Bundler Analysis:</strong> Bundle Analyzer</li>
+                                            <li><strong>Performance:</strong> Lighthouse CI</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>Team Development</h4>
+                                        <ul>
+                                            <li><strong>Code Quality:</strong> Husky + lint-staged</li>
+                                            <li><strong>Documentation:</strong> Storybook</li>
+                                            <li><strong>CI/CD:</strong> GitHub Actions</li>
+                                            <li><strong>Deployment:</strong> Vercel/Netlify</li>
+                                            <li><strong>Monitoring:</strong> Sentry</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now know the essential tools for React development. These tools will make you more 
+                                productive and help you build better applications. Next, explore Next.js for full-stack React development.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="nextjs.html">Next.js</a> - Full-stack React framework with amazing DX</li>
+                                    <li><a href="libraries.html">Popular Libraries</a> - UI libraries and ecosystem tools</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                    <li><a href="learning-path.html">Learning Path</a> - Structured approach to mastering React</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

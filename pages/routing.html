@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master React Router - build single-page applications with navigation, nested routes, and dynamic routing">
+    <meta name="keywords" content="React Router, SPA, Single Page Application, Navigation, React Tutorial">
+    
+    <title>Routing - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#advanced" class="breadcrumb-link">Advanced</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Routing</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Routing</h1>
+                    <p class="page-subtitle">
+                        Learn how to build single-page applications with React Router. 
+                        Master navigation, nested routes, and dynamic routing patterns.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge advanced">Advanced</span>
+                        <span class="reading-time">14 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- What is SPA -->
+                        <div class="content-block">
+                            <h2>Single-Page Applications (SPAs)</h2>
+                            <p>
+                                A Single-Page Application (SPA) is a web application that loads a single HTML page 
+                                and dynamically updates content as the user interacts with the app. React Router 
+                                enables you to create SPAs with multiple "pages" that feel like traditional websites.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Traditional Multi-Page App</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>🔄 How it works:</h4>
+                                            <ol>
+                                                <li>User clicks a link</li>
+                                                <li>Browser makes new HTTP request</li>
+                                                <li>Server sends complete new HTML page</li>
+                                                <li>Page refreshes entirely</li>
+                                                <li>JavaScript/CSS reload</li>
+                                            </ol>
+                                            <h4>❌ Disadvantages:</h4>
+                                            <ul>
+                                                <li>Slower navigation</li>
+                                                <li>Full page reloads</li>
+                                                <li>State is lost between pages</li>
+                                                <li>More server requests</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Single-Page Application</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>⚡ How it works:</h4>
+                                            <ol>
+                                                <li>User clicks a link</li>
+                                                <li>JavaScript updates the URL</li>
+                                                <li>React Router renders new component</li>
+                                                <li>Only content area changes</li>
+                                                <li>No page refresh needed</li>
+                                            </ol>
+                                            <h4>✅ Advantages:</h4>
+                                            <ul>
+                                                <li>Faster navigation</li>
+                                                <li>Smooth transitions</li>
+                                                <li>State preservation</li>
+                                                <li>Better user experience</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- React Router Setup -->
+                        <div class="content-block">
+                            <h2>React Router Setup</h2>
+                            <p>
+                                React Router is the most popular routing library for React applications. 
+                                It provides declarative routing that keeps your UI in sync with the URL.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>📦 Installation and Basic Setup</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Installation</span>
+                                    </div>
+                                    <pre><code># Install React Router
+npm install react-router-dom
+
+# Or with yarn
+yarn add react-router-dom</code></pre>
+                                </div>
+                                
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Basic Router Setup</span>
+                                    </div>
+                                    <pre><code>import React from 'react';
+import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+// Page Components
+function Home() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Home Page&lt;/h1&gt;
+      &lt;p&gt;Welcome to our React application!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function About() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;About Page&lt;/h1&gt;
+      &lt;p&gt;Learn more about our company.&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+function Contact() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Contact Page&lt;/h1&gt;
+      &lt;p&gt;Get in touch with us!&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Navigation Component
+function Navigation() {
+  return (
+    &lt;nav&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;Link to="/"&gt;Home&lt;/Link&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;Link to="/about"&gt;About&lt;/Link&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;Link to="/contact"&gt;Contact&lt;/Link&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/nav&gt;
+  );
+}
+
+// Main App Component
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;div&gt;
+        &lt;Navigation /&gt;
+        
+        {/* Define Routes */}
+        &lt;Routes&gt;
+          &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+          &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+          &lt;Route path="/contact" element={&lt;Contact /&gt;} /&gt;
+        &lt;/Routes&gt;
+      &lt;/div&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}
+
+export default App;</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dynamic Routes -->
+                        <div class="content-block">
+                            <h2>Dynamic Routes and Parameters</h2>
+                            <p>
+                                Dynamic routes allow you to create flexible URLs that accept parameters. 
+                                This is essential for pages like user profiles, product details, or blog posts.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔗 URL Parameters</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Dynamic Routes</span>
+                                    </div>
+                                    <pre><code>import { useParams, useNavigate } from 'react-router-dom';
+
+// User Profile Component
+function UserProfile() {
+  const { userId } = useParams(); // Get URL parameter
+  const navigate = useNavigate(); // Programmatic navigation
+  
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch user data based on userId
+    const fetchUser = async () => {
+      try {
+        const response = await fetch(`/api/users/${userId}`);
+        const userData = await response.json();
+        setUser(userData);
+      } catch (error) {
+        console.error('Error fetching user:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUser();
+  }, [userId]);
+
+  if (loading) return &lt;div&gt;Loading user...&lt;/div&gt;;
+  if (!user) return &lt;div&gt;User not found&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => navigate('/users')}&gt;
+        ← Back to Users
+      &lt;/button&gt;
+      
+      &lt;h1&gt;{user.name}&lt;/h1&gt;
+      &lt;p&gt;Email: {user.email}&lt;/p&gt;
+      &lt;p&gt;Joined: {user.joinDate}&lt;/p&gt;
+      
+      &lt;button onClick={() => navigate(`/users/${userId}/edit`)}&gt;
+        Edit Profile
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Product Details with Multiple Parameters
+function ProductDetails() {
+  const { category, productId } = useParams();
+  
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Product Details&lt;/h1&gt;
+      &lt;p&gt;Category: {category}&lt;/p&gt;
+      &lt;p&gt;Product ID: {productId}&lt;/p&gt;
+    &lt;/div&gt;
+  );
+}
+
+// App with Dynamic Routes
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/users" element={&lt;UserList /&gt;} /&gt;
+        &lt;Route path="/users/:userId" element={&lt;UserProfile /&gt;} /&gt;
+        &lt;Route path="/users/:userId/edit" element={&lt;EditProfile /&gt;} /&gt;
+        &lt;Route path="/products/:category/:productId" element={&lt;ProductDetails /&gt;} /&gt;
+        &lt;Route path="*" element={&lt;NotFound /&gt;} /&gt; {/* Catch-all route */}
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Nested Routes -->
+                        <div class="content-block">
+                            <h2>Nested Routes</h2>
+                            <p>
+                                Nested routes allow you to build complex layouts where parts of the UI 
+                                remain constant while other parts change based on the URL.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🏗️ Building Nested Layouts</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Nested Routes Example</span>
+                                    </div>
+                                    <pre><code>import { Outlet, NavLink } from 'react-router-dom';
+
+// Dashboard Layout Component
+function Dashboard() {
+  return (
+    &lt;div className="dashboard"&gt;
+      &lt;aside className="sidebar"&gt;
+        &lt;h2&gt;Dashboard&lt;/h2&gt;
+        &lt;nav&gt;
+          &lt;NavLink 
+            to="/dashboard" 
+            end
+            className={({ isActive }) => isActive ? 'active' : ''}
+          &gt;
+            Overview
+          &lt;/NavLink&gt;
+          
+          &lt;NavLink 
+            to="/dashboard/profile"
+            className={({ isActive }) => isActive ? 'active' : ''}
+          &gt;
+            Profile
+          &lt;/NavLink&gt;
+          
+          &lt;NavLink 
+            to="/dashboard/settings"
+            className={({ isActive }) => isActive ? 'active' : ''}
+          &gt;
+            Settings
+          &lt;/NavLink&gt;
+          
+          &lt;NavLink 
+            to="/dashboard/analytics"
+            className={({ isActive }) => isActive ? 'active' : ''}
+          &gt;
+            Analytics
+          &lt;/NavLink&gt;
+        &lt;/nav&gt;
+      &lt;/aside&gt;
+      
+      &lt;main className="main-content"&gt;
+        {/* Nested routes will render here */}
+        &lt;Outlet /&gt;
+      &lt;/main&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Dashboard Child Components
+function DashboardOverview() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Dashboard Overview&lt;/h1&gt;
+      &lt;div className="stats-grid"&gt;
+        &lt;div className="stat-card"&gt;
+          &lt;h3&gt;Total Users&lt;/h3&gt;
+          &lt;p&gt;1,234&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div className="stat-card"&gt;
+          &lt;h3&gt;Revenue&lt;/h3&gt;
+          &lt;p&gt;$12,345&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+function DashboardProfile() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Profile Settings&lt;/h1&gt;
+      &lt;form&gt;
+        &lt;input type="text" placeholder="Name" /&gt;
+        &lt;input type="email" placeholder="Email" /&gt;
+        &lt;button type="submit"&gt;Save Changes&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  );
+}
+
+function DashboardSettings() {
+  return (
+    &lt;div&gt;
+      &lt;h1&gt;Application Settings&lt;/h1&gt;
+      &lt;div&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox" /&gt; Enable Notifications
+        &lt;/label&gt;
+        &lt;label&gt;
+          &lt;input type="checkbox" /&gt; Dark Mode
+        &lt;/label&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}
+
+// App with Nested Routes
+function App() {
+  return (
+    &lt;BrowserRouter&gt;
+      &lt;Routes&gt;
+        &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+        &lt;Route path="/login" element={&lt;Login /&gt;} /&gt;
+        
+        {/* Nested Dashboard Routes */}
+        &lt;Route path="/dashboard" element={&lt;Dashboard /&gt;}&gt;
+          &lt;Route index element={&lt;DashboardOverview /&gt;} /&gt; {/* Default child */}
+          &lt;Route path="profile" element={&lt;DashboardProfile /&gt;} /&gt;
+          &lt;Route path="settings" element={&lt;DashboardSettings /&gt;} /&gt;
+          &lt;Route path="analytics" element={&lt;DashboardAnalytics /&gt;} /&gt;
+        &lt;/Route&gt;
+        
+        &lt;Route path="*" element={&lt;NotFound /&gt;} /&gt;
+      &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Navigation Hooks -->
+                        <div class="content-block">
+                            <h2>Navigation and Router Hooks</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🧭 useNavigate</h3>
+                                    <p>Programmatically navigate to different routes</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">useNavigate</span>
+                                        </div>
+                                        <pre><code>import { useNavigate } from 'react-router-dom';
+
+function LoginForm() {
+  const navigate = useNavigate();
+
+  const handleLogin = async (credentials) => {
+    try {
+      await login(credentials);
+      // Navigate to dashboard after successful login
+      navigate('/dashboard');
+      
+      // Or navigate with replacement (can't go back)
+      navigate('/dashboard', { replace: true });
+      
+      // Navigate back
+      navigate(-1);
+      
+      // Navigate with state
+      navigate('/dashboard', { 
+        state: { from: '/login' } 
+      });
+    } catch (error) {
+      console.error('Login failed');
+    }
+  };
+
+  return (
+    &lt;form onSubmit={handleLogin}&gt;
+      {/* form fields */}
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📍 useLocation</h3>
+                                    <p>Access current location and state</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">useLocation</span>
+                                        </div>
+                                        <pre><code>import { useLocation } from 'react-router-dom';
+
+function CurrentPage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    // Track page views
+    analytics.track('Page View', {
+      path: location.pathname,
+      search: location.search
+    });
+  }, [location]);
+
+  // Access state passed from navigate
+  const fromPage = location.state?.from;
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Current path: {location.pathname}&lt;/p&gt;
+      &lt;p&gt;Query string: {location.search}&lt;/p&gt;
+      {fromPage && &lt;p&gt;Came from: {fromPage}&lt;/p&gt;}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔍 useSearchParams</h3>
+                                    <p>Read and update URL query parameters</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">useSearchParams</span>
+                                        </div>
+                                        <pre><code>import { useSearchParams } from 'react-router-dom';
+
+function ProductList() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  
+  const category = searchParams.get('category') || 'all';
+  const sort = searchParams.get('sort') || 'name';
+  const page = parseInt(searchParams.get('page')) || 1;
+
+  const updateFilters = (newCategory, newSort) => {
+    setSearchParams({
+      category: newCategory,
+      sort: newSort,
+      page: '1' // Reset to page 1
+    });
+  };
+
+  return (
+    &lt;div&gt;
+      &lt;select 
+        value={category}
+        onChange={(e) => updateFilters(e.target.value, sort)}
+      &gt;
+        &lt;option value="all"&gt;All Categories&lt;/option&gt;
+        &lt;option value="electronics"&gt;Electronics&lt;/option&gt;
+      &lt;/select&gt;
+      
+      &lt;select 
+        value={sort}
+        onChange={(e) => updateFilters(category, e.target.value)}
+      &gt;
+        &lt;option value="name"&gt;Sort by Name&lt;/option&gt;
+        &lt;option value="price"&gt;Sort by Price&lt;/option&gt;
+      &lt;/select&gt;
+      
+      {/* URL will be: /products?category=electronics&sort=price&page=1 */}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🛡️ Protected Routes</h3>
+                                    <p>Restrict access based on authentication</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Protected Routes</span>
+                                        </div>
+                                        <pre><code>import { Navigate, useLocation } from 'react-router-dom';
+
+function ProtectedRoute({ children }) {
+  const { user } = useAuth(); // Custom auth hook
+  const location = useLocation();
+
+  if (!user) {
+    // Redirect to login with return path
+    return (
+      &lt;Navigate 
+        to="/login" 
+        state={{ from: location.pathname }}
+        replace 
+      /&gt;
+    );
+  }
+
+  return children;
+}
+
+// Usage in App
+function App() {
+  return (
+    &lt;Routes&gt;
+      &lt;Route path="/login" element={&lt;Login /&gt;} /&gt;
+      
+      &lt;Route 
+        path="/dashboard" 
+        element={
+          &lt;ProtectedRoute&gt;
+            &lt;Dashboard /&gt;
+          &lt;/ProtectedRoute&gt;
+        } 
+      /&gt;
+    &lt;/Routes&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices -->
+                        <div class="content-block">
+                            <h2>Routing Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>✅ Route Organization</h3>
+                                    <ul>
+                                        <li>Use clear, descriptive URLs</li>
+                                        <li>Group related routes together</li>
+                                        <li>Implement consistent naming patterns</li>
+                                        <li>Use nested routes for layouts</li>
+                                        <li>Always include a 404 catch-all route</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🚀 Performance</h3>
+                                    <ul>
+                                        <li>Use React.lazy for code splitting</li>
+                                        <li>Implement loading states</li>
+                                        <li>Preload critical routes</li>
+                                        <li>Use suspense boundaries</li>
+                                        <li>Cache route data when appropriate</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🛡️ Security</h3>
+                                    <ul>
+                                        <li>Validate route parameters</li>
+                                        <li>Implement proper authentication</li>
+                                        <li>Use protected route components</li>
+                                        <li>Sanitize URL parameters</li>
+                                        <li>Handle unauthorized access gracefully</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>♿ Accessibility</h3>
+                                    <ul>
+                                        <li>Update page titles on route changes</li>
+                                        <li>Manage focus after navigation</li>
+                                        <li>Provide skip navigation links</li>
+                                        <li>Use semantic navigation elements</li>
+                                        <li>Support keyboard navigation</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now understand how to build single-page applications with React Router. 
+                                Next, you'll explore the React ecosystem and essential development tools.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="dev-tools.html">Development Tools</a> - Essential tools for React development</li>
+                                    <li><a href="nextjs.html">Next.js</a> - Full-stack React framework with built-in routing</li>
+                                    <li><a href="libraries.html">Popular Libraries</a> - UI libraries and ecosystem tools</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master React Props and State - learn how data flows through React applications with practical examples">
+    <meta name="keywords" content="React Props, React State, useState Hook, Data Flow, Component Communication">
+    
+    <title>Props & State - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#core-concepts" class="breadcrumb-link">Core Concepts</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Props & State</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Props & State</h1>
+                    <p class="page-subtitle">
+                        Learn how data flows through React applications using props and state. 
+                        Master the fundamental concepts that make React components dynamic and interactive.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <span class="reading-time">12 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Understanding Props -->
+                        <div class="content-block">
+                            <h2>What are Props?</h2>
+                            <p>
+                                Props (short for "properties") are how React components receive data from their parent components. 
+                                Think of props as function parameters - they allow you to pass information into a component to customize its behavior and appearance.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">JavaScript Functions</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">JavaScript</span>
+                                            </div>
+                                            <pre><code>// Function with parameters
+function greetUser(name, age) {
+  return `Hello ${name}, you are ${age} years old!`;
+}
+
+// Calling the function
+greetUser("Alice", 25);
+greetUser("Bob", 30);</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React Components with Props</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React JSX</span>
+                                            </div>
+                                            <pre><code>// Component with props
+function GreetUser({ name, age }) {
+  return &lt;p&gt;Hello {name}, you are {age} years old!&lt;/p&gt;;
+}
+
+// Using the component
+&lt;GreetUser name="Alice" age={25} /&gt;
+&lt;GreetUser name="Bob" age={30} /&gt;</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🔑 Key Props Concepts</h3>
+                                <ul>
+                                    <li><strong>Props are read-only</strong> - Components cannot modify their props</li>
+                                    <li><strong>Props flow downward</strong> - From parent to child components</li>
+                                    <li><strong>Props are like function arguments</strong> - They configure how a component behaves</li>
+                                    <li><strong>Props can be any JavaScript value</strong> - strings, numbers, objects, functions, etc.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Props Examples -->
+                        <div class="content-block">
+                            <h2>Props in Action</h2>
+                            <p>Let's see how different types of data can be passed as props:</p>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Different Types of Props</span>
+                                </div>
+                                <pre><code>// UserCard component that accepts multiple props
+function UserCard({ 
+  name,           // string
+  age,            // number
+  isOnline,       // boolean
+  avatar,         // string (URL)
+  hobbies,        // array
+  address,        // object
+  onFollow        // function
+}) {
+  return (
+    &lt;div className="user-card"&gt;
+      &lt;img src={avatar} alt={name} /&gt;
+      &lt;h3&gt;{name} ({age}){isOnline && ' 🟢'}&lt;/h3&gt;
+      &lt;p&gt;{address.city}, {address.country}&lt;/p&gt;
+      
+      &lt;div&gt;
+        &lt;strong&gt;Hobbies:&lt;/strong&gt;
+        {hobbies.map(hobby =&gt; (
+          &lt;span key={hobby} className="hobby-tag"&gt;{hobby}&lt;/span&gt;
+        ))}
+      &lt;/div&gt;
+      
+      &lt;button onClick={onFollow}&gt;Follow&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Using the component
+&lt;UserCard
+  name="Sarah Johnson"
+  age={28}
+  isOnline={true}
+  avatar="/images/sarah.jpg"
+  hobbies={['Photography', 'Hiking', 'Cooking']}
+  address={{ city: 'San Francisco', country: 'USA' }}
+  onFollow={() =&gt; console.log('Following Sarah!')}
+/&gt;</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Understanding State -->
+                        <div class="content-block">
+                            <h2>What is State?</h2>
+                            <p>
+                                State is data that belongs to a component and can change over time. Unlike props (which come from outside), 
+                                state is managed internally by the component. When state changes, React automatically re-renders the component.
+                            </p>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Vanilla JavaScript</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">JavaScript</span>
+                                            </div>
+                                            <pre><code>// Managing state manually
+let count = 0;
+const counterElement = document.getElementById('counter');
+const buttonElement = document.getElementById('button');
+
+function updateDisplay() {
+  counterElement.textContent = `Count: ${count}`;
+}
+
+buttonElement.addEventListener('click', () =&gt; {
+  count++;
+  updateDisplay(); // Manual update
+});
+
+updateDisplay(); // Initial render</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">React with useState</div>
+                                    <div class="comparison-content">
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">React JSX</span>
+                                            </div>
+                                            <pre><code>import React, { useState } from 'react';
+
+function Counter() {
+  // State is managed by React
+  const [count, setCount] = useState(0);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+  // React automatically re-renders when state changes
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- useState Hook -->
+                        <div class="content-block">
+                            <h2>The useState Hook</h2>
+                            <p>
+                                The useState hook is the most common way to add state to functional components. 
+                                It returns an array with two elements: the current state value and a function to update it.
+                            </p>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">useState Syntax</span>
+                                </div>
+                                <pre><code>import React, { useState } from 'react';
+
+function MyComponent() {
+  // Syntax: const [stateVariable, setterFunction] = useState(initialValue);
+  const [count, setCount] = useState(0);
+  const [name, setName] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+  const [users, setUsers] = useState([]);
+  const [user, setUser] = useState({ name: '', email: '' });
+
+  return (
+    &lt;div&gt;
+      {/* Using state in JSX */}
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;p&gt;Name: {name}&lt;/p&gt;
+      &lt;p&gt;Visibility: {isVisible ? 'Visible' : 'Hidden'}&lt;/p&gt;
+      
+      {/* Updating state */}
+      &lt;button onClick={() =&gt; setCount(count + 1)}&gt;
+        Increment
+      &lt;/button&gt;
+      &lt;button onClick={() =&gt; setIsVisible(!isVisible)}&gt;
+        Toggle Visibility
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>📝 useState Rules</h3>
+                                <ul>
+                                    <li><strong>Always use the setter function</strong> - Never modify state directly</li>
+                                    <li><strong>State updates are asynchronous</strong> - React batches updates for performance</li>
+                                    <li><strong>State updates trigger re-renders</strong> - Component will re-render when state changes</li>
+                                    <li><strong>Use functional updates for complex changes</strong> - Pass a function to the setter when the new state depends on the previous state</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- State Update Patterns -->
+                        <div class="content-block">
+                            <h2>State Update Patterns</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🔢 Simple Values</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Numbers & Strings</span>
+                                        </div>
+                                        <pre><code>const [count, setCount] = useState(0);
+const [name, setName] = useState('');
+
+// Direct updates
+setCount(5);
+setName('John');
+
+// Functional updates (when depending on previous value)
+setCount(prevCount =&gt; prevCount + 1);
+setName(prevName =&gt; prevName.toUpperCase());</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📋 Arrays</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Array Updates</span>
+                                        </div>
+                                        <pre><code>const [items, setItems] = useState([]);
+
+// Add item
+setItems([...items, newItem]);
+
+// Remove item
+setItems(items.filter(item =&gt; item.id !== targetId));
+
+// Update item
+setItems(items.map(item =&gt; 
+  item.id === targetId 
+    ? { ...item, name: 'Updated' }
+    : item
+));</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🏷️ Objects</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Object Updates</span>
+                                        </div>
+                                        <pre><code>const [user, setUser] = useState({
+  name: '',
+  email: '',
+  age: 0
+});
+
+// Update single property
+setUser({ ...user, name: 'John' });
+
+// Update multiple properties
+setUser(prevUser =&gt; ({
+  ...prevUser,
+  name: 'John',
+  age: 25
+}));</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔄 Complex State</h3>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Multiple State Variables</span>
+                                        </div>
+                                        <pre><code>// Separate concerns with multiple useState
+const [loading, setLoading] = useState(false);
+const [error, setError] = useState(null);
+const [data, setData] = useState([]);
+
+// Or group related state
+const [formState, setFormState] = useState({
+  name: '',
+  email: '',
+  errors: {}
+});</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Props vs State -->
+                        <div class="content-block">
+                            <h2>Props vs State: When to Use What?</h2>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Use Props When</div>
+                                    <div class="comparison-content">
+                                        <ul>
+                                            <li><strong>Data comes from parent</strong> - Configuration, user info, etc.</li>
+                                            <li><strong>Data doesn't change in this component</strong> - Display-only information</li>
+                                            <li><strong>Multiple components need the same data</strong> - Shared state managed by parent</li>
+                                            <li><strong>Customizing component behavior</strong> - Settings, callbacks, etc.</li>
+                                        </ul>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Props Example</span>
+                                            </div>
+                                            <pre><code>// UserProfile receives data via props
+function UserProfile({ user, onEdit }) {
+  return (
+    &lt;div&gt;
+      &lt;h2&gt;{user.name}&lt;/h2&gt;
+      &lt;p&gt;{user.email}&lt;/p&gt;
+      &lt;button onClick={onEdit}&gt;Edit&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Use State When</div>
+                                    <div class="comparison-content">
+                                        <ul>
+                                            <li><strong>Data changes over time</strong> - User input, API responses</li>
+                                            <li><strong>Component owns the data</strong> - Internal component logic</li>
+                                            <li><strong>Triggering re-renders</strong> - UI updates based on user interaction</li>
+                                            <li><strong>Temporary data</strong> - Form inputs, modal visibility</li>
+                                        </ul>
+                                        
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">State Example</span>
+                                            </div>
+                                            <pre><code>// EditForm manages its own state
+function EditForm({ user, onSave }) {
+  const [name, setName] = useState(user.name);
+  const [email, setEmail] = useState(user.email);
+  
+  return (
+    &lt;form&gt;
+      &lt;input 
+        value={name}
+        onChange={e =&gt; setName(e.target.value)}
+      /&gt;
+      &lt;input 
+        value={email}
+        onChange={e =&gt; setEmail(e.target.value)}
+      /&gt;
+      &lt;button onClick={() =&gt; onSave({name, email})}&gt;
+        Save
+      &lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data Flow Example -->
+                        <div class="content-block">
+                            <h2>Data Flow in Action</h2>
+                            <p>
+                                Let's build a practical example that demonstrates how props and state work together in a real application:
+                            </p>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Complete Example: Todo App</span>
+                                </div>
+                                <pre><code>import React, { useState } from 'react';
+
+// Child component - receives props, no state needed
+function TodoItem({ todo, onToggle, onDelete }) {
+  return (
+    &lt;div className={`todo-item ${todo.completed ? 'completed' : ''}`}&gt;
+      &lt;span onClick={() =&gt; onToggle(todo.id)}&gt;
+        {todo.text}
+      &lt;/span&gt;
+      &lt;button onClick={() =&gt; onDelete(todo.id)}&gt;
+        Delete
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// Child component - manages its own input state
+function AddTodo({ onAdd }) {
+  const [text, setText] = useState('');
+  
+  const handleSubmit = (e) =&gt; {
+    e.preventDefault();
+    if (text.trim()) {
+      onAdd(text);
+      setText(''); // Reset form
+    }
+  };
+  
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input
+        value={text}
+        onChange={(e) =&gt; setText(e.target.value)}
+        placeholder="Add a todo..."
+      /&gt;
+      &lt;button type="submit"&gt;Add&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}
+
+// Parent component - manages shared state
+function TodoApp() {
+  const [todos, setTodos] = useState([
+    { id: 1, text: 'Learn React', completed: false },
+    { id: 2, text: 'Build a project', completed: false }
+  ]);
+  
+  const addTodo = (text) =&gt; {
+    const newTodo = {
+      id: Date.now(),
+      text,
+      completed: false
+    };
+    setTodos([...todos, newTodo]);
+  };
+  
+  const toggleTodo = (id) =&gt; {
+    setTodos(todos.map(todo =&gt;
+      todo.id === id 
+        ? { ...todo, completed: !todo.completed }
+        : todo
+    ));
+  };
+  
+  const deleteTodo = (id) =&gt; {
+    setTodos(todos.filter(todo =&gt; todo.id !== id));
+  };
+  
+  return (
+    &lt;div className="todo-app"&gt;
+      &lt;h1&gt;My Todos&lt;/h1&gt;
+      &lt;AddTodo onAdd={addTodo} /&gt;
+      &lt;div&gt;
+        {todos.map(todo =&gt; (
+          &lt;TodoItem
+            key={todo.id}
+            todo={todo}
+            onToggle={toggleTodo}
+            onDelete={deleteTodo}
+          /&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                            
+                            <div class="explanation-box">
+                                <h3>🔄 Data Flow Breakdown</h3>
+                                <ol>
+                                    <li><strong>TodoApp</strong> manages the main todos state (array of todo objects)</li>
+                                    <li><strong>TodoApp</strong> passes individual todos and callback functions as props to TodoItem</li>
+                                    <li><strong>TodoItem</strong> receives props and calls callbacks when user interacts</li>
+                                    <li><strong>AddTodo</strong> manages its own input state and calls the onAdd callback</li>
+                                    <li><strong>State changes in TodoApp trigger re-renders</strong> of all child components</li>
+                                </ol>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices -->
+                        <div class="content-block">
+                            <h2>Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>✅ State Management</h3>
+                                    <ul>
+                                        <li>Keep state as simple as possible</li>
+                                        <li>Use multiple useState for unrelated data</li>
+                                        <li>Don't duplicate props in state</li>
+                                        <li>Lift state up when multiple components need it</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ Props Handling</h3>
+                                    <ul>
+                                        <li>Use destructuring for cleaner code</li>
+                                        <li>Provide default values for optional props</li>
+                                        <li>Use meaningful prop names</li>
+                                        <li>Consider PropTypes for validation</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>✅ Performance</h3>
+                                    <ul>
+                                        <li>Don't create objects/functions in render</li>
+                                        <li>Use functional updates for performance</li>
+                                        <li>Consider React.memo for expensive components</li>
+                                        <li>Keep components small and focused</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>❌ Common Mistakes</h3>
+                                    <ul>
+                                        <li>Never modify state directly</li>
+                                        <li>Don't use array indices as keys</li>
+                                        <li>Avoid too much state in one component</li>
+                                        <li>Don't forget dependencies in useEffect</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now understand how data flows through React applications using props and state. 
+                                Next, you'll learn how to make your components respond to user interactions.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="event-handling.html">Event Handling</a> - Make your components interactive</li>
+                                    <li><a href="conditional-rendering.html">Conditional Rendering</a> - Show different content based on state</li>
+                                    <li><a href="hooks.html">React Hooks</a> - Master useEffect and other hooks</li>
+                                    <li><a href="state-management.html">Advanced State Management</a> - Context API and beyond</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

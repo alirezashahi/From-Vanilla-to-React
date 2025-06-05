@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Popular React Libraries - UI libraries, styling solutions, form handling, and ecosystem tools for React development">
+    <meta name="keywords" content="React Libraries, Material-UI, Ant Design, Styled Components, React Hook Form">
+    
+    <title>Popular Libraries - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#ecosystem" class="breadcrumb-link">Ecosystem</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">Popular Libraries</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>Popular Libraries</h1>
+                    <p class="page-subtitle">
+                        Explore the most popular React libraries that can accelerate your development. 
+                        From UI components to styling solutions and form handling.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge intermediate">Intermediate</span>
+                        <span class="reading-time">16 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- UI Component Libraries -->
+                        <div class="content-block">
+                            <h2>UI Component Libraries</h2>
+                            <p>
+                                UI component libraries provide pre-built, styled components that follow design systems. 
+                                They can significantly speed up development and ensure consistency across your application.
+                            </p>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🎨 Material-UI (MUI)</h3>
+                                    <p>React components implementing Google's Material Design</p>
+                                    
+                                    <div class="explanation-box">
+                                        <h4>✅ Pros:</h4>
+                                        <ul>
+                                            <li>Comprehensive component library</li>
+                                            <li>Excellent TypeScript support</li>
+                                            <li>Active community and documentation</li>
+                                            <li>Customizable theming system</li>
+                                            <li>Accessibility built-in</li>
+                                        </ul>
+                                        
+                                        <h4>❌ Cons:</h4>
+                                        <ul>
+                                            <li>Larger bundle size</li>
+                                            <li>Material Design may not fit all projects</li>
+                                            <li>Learning curve for customization</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">MUI Example</span>
+                                        </div>
+                                        <pre><code>import { Button, TextField, Card, CardContent } from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2',
+    },
+  },
+});
+
+function App() {
+  return (
+    &lt;ThemeProvider theme={theme}&gt;
+      &lt;Card&gt;
+        &lt;CardContent&gt;
+          &lt;TextField 
+            label="Enter your name" 
+            variant="outlined" 
+            fullWidth 
+          /&gt;
+          &lt;Button 
+            variant="contained" 
+            color="primary"
+            sx={{ mt: 2 }}
+          &gt;
+            Submit
+          &lt;/Button&gt;
+        &lt;/CardContent&gt;
+      &lt;/Card&gt;
+    &lt;/ThemeProvider&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🐜 Ant Design</h3>
+                                    <p>Enterprise-class UI design language and React components</p>
+                                    
+                                    <div class="explanation-box">
+                                        <h4>✅ Pros:</h4>
+                                        <ul>
+                                            <li>Rich set of high-quality components</li>
+                                            <li>Excellent for admin dashboards</li>
+                                            <li>Built-in internationalization</li>
+                                            <li>Professional design system</li>
+                                            <li>Good documentation</li>
+                                        </ul>
+                                        
+                                        <h4>❌ Cons:</h4>
+                                        <ul>
+                                            <li>Opinionated design (Chinese aesthetic)</li>
+                                            <li>Heavy bundle size</li>
+                                            <li>Customization can be complex</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Ant Design Example</span>
+                                        </div>
+                                        <pre><code>import { Button, Input, Card, Form, message } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+
+function LoginForm() {
+  const onFinish = (values) => {
+    console.log('Login:', values);
+    message.success('Login successful!');
+  };
+
+  return (
+    &lt;Card title="Login" style={{ width: 300 }}&gt;
+      &lt;Form onFinish={onFinish}&gt;
+        &lt;Form.Item 
+          name="username" 
+          rules={[{ required: true, message: 'Please enter username!' }]}
+        &gt;
+          &lt;Input 
+            prefix={&lt;UserOutlined /&gt;} 
+            placeholder="Username" 
+          /&gt;
+        &lt;/Form.Item&gt;
+        
+        &lt;Form.Item 
+          name="password" 
+          rules={[{ required: true, message: 'Please enter password!' }]}
+        &gt;
+          &lt;Input.Password 
+            prefix={&lt;LockOutlined /&gt;} 
+            placeholder="Password" 
+          /&gt;
+        &lt;/Form.Item&gt;
+        
+        &lt;Button type="primary" htmlType="submit" block&gt;
+          Log In
+        &lt;/Button&gt;
+      &lt;/Form&gt;
+    &lt;/Card&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>⚡ Chakra UI</h3>
+                                    <p>Simple, modular and accessible component library</p>
+                                    
+                                    <div class="explanation-box">
+                                        <h4>✅ Pros:</h4>
+                                        <ul>
+                                            <li>Great developer experience</li>
+                                            <li>Excellent accessibility</li>
+                                            <li>Easy to customize</li>
+                                            <li>Lightweight and modular</li>
+                                            <li>Great TypeScript support</li>
+                                        </ul>
+                                        
+                                        <h4>❌ Cons:</h4>
+                                        <ul>
+                                            <li>Smaller component library</li>
+                                            <li>Newer, smaller community</li>
+                                            <li>Less enterprise-focused</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Chakra UI Example</span>
+                                        </div>
+                                        <pre><code>import { 
+  Box, Button, Input, VStack, HStack, 
+  useColorMode, useToast 
+} from '@chakra-ui/react';
+
+function ContactForm() {
+  const { colorMode, toggleColorMode } = useColorMode();
+  const toast = useToast();
+
+  const handleSubmit = () => {
+    toast({
+      title: "Form submitted!",
+      status: "success",
+      duration: 3000,
+    });
+  };
+
+  return (
+    &lt;Box maxW="md" mx="auto" p={6} borderRadius="lg" boxShadow="lg"&gt;
+      &lt;VStack spacing={4}&gt;
+        &lt;Input placeholder="Your name" /&gt;
+        &lt;Input placeholder="Your email" type="email" /&gt;
+        
+        &lt;HStack&gt;
+          &lt;Button colorScheme="blue" onClick={handleSubmit}&gt;
+            Submit
+          &lt;/Button&gt;
+          &lt;Button variant="ghost" onClick={toggleColorMode}&gt;
+            Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+          &lt;/Button&gt;
+        &lt;/HStack&gt;
+      &lt;/VStack&gt;
+    &lt;/Box&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🌪️ Mantine</h3>
+                                    <p>Full-featured React components and hooks library</p>
+                                    
+                                    <div class="explanation-box">
+                                        <h4>✅ Pros:</h4>
+                                        <ul>
+                                            <li>Comprehensive component set</li>
+                                            <li>Built-in dark theme</li>
+                                            <li>Excellent form handling</li>
+                                            <li>Modern design aesthetic</li>
+                                            <li>Great developer tools</li>
+                                        </ul>
+                                        
+                                        <h4>❌ Cons:</h4>
+                                        <ul>
+                                            <li>Relatively new library</li>
+                                            <li>Smaller ecosystem</li>
+                                            <li>Breaking changes between versions</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Styling Solutions -->
+                        <div class="content-block">
+                            <h2>Styling Solutions</h2>
+                            <p>
+                                Different approaches to styling React components, from CSS-in-JS to utility-first frameworks.
+                            </p>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>💅 Styled Components</h3>
+                                    <p>CSS-in-JS library for styling React components</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Styled Components</span>
+                                        </div>
+                                        <pre><code>import styled from 'styled-components';
+
+const Button = styled.button`
+  background: ${props => props.primary ? '#007bff' : '#6c757d'};
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  &:hover {
+    opacity: 0.8;
+  }
+  
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`;
+
+const Card = styled.div`
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin: 10px 0;
+`;
+
+function App() {
+  return (
+    &lt;Card&gt;
+      &lt;h2&gt;Welcome!&lt;/h2&gt;
+      &lt;Button primary&gt;Primary Button&lt;/Button&gt;
+      &lt;Button&gt;Secondary Button&lt;/Button&gt;
+    &lt;/Card&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎨 Emotion</h3>
+                                    <p>CSS-in-JS library with excellent performance</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Emotion</span>
+                                        </div>
+                                        <pre><code>/** @jsxImportSource @emotion/react */
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+
+const buttonStyle = css`
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+const Container = styled.div`
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+`;
+
+function App() {
+  return (
+    &lt;Container&gt;
+      &lt;button css={buttonStyle}&gt;
+        Emotion Button
+      &lt;/button&gt;
+      
+      &lt;div css={{
+        marginTop: 20,
+        padding: 15,
+        backgroundColor: '#f8f9fa',
+        borderRadius: 4
+      }}&gt;
+        Inline styles with Emotion
+      &lt;/div&gt;
+    &lt;/Container&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🌊 Tailwind CSS</h3>
+                                    <p>Utility-first CSS framework</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Tailwind CSS</span>
+                                        </div>
+                                        <pre><code>function UserCard({ user }) {
+  return (
+    &lt;div className="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden"&gt;
+      &lt;div className="md:flex"&gt;
+        &lt;div className="md:shrink-0"&gt;
+          &lt;img 
+            className="h-48 w-full object-cover md:h-full md:w-48" 
+            src={user.avatar} 
+            alt={user.name}
+          /&gt;
+        &lt;/div&gt;
+        
+        &lt;div className="p-8"&gt;
+          &lt;div className="uppercase tracking-wide text-sm text-indigo-500 font-semibold"&gt;
+            {user.role}
+          &lt;/div&gt;
+          
+          &lt;h3 className="mt-1 text-lg leading-tight font-medium text-black"&gt;
+            {user.name}
+          &lt;/h3&gt;
+          
+          &lt;p className="mt-2 text-slate-500"&gt;
+            {user.bio}
+          &lt;/p&gt;
+          
+          &lt;button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition-colors"&gt;
+            Contact
+          &lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎯 CSS Modules</h3>
+                                    <p>Locally scoped CSS</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">CSS Modules</span>
+                                        </div>
+                                        <pre><code>/* Button.module.css */
+.button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.button:hover {
+  background: #0056b3;
+}
+
+.primary {
+  background: #28a745;
+}
+
+.primary:hover {
+  background: #1e7e34;
+}
+
+// Button.js
+import styles from './Button.module.css';
+import clsx from 'clsx';
+
+function Button({ children, primary, ...props }) {
+  return (
+    &lt;button 
+      className={clsx(styles.button, {
+        [styles.primary]: primary
+      })}
+      {...props}
+    &gt;
+      {children}
+    &lt;/button&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Handling -->
+                        <div class="content-block">
+                            <h2>Form Handling Libraries</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>📝 React Hook Form</h3>
+                                    <p>Performant forms with easy validation</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">React Hook Form</span>
+                                        </div>
+                                        <pre><code>import { useForm } from 'react-hook-form';
+
+function ContactForm() {
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors },
+    reset 
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    // Submit to API
+    reset(); // Clear form
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit(onSubmit)}&gt;
+      &lt;div&gt;
+        &lt;label&gt;Name&lt;/label&gt;
+        &lt;input 
+          {...register('name', { 
+            required: 'Name is required',
+            minLength: { value: 2, message: 'Too short' }
+          })}
+        /&gt;
+        {errors.name && &lt;span&gt;{errors.name.message}&lt;/span&gt;}
+      &lt;/div&gt;
+
+      &lt;div&gt;
+        &lt;label&gt;Email&lt;/label&gt;
+        &lt;input 
+          type="email"
+          {...register('email', { 
+            required: 'Email is required',
+            pattern: {
+              value: /^\S+@\S+$/i,
+              message: 'Invalid email'
+            }
+          })}
+        /&gt;
+        {errors.email && &lt;span&gt;{errors.email.message}&lt;/span&gt;}
+      &lt;/div&gt;
+
+      &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📋 Formik</h3>
+                                    <p>Build forms without tears</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Formik with Yup</span>
+                                        </div>
+                                        <pre><code>import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object({
+  name: Yup.string()
+    .min(2, 'Too Short!')
+    .required('Required'),
+  email: Yup.string()
+    .email('Invalid email')
+    .required('Required'),
+  age: Yup.number()
+    .positive('Must be positive')
+    .integer('Must be integer')
+    .required('Required')
+});
+
+function UserForm() {
+  return (
+    &lt;Formik
+      initialValues={{ name: '', email: '', age: '' }}
+      validationSchema={validationSchema}
+      onSubmit={(values, { setSubmitting, resetForm }) => {
+        setTimeout(() => {
+          console.log(values);
+          setSubmitting(false);
+          resetForm();
+        }, 400);
+      }}
+    &gt;
+      {({ isSubmitting }) => (
+        &lt;Form&gt;
+          &lt;div&gt;
+            &lt;Field type="text" name="name" placeholder="Name" /&gt;
+            &lt;ErrorMessage name="name" component="div" /&gt;
+          &lt;/div&gt;
+
+          &lt;div&gt;
+            &lt;Field type="email" name="email" placeholder="Email" /&gt;
+            &lt;ErrorMessage name="email" component="div" /&gt;
+          &lt;/div&gt;
+
+          &lt;div&gt;
+            &lt;Field type="number" name="age" placeholder="Age" /&gt;
+            &lt;ErrorMessage name="age" component="div" /&gt;
+          &lt;/div&gt;
+
+          &lt;button type="submit" disabled={isSubmitting}&gt;
+            Submit
+          &lt;/button&gt;
+        &lt;/Form&gt;
+      )}
+    &lt;/Formik&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Utility Libraries -->
+                        <div class="content-block">
+                            <h2>Utility Libraries</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🔄 React Query (TanStack Query)</h3>
+                                    <p>Data fetching and caching library</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">React Query</span>
+                                        </div>
+                                        <pre><code>import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+
+function UserList() {
+  const queryClient = useQueryClient();
+  
+  const { data: users, isLoading, error } = useQuery({
+    queryKey: ['users'],
+    queryFn: () => fetch('/api/users').then(res => res.json())
+  });
+
+  const deleteUserMutation = useMutation({
+    mutationFn: (userId) => 
+      fetch(`/api/users/${userId}`, { method: 'DELETE' }),
+    onSuccess: () => {
+      queryClient.invalidateQueries(['users']);
+    }
+  });
+
+  if (isLoading) return &lt;div&gt;Loading...&lt;/div&gt;;
+  if (error) return &lt;div&gt;Error: {error.message}&lt;/div&gt;;
+
+  return (
+    &lt;div&gt;
+      {users.map(user => (
+        &lt;div key={user.id}&gt;
+          &lt;span&gt;{user.name}&lt;/span&gt;
+          &lt;button 
+            onClick={() => deleteUserMutation.mutate(user.id)}
+            disabled={deleteUserMutation.isLoading}
+          &gt;
+            Delete
+          &lt;/button&gt;
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🎭 Framer Motion</h3>
+                                    <p>Animation library for React</p>
+                                    
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Framer Motion</span>
+                                        </div>
+                                        <pre><code>import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+
+function AnimatedCard() {
+  const [isVisible, setIsVisible] = useState(true);
+
+  return (
+    &lt;div&gt;
+      &lt;button onClick={() => setIsVisible(!isVisible)}&gt;
+        Toggle Card
+      &lt;/button&gt;
+      
+      &lt;AnimatePresence&gt;
+        {isVisible && (
+          &lt;motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -50 }}
+            transition={{ duration: 0.3 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            style={{
+              padding: '20px',
+              background: 'white',
+              borderRadius: '8px',
+              boxShadow: '0 2px 10px rgba(0,0,0,0.1)',
+              margin: '20px 0'
+            }}
+          &gt;
+            &lt;h3&gt;Animated Card&lt;/h3&gt;
+            &lt;p&gt;This card has smooth animations!&lt;/p&gt;
+          &lt;/motion.div&gt;
+        )}
+      &lt;/AnimatePresence&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📅 Date & Time</h3>
+                                    <p>Libraries for handling dates</p>
+                                    
+                                    <ul>
+                                        <li><strong>date-fns:</strong> Modern JavaScript date utility library</li>
+                                        <li><strong>Day.js:</strong> Lightweight Moment.js alternative</li>
+                                        <li><strong>React DatePicker:</strong> Date picker component</li>
+                                        <li><strong>React Big Calendar:</strong> Calendar component</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🔧 Development Utilities</h3>
+                                    <p>Helpful development libraries</p>
+                                    
+                                    <ul>
+                                        <li><strong>clsx:</strong> Utility for constructing className strings</li>
+                                        <li><strong>React Hot Toast:</strong> Notifications</li>
+                                        <li><strong>React Helmet:</strong> Manage document head</li>
+                                        <li><strong>React Error Boundary:</strong> Error handling</li>
+                                        <li><strong>React Window:</strong> Efficiently render large lists</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Choosing Libraries -->
+                        <div class="content-block">
+                            <h2>How to Choose the Right Library</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🎯 Decision Factors</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>📦 Bundle Size</h4>
+                                        <ul>
+                                            <li>Check library size with bundlephobia.com</li>
+                                            <li>Consider tree-shaking support</li>
+                                            <li>Look for modular imports</li>
+                                            <li>Evaluate impact on loading time</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🏃‍♂️ Performance</h4>
+                                        <ul>
+                                            <li>Runtime performance benchmarks</li>
+                                            <li>Memory usage patterns</li>
+                                            <li>Rendering optimizations</li>
+                                            <li>Server-side rendering support</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🌟 Community & Maintenance</h4>
+                                        <ul>
+                                            <li>GitHub stars and activity</li>
+                                            <li>Recent commits and releases</li>
+                                            <li>Issue response times</li>
+                                            <li>Documentation quality</li>
+                                        </ul>
+                                    </div>
+                                    
+                                    <div class="concept-card">
+                                        <h4>🔧 Developer Experience</h4>
+                                        <ul>
+                                            <li>TypeScript support</li>
+                                            <li>API design and simplicity</li>
+                                            <li>Integration with tools</li>
+                                            <li>Learning curve</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                The React ecosystem is vast and constantly evolving. Start with the libraries that solve 
+                                your immediate needs, and gradually explore others as your projects grow in complexity.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies from vanilla JS</li>
+                                    <li><a href="learning-path.html">Learning Path</a> - Structured approach to mastering React</li>
+                                    <li><a href="resources.html">Resources</a> - External learning materials and documentation</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 

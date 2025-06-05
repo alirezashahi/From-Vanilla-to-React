@@ -1,0 +1,312 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* CSS Custom Properties for theming */
+:root {
+    /* Colors - Light Theme */
+    --color-primary: #007acc;
+    --color-primary-dark: #005a9e;
+    --color-secondary: #f39c12;
+    --color-accent: #e74c3c;
+    
+    /* Background Colors */
+    --color-bg-primary: #ffffff;
+    --color-bg-secondary: #f8f9fa;
+    --color-bg-tertiary: #e9ecef;
+    --color-bg-code: #f4f4f4;
+    
+    /* Text Colors */
+    --color-text-primary: #333333;
+    --color-text-secondary: #666666;
+    --color-text-muted: #888888;
+    --color-text-light: #ffffff;
+    
+    /* Border Colors */
+    --color-border: #dee2e6;
+    --color-border-light: #e9ecef;
+    
+    /* Success/Warning/Error Colors */
+    --color-success: #28a745;
+    --color-warning: #ffc107;
+    --color-error: #dc3545;
+    
+    /* Typography */
+    --font-family-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-family-mono: 'Consolas', 'Monaco', 'Courier New', monospace;
+    
+    /* Font Sizes */
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    
+    /* Line Heights */
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* Transitions */
+    --transition-fast: 0.15s ease-in-out;
+    --transition-normal: 0.3s ease-in-out;
+    --transition-slow: 0.5s ease-in-out;
+    
+    /* Container Max Width */
+    --container-max-width: 1200px;
+    
+    /* Header Height */
+    --header-height: 70px;
+    
+    /* Custom colors from image */
+    --color-bg-page-header: #e6f3ff;
+    --color-bg-footer-dark: #212529;
+    --color-green-feature: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+    --color-purple-pink-feature: linear-gradient(135deg, #da4453 0%, #89216b 100%);
+    --color-orange-yellow-feature: linear-gradient(135deg, #ff8c00 0%, #ffa500 100%);
+    --color-bg-button-secondary-cta: #e9ecef;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+    --color-bg-primary: #1a1a1a;
+    --color-bg-secondary: #2d2d2d;
+    --color-bg-tertiary: #404040;
+    --color-bg-code: #2d2d2d;
+    
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #cccccc;
+    --color-text-muted: #999999;
+    
+    --color-border: #404040;
+    --color-border-light: #555555;
+}
+
+/* Base HTML Elements */
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    line-height: var(--line-height-tight);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+h1 {
+    font-size: var(--font-size-4xl);
+}
+
+h2 {
+    font-size: var(--font-size-3xl);
+}
+
+h3 {
+    font-size: var(--font-size-2xl);
+}
+
+h4 {
+    font-size: var(--font-size-xl);
+}
+
+h5 {
+    font-size: var(--font-size-lg);
+}
+
+h6 {
+    font-size: var(--font-size-base);
+}
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* Lists */
+ul, ol {
+    margin-bottom: var(--spacing-md);
+    padding-left: var(--spacing-lg);
+}
+
+li {
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-secondary);
+}
+
+/* Code Elements */
+code {
+    font-family: var(--font-family-mono);
+    font-size: 0.9em;
+    background-color: var(--color-bg-code);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-primary);
+}
+
+pre {
+    font-family: var(--font-family-mono);
+    background-color: var(--color-bg-code);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--color-border);
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* Container */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Utility Classes */
+.text-center {
+    text-align: center;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.hidden {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    z-index: 100;
+}
+
+.skip-link:focus {
+    top: 6px;
+}
+
+/* Focus Styles */
+:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+}
+
+/* Button Reset */
+button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* Image Responsive */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Selection Styling */
+::selection {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--color-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: var(--radius-sm);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-text-muted);
+} 

@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="From Vanilla to React - A comprehensive learning platform for students transitioning from basic HTML/CSS/JS to React development">
+    <meta name="keywords" content="React, JavaScript, Web Development, Frontend, Tutorial, Learning">
+    <meta name="author" content="From Vanilla to React Learning Platform">
+    
+    <title>From Vanilla to React - Learn React Step by Step</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Favicon (will be added later) -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <h1>From Vanilla to React</h1>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/what-is-react.html">What is React?</a></li>
+                            <li><a href="pages/why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/components-jsx.html">Components & JSX</a></li>
+                            <li><a href="pages/props-state.html">Props & State</a></li>
+                            <li><a href="pages/event-handling.html">Event Handling</a></li>
+                            <li><a href="pages/conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/hooks.html">React Hooks</a></li>
+                            <li><a href="pages/state-management.html">State Management</a></li>
+                            <li><a href="pages/routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/dev-tools.html">Development Tools</a></li>
+                            <li><a href="pages/nextjs.html">Next.js</a></li>
+                            <li><a href="pages/libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="pages/vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="pages/learning-path.html">Learning Path</a></li>
+                            <li><a href="pages/resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">From Vanilla to React</h1>
+                    <p class="hero-subtitle">
+                        Master React development with clear explanations, practical examples, 
+                        and step-by-step guidance. Perfect for students with HTML, CSS, and JavaScript basics.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="pages/what-is-react.html" class="btn btn-primary">Start Learning</a>
+                        <a href="pages/learning-path.html" class="btn btn-secondary">View Learning Path</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="code-preview">
+                        <div class="code-header">
+                            <span class="code-lang">JavaScript → React</span>
+                        </div>
+                        <div class="code-content">
+                            <div class="code-before">
+                                <span class="comment">// Vanilla JS</span><br>
+                                <span class="keyword">document</span>.<span class="method">getElementById</span>(<span class="string">'app'</span>)<br>
+                                .<span class="property">innerHTML</span> = <span class="string">'Hello World'</span>;
+                            </div>
+                            <div class="code-arrow">→</div>
+                            <div class="code-after">
+                                <span class="comment">// React</span><br>
+                                <span class="keyword">function</span> <span class="function">App</span>() {<br>
+                                &nbsp;&nbsp;<span class="keyword">return</span> <span class="tag">&lt;h1&gt;</span>Hello World<span class="tag">&lt;/h1&gt;</span>;<br>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why React Section -->
+        <section class="why-react">
+            <div class="container">
+                <h2>Why Learn React?</h2>
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚡</div>
+                        <h3>High Demand</h3>
+                        <p>React is one of the most sought-after skills in web development</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🚀</div>
+                        <h3>Efficient Development</h3>
+                        <p>Build complex UIs with reusable components and powerful tools</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌟</div>
+                        <h3>Strong Ecosystem</h3>
+                        <p>Vast library of tools, frameworks, and community resources</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">💼</div>
+                        <h3>Career Growth</h3>
+                        <p>Open doors to exciting opportunities at top tech companies</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Learning Path Overview -->
+        <section class="learning-path">
+            <div class="container">
+                <h2>Your Learning Journey</h2>
+                <div class="path-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Foundation</h3>
+                            <p>Understand what React is and why it's revolutionary</p>
+                            <a href="pages/what-is-react.html" class="step-link">Start Here</a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Core Concepts</h3>
+                            <p>Master components, props, state, and event handling</p>
+                            <a href="pages/components-jsx.html" class="step-link">Learn Concepts</a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Advanced Topics</h3>
+                            <p>Dive into hooks, state management, and routing</p>
+                            <a href="pages/hooks.html" class="step-link">Go Advanced</a>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Ecosystem</h3>
+                            <p>Explore tools, Next.js, and popular libraries</p>
+                            <a href="pages/dev-tools.html" class="step-link">Explore Tools</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Sections -->
+        <section class="featured-sections">
+            <div class="container">
+                <h2>Start Learning</h2>
+                <div class="sections-grid">
+                    <article class="section-card">
+                        <div class="card-header">
+                            <h3>What is React?</h3>
+                            <span class="difficulty">Beginner</span>
+                        </div>
+                        <p>Discover React's core philosophy, the Virtual DOM, and how it compares to vanilla JavaScript.</p>
+                        <a href="pages/what-is-react.html" class="card-link">Read More</a>
+                    </article>
+                    
+                    <article class="section-card">
+                        <div class="card-header">
+                            <h3>Components & JSX</h3>
+                            <span class="difficulty">Beginner</span>
+                        </div>
+                        <p>Learn about component-based architecture and JSX syntax with practical examples.</p>
+                        <a href="pages/components-jsx.html" class="card-link">Read More</a>
+                    </article>
+                    
+                    <article class="section-card">
+                        <div class="card-header">
+                            <h3>React Hooks</h3>
+                            <span class="difficulty">Intermediate</span>
+                        </div>
+                        <p>Master useState, useEffect, and other hooks that make React development powerful.</p>
+                        <a href="pages/hooks.html" class="card-link">Read More</a>
+                    </article>
+                    
+                    <article class="section-card">
+                        <div class="card-header">
+                            <h3>Next.js Framework</h3>
+                            <span class="difficulty">Advanced</span>
+                        </div>
+                        <p>Explore server-side rendering, file-based routing, and full-stack React development.</p>
+                        <a href="pages/nextjs.html" class="card-link">Read More</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>From Vanilla to React</h3>
+                    <p>A comprehensive learning platform for mastering React development.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="pages/what-is-react.html">What is React?</a></li>
+                        <li><a href="pages/components-jsx.html">Components & JSX</a></li>
+                        <li><a href="pages/hooks.html">React Hooks</a></li>
+                        <li><a href="pages/learning-path.html">Learning Path</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://reactjs.org" target="_blank" rel="noopener">Official React Docs</a></li>
+                        <li><a href="https://create-react-app.dev" target="_blank" rel="noopener">Create React App</a></li>
+                        <li><a href="https://nextjs.org" target="_blank" rel="noopener">Next.js</a></li>
+                        <li><a href="pages/resources.html">More Resources</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Built for students learning modern web development</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React Learning Platform. Educational content for learning purposes.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/theme.js"></script>
+</body>
+</html> 

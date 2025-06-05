@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Master React State Management - Context API, Redux patterns, and global state solutions">
+    <meta name="keywords" content="React State Management, Context API, Redux, Global State, React Tutorial">
+    
+    <title>State Management - From Vanilla to React</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <a href="../index.html"><h1>From Vanilla to React</h1></a>
+                </div>
+                
+                <button class="nav-toggle" aria-label="Toggle navigation">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="../index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#foundation" class="nav-link">Foundation</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="what-is-react.html">What is React?</a></li>
+                            <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#core-concepts" class="nav-link">Core Concepts</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="components-jsx.html">Components & JSX</a></li>
+                            <li><a href="props-state.html">Props & State</a></li>
+                            <li><a href="event-handling.html">Event Handling</a></li>
+                            <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#advanced" class="nav-link">Advanced</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="hooks.html">React Hooks</a></li>
+                            <li><a href="state-management.html">State Management</a></li>
+                            <li><a href="routing.html">Routing</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#ecosystem" class="nav-link">Ecosystem</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="dev-tools.html">Development Tools</a></li>
+                            <li><a href="nextjs.html">Next.js</a></li>
+                            <li><a href="libraries.html">Popular Libraries</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#transition" class="nav-link">Transition Guide</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="vanilla-to-react.html">From Vanilla to React</a></li>
+                            <li><a href="learning-path.html">Learning Path</a></li>
+                            <li><a href="resources.html">Resources</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <button class="theme-toggle" aria-label="Toggle dark mode">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <div class="container">
+                <a href="../index.html" class="breadcrumb-link">Home</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <a href="#advanced" class="breadcrumb-link">Advanced</a>
+                <span class="breadcrumb-separator" aria-hidden="true">›</span>
+                <span class="breadcrumb-current" aria-current="page">State Management</span>
+            </div>
+        </nav>
+
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1>State Management</h1>
+                    <p class="page-subtitle">
+                        Learn how to manage complex application state in React using Context API, 
+                        Redux patterns, and modern state management solutions.
+                    </p>
+                    <div class="page-meta">
+                        <span class="difficulty-badge advanced">Advanced</span>
+                        <span class="reading-time">18 min read</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content Section -->
+        <section class="content-section">
+            <div class="container">
+                <div class="content-layout">
+                    <!-- Main Content -->
+                    <article class="main-content-area">
+                        <!-- Introduction -->
+                        <div class="content-block">
+                            <h2>Understanding State Management</h2>
+                            <p>
+                                As React applications grow, managing state becomes more complex. You need to decide 
+                                where to store state, how to share it between components, and how to keep it synchronized.
+                                This page covers various approaches to state management in React applications.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🤔 When Do You Need State Management?</h3>
+                                <ul>
+                                    <li><strong>Prop Drilling:</strong> Passing props through many component levels</li>
+                                    <li><strong>Shared State:</strong> Multiple components need the same data</li>
+                                    <li><strong>Complex Updates:</strong> State changes affect multiple parts of the app</li>
+                                    <li><strong>Global Features:</strong> User authentication, themes, language settings</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Local vs Global State -->
+                        <div class="content-block">
+                            <h2>Local vs Global State</h2>
+                            
+                            <div class="comparison-container">
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Local State</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>✅ Use Local State For:</h4>
+                                            <ul>
+                                                <li>Form input values</li>
+                                                <li>Toggle states (show/hide)</li>
+                                                <li>Component-specific data</li>
+                                                <li>Temporary UI states</li>
+                                            </ul>
+                                        </div>
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Local State Example</span>
+                                            </div>
+                                            <pre><code>function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Validate and submit
+  };
+
+  return (
+    &lt;form onSubmit={handleSubmit}&gt;
+      &lt;input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      /&gt;
+      &lt;input
+        type={showPassword ? 'text' : 'password'}
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      /&gt;
+      &lt;button 
+        type="button"
+        onClick={() => setShowPassword(!showPassword)}
+      &gt;
+        {showPassword ? 'Hide' : 'Show'} Password
+      &lt;/button&gt;
+      &lt;button type="submit"&gt;Login&lt;/button&gt;
+    &lt;/form&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="comparison-side">
+                                    <div class="comparison-header">Global State</div>
+                                    <div class="comparison-content">
+                                        <div class="explanation-box">
+                                            <h4>🌐 Use Global State For:</h4>
+                                            <ul>
+                                                <li>User authentication</li>
+                                                <li>Theme preferences</li>
+                                                <li>Shopping cart contents</li>
+                                                <li>App-wide settings</li>
+                                            </ul>
+                                        </div>
+                                        <div class="code-example">
+                                            <div class="code-header">
+                                                <span class="code-lang">Global State Example</span>
+                                            </div>
+                                            <pre><code>// Context for global state
+const AppContext = createContext();
+
+function AppProvider({ children }) {
+  const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState('light');
+  const [cart, setCart] = useState([]);
+
+  const value = {
+    user,
+    setUser,
+    theme,
+    setTheme,
+    cart,
+    setCart
+  };
+
+  return (
+    &lt;AppContext.Provider value={value}&gt;
+      {children}
+    &lt;/AppContext.Provider&gt;
+  );
+}
+
+// Any component can access global state
+function Header() {
+  const { user, theme, cart } = useContext(AppContext);
+  
+  return (
+    &lt;header className={theme}&gt;
+      {user ? `Welcome ${user.name}` : 'Please login'}
+      &lt;CartIcon count={cart.length} /&gt;
+    &lt;/header&gt;
+  );
+}</code></pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Context API Deep Dive -->
+                        <div class="content-block">
+                            <h2>Context API - React's Built-in Solution</h2>
+                            <p>
+                                React's Context API provides a way to pass data through the component tree without 
+                                having to pass props down manually at every level. It's perfect for global state like 
+                                themes, user authentication, and app settings.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🏗️ Building a Complete Context System</h3>
+                                <div class="code-example">
+                                    <div class="code-header">
+                                        <span class="code-lang">Complete Context Example</span>
+                                    </div>
+                                    <pre><code>// 1. Create Context and Custom Hook
+import { createContext, useContext, useReducer } from 'react';
+
+const AppContext = createContext();
+
+// Custom hook to use the context
+export const useApp = () => {
+  const context = useContext(AppContext);
+  if (!context) {
+    throw new Error('useApp must be used within AppProvider');
+  }
+  return context;
+};
+
+// 2. Reducer for complex state logic
+const appReducer = (state, action) => {
+  switch (action.type) {
+    case 'SET_USER':
+      return { ...state, user: action.payload };
+    
+    case 'SET_THEME':
+      return { ...state, theme: action.payload };
+    
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: [...state.cart, action.payload]
+      };
+    
+    case 'REMOVE_FROM_CART':
+      return {
+        ...state,
+        cart: state.cart.filter(item => item.id !== action.payload)
+      };
+    
+    case 'CLEAR_CART':
+      return { ...state, cart: [] };
+    
+    case 'SET_LOADING':
+      return { ...state, loading: action.payload };
+    
+    case 'SET_ERROR':
+      return { ...state, error: action.payload };
+    
+    default:
+      return state;
+  }
+};
+
+// 3. Provider Component
+export function AppProvider({ children }) {
+  const initialState = {
+    user: null,
+    theme: 'light',
+    cart: [],
+    loading: false,
+    error: null
+  };
+
+  const [state, dispatch] = useReducer(appReducer, initialState);
+
+  // Action creators
+  const actions = {
+    setUser: (user) => dispatch({ type: 'SET_USER', payload: user }),
+    setTheme: (theme) => dispatch({ type: 'SET_THEME', payload: theme }),
+    addToCart: (item) => dispatch({ type: 'ADD_TO_CART', payload: item }),
+    removeFromCart: (id) => dispatch({ type: 'REMOVE_FROM_CART', payload: id }),
+    clearCart: () => dispatch({ type: 'CLEAR_CART' }),
+    setLoading: (loading) => dispatch({ type: 'SET_LOADING', payload: loading }),
+    setError: (error) => dispatch({ type: 'SET_ERROR', payload: error })
+  };
+
+  const value = {
+    ...state,
+    ...actions
+  };
+
+  return (
+    &lt;AppContext.Provider value={value}&gt;
+      {children}
+    &lt;/AppContext.Provider&gt;
+  );
+}
+
+// 4. Using the Context in Components
+function Header() {
+  const { user, theme, cart, setTheme } = useApp();
+
+  const toggleTheme = () => {
+    setTheme(theme === 'light' ? 'dark' : 'light');
+  };
+
+  return (
+    &lt;header className={`header ${theme}`}&gt;
+      &lt;h1&gt;My Store&lt;/h1&gt;
+      
+      {user ? (
+        &lt;div&gt;Welcome, {user.name}!&lt;/div&gt;
+      ) : (
+        &lt;LoginButton /&gt;
+      )}
+      
+      &lt;button onClick={toggleTheme}&gt;
+        Switch to {theme === 'light' ? 'dark' : 'light'} mode
+      &lt;/button&gt;
+      
+      &lt;CartIcon count={cart.length} /&gt;
+    &lt;/header&gt;
+  );
+}
+
+function ProductCard({ product }) {
+  const { addToCart } = useApp();
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      quantity: 1
+    });
+  };
+
+  return (
+    &lt;div className="product-card"&gt;
+      &lt;h3&gt;{product.name}&lt;/h3&gt;
+      &lt;p&gt;${product.price}&lt;/p&gt;
+      &lt;button onClick={handleAddToCart}&gt;
+        Add to Cart
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}
+
+// 5. App Setup
+function App() {
+  return (
+    &lt;AppProvider&gt;
+      &lt;Header /&gt;
+      &lt;ProductList /&gt;
+      &lt;Cart /&gt;
+    &lt;/AppProvider&gt;
+  );
+}</code></pre>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Redux Concepts -->
+                        <div class="content-block">
+                            <h2>Redux - Predictable State Container</h2>
+                            <p>
+                                Redux is a popular state management library that implements a unidirectional data flow pattern. 
+                                While not always necessary, Redux shines in large applications with complex state interactions.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🔄 Redux Core Concepts</h3>
+                                <div class="concept-grid">
+                                    <div class="concept-card">
+                                        <h4>🏪 Store</h4>
+                                        <p>Single source of truth that holds the entire state of your application.</p>
+                                    </div>
+                                    <div class="concept-card">
+                                        <h4>📋 Actions</h4>
+                                        <p>Plain objects that describe what happened. They have a type and optional payload.</p>
+                                    </div>
+                                    <div class="concept-card">
+                                        <h4>🔧 Reducers</h4>
+                                        <p>Pure functions that specify how state changes in response to actions.</p>
+                                    </div>
+                                    <div class="concept-card">
+                                        <h4>📡 Dispatch</h4>
+                                        <p>Function used to send actions to the store to trigger state changes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="code-example">
+                                <div class="code-header">
+                                    <span class="code-lang">Redux Pattern (Conceptual)</span>
+                                </div>
+                                <pre><code>// 1. Actions - What happened
+const actions = {
+  increment: () => ({ type: 'INCREMENT' }),
+  decrement: () => ({ type: 'DECREMENT' }),
+  setCount: (count) => ({ type: 'SET_COUNT', payload: count }),
+  addTodo: (text) => ({ 
+    type: 'ADD_TODO', 
+    payload: { id: Date.now(), text, completed: false }
+  })
+};
+
+// 2. Reducers - How state changes
+const counterReducer = (state = { count: 0 }, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { ...state, count: state.count + 1 };
+    case 'DECREMENT':
+      return { ...state, count: state.count - 1 };
+    case 'SET_COUNT':
+      return { ...state, count: action.payload };
+    default:
+      return state;
+  }
+};
+
+const todosReducer = (state = [], action) => {
+  switch (action.type) {
+    case 'ADD_TODO':
+      return [...state, action.payload];
+    case 'TOGGLE_TODO':
+      return state.map(todo =>
+        todo.id === action.payload
+          ? { ...todo, completed: !todo.completed }
+          : todo
+      );
+    case 'DELETE_TODO':
+      return state.filter(todo => todo.id !== action.payload);
+    default:
+      return state;
+  }
+};
+
+// 3. Combine Reducers
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  todos: todosReducer
+});
+
+// 4. Create Store
+const store = createStore(rootReducer);
+
+// 5. Usage in Components (with React-Redux)
+function Counter() {
+  const count = useSelector(state => state.counter.count);
+  const dispatch = useDispatch();
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => dispatch(actions.increment())}&gt;
+        +
+      &lt;/button&gt;
+      &lt;button onClick={() => dispatch(actions.decrement())}&gt;
+        -
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                            </div>
+                        </div>
+
+                        <!-- Modern Alternatives -->
+                        <div class="content-block">
+                            <h2>Modern State Management Alternatives</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>🔮 Zustand</h3>
+                                    <p>Small, fast, and scalable state management solution.</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Zustand Example</span>
+                                        </div>
+                                        <pre><code>import { create } from 'zustand'
+
+const useStore = create((set) => ({
+  count: 0,
+  increment: () => set((state) => ({ count: state.count + 1 })),
+  decrement: () => set((state) => ({ count: state.count - 1 })),
+  reset: () => set({ count: 0 }),
+}))
+
+function Counter() {
+  const { count, increment, decrement } = useStore()
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{count}&lt;/p&gt;
+      &lt;button onClick={increment}&gt;+&lt;/button&gt;
+      &lt;button onClick={decrement}&gt;-&lt;/button&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>⚛️ Jotai</h3>
+                                    <p>Atomic approach to React state management.</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Jotai Example</span>
+                                        </div>
+                                        <pre><code>import { atom, useAtom } from 'jotai'
+
+const countAtom = atom(0)
+
+function Counter() {
+  const [count, setCount] = useAtom(countAtom)
+  
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(c => c + 1)}&gt;
+        +
+      &lt;/button&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🌊 Valtio</h3>
+                                    <p>Proxy-based state management for React.</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Valtio Example</span>
+                                        </div>
+                                        <pre><code>import { proxy, useSnapshot } from 'valtio'
+
+const state = proxy({ count: 0 })
+
+function Counter() {
+  const snap = useSnapshot(state)
+  
+  return (
+    &lt;div&gt;
+      &lt;p&gt;{snap.count}&lt;/p&gt;
+      &lt;button onClick={() => ++state.count}&gt;
+        +
+      &lt;/button&gt;
+    &lt;/div&gt;
+  )
+}</code></pre>
+                                    </div>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>📊 Redux Toolkit</h3>
+                                    <p>Modern Redux with less boilerplate.</p>
+                                    <div class="code-example">
+                                        <div class="code-header">
+                                            <span class="code-lang">Redux Toolkit</span>
+                                        </div>
+                                        <pre><code>import { createSlice } from '@reduxjs/toolkit'
+
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState: { value: 0 },
+  reducers: {
+    increment: (state) => {
+      state.value += 1
+    },
+    decrement: (state) => {
+      state.value -= 1
+    }
+  }
+})
+
+export const { increment, decrement } = counterSlice.actions
+export default counterSlice.reducer</code></pre>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Choosing the Right Solution -->
+                        <div class="content-block">
+                            <h2>Choosing the Right State Management Solution</h2>
+                            
+                            <div class="explanation-box">
+                                <h3>🤔 Decision Matrix</h3>
+                                <div class="comparison-container">
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">Simple Apps</div>
+                                        <div class="comparison-content">
+                                            <h4>✅ Use:</h4>
+                                            <ul>
+                                                <li><strong>useState</strong> for local component state</li>
+                                                <li><strong>useContext</strong> for 2-3 global values</li>
+                                                <li><strong>Props</strong> for parent-child communication</li>
+                                            </ul>
+                                            <h4>📝 Characteristics:</h4>
+                                            <ul>
+                                                <li>Few shared state values</li>
+                                                <li>Simple data flow</li>
+                                                <li>Small development team</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="comparison-side">
+                                        <div class="comparison-header">Complex Apps</div>
+                                        <div class="comparison-content">
+                                            <h4>✅ Consider:</h4>
+                                            <ul>
+                                                <li><strong>Redux Toolkit</strong> for predictable updates</li>
+                                                <li><strong>Zustand</strong> for simplicity + power</li>
+                                                <li><strong>Jotai</strong> for atomic state</li>
+                                            </ul>
+                                            <h4>📝 Characteristics:</h4>
+                                            <ul>
+                                                <li>Complex state interactions</li>
+                                                <li>Time-travel debugging needs</li>
+                                                <li>Large development team</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Best Practices -->
+                        <div class="content-block">
+                            <h2>State Management Best Practices</h2>
+                            
+                            <div class="concept-grid">
+                                <div class="concept-card">
+                                    <h3>✅ General Guidelines</h3>
+                                    <ul>
+                                        <li>Start with local state</li>
+                                        <li>Lift state up when needed</li>
+                                        <li>Use Context for truly global state</li>
+                                        <li>Keep state as close to usage as possible</li>
+                                        <li>Normalize complex state structures</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🏗️ Architecture Tips</h3>
+                                    <ul>
+                                        <li>Separate UI state from server state</li>
+                                        <li>Use custom hooks for state logic</li>
+                                        <li>Implement error boundaries</li>
+                                        <li>Consider using React Query for server state</li>
+                                        <li>Keep actions and reducers pure</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>⚡ Performance</h3>
+                                    <ul>
+                                        <li>Avoid large Context values</li>
+                                        <li>Split Context by update frequency</li>
+                                        <li>Use selectors in Redux</li>
+                                        <li>Memoize expensive calculations</li>
+                                        <li>Implement proper loading states</li>
+                                    </ul>
+                                </div>
+                                
+                                <div class="concept-card">
+                                    <h3>🐛 Testing</h3>
+                                    <ul>
+                                        <li>Test reducers in isolation</li>
+                                        <li>Mock Context providers</li>
+                                        <li>Test integration with components</li>
+                                        <li>Use testing utilities like @testing-library</li>
+                                        <li>Test error scenarios</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Next Steps -->
+                        <div class="content-block">
+                            <h2>What's Next?</h2>
+                            <p>
+                                You now understand the various approaches to state management in React applications. 
+                                Next, you'll learn about routing to build single-page applications with multiple views.
+                            </p>
+                            
+                            <div class="explanation-box">
+                                <h3>🚀 Continue Learning</h3>
+                                <ol>
+                                    <li><a href="routing.html">Routing</a> - Building single-page applications with React Router</li>
+                                    <li><a href="dev-tools.html">Development Tools</a> - Essential tools for React development</li>
+                                    <li><a href="nextjs.html">Next.js</a> - Full-stack React framework</li>
+                                    <li><a href="vanilla-to-react.html">Transition Guide</a> - Complete migration strategies</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Sidebar -->
+                    
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Foundation</h3>
+                    <ul>
+                        <li><a href="what-is-react.html">What is React?</a></li>
+                        <li><a href="why-learn-react.html">Why Learn React?</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Core Concepts</h3>
+                    <ul>
+                        <li><a href="components-jsx.html">Components & JSX</a></li>
+                        <li><a href="props-state.html">Props & State</a></li>
+                        <li><a href="event-handling.html">Event Handling</a></li>
+                        <li><a href="conditional-rendering.html">Conditional Rendering</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Advanced Topics</h3>
+                    <ul>
+                        <li><a href="hooks.html">React Hooks</a></li>
+                        <li><a href="state-management.html">State Management</a></li>
+                        <li><a href="routing.html">Routing</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="vanilla-to-react.html">Transition Guide</a></li>
+                        <li><a href="learning-path.html">Learning Path</a></li>
+                        <li><a href="resources.html">External Resources</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 From Vanilla to React. Made for learning React development.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/code-highlighting.js"></script>
+</body>
+</html> 
