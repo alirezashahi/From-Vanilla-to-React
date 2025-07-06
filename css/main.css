@@ -87,7 +87,7 @@
     --header-height: 70px;
     
     /* Custom colors from image */
-    --color-bg-page-header: #4a4b4c;
+  
     --color-bg-footer-dark: #212529;
     --color-green-feature: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
     --color-purple-pink-feature: linear-gradient(135deg, #da4453 0%, #89216b 100%);
@@ -101,7 +101,7 @@
     --color-bg-secondary: #2d2d2d;
     --color-bg-tertiary: #404040;
     --color-bg-code: #2d2d2d;
-    
+      --color-bg-page-header: #4a4b4c;
     --color-text-primary: #ffffff;
     --color-text-secondary: #cccccc;
     --color-text-muted: #999999;
