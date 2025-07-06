@@ -119,3 +119,4 @@ docs/_build/
 # Local configuration files
 config.local.js
 config.local.json 
+.vercel
